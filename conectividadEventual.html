@@ -33,22 +33,19 @@
     <h1 class="text-center">Análisis de conectividad eventual</h1>
     <h3>Fase de pruebas iniciales:</h3>
     <div class="row">
-      <div class="col-sm-8 col-md-8">
+      <div class="col-sm-7 col-md-7">
         <h1>Dos fotos inicio</h1>
       </div>
-      <div class="col-sm-4 col-md-4">
-        <p class="text-justify">En la ventana principal podemos encontrar los primeros errores evidentes en cuanto a la conectividad eventual. Luego de instalar la aplicación, podemos observar que, si esta se abre sin conectividad a internet utilizando el modo avión, la pestaña de descubrir no puede cargar los podcasts básicos de muestra de iTunes y sale el error “Unable to resolve host “itunes.apple.com”: No address associated with hostname”.</p>
+      <div class="col-sm-5 col-md-5">
+        <p class="text-justify">En la ventana principal podemos encontrar los primeros errores evidentes en cuanto a la conectividad eventual. Luego de instalar la aplicación, podemos observar que, al abrir esta sin una conexión estable de internet wifi o datos móviles (simulados activando el modo avión del dispositivo), la pestaña de descubrir (ventana inicial que se abre en el dispositivo cuando se abre por primera vez) no puede cargar los podcasts básicos de muestra de iTunes. Así, se despliega un error que es poco informativo al usuario final y no respeta la falta de conocimiento técnico del usuario. El error antes mencionado como se puede observar en las fotos anteriores es “Unable to resolve host “itunes.apple.com”: No address associated with hostname”. En caso de no existir una conexión estable, el objeto incluido no debería desplegar este error sino un aviso que le informe al usuario el motivo por el cual la información no esta disponible de manera amigable. De esta forma se le puede informar si no dispone de una conexión wifi o una conexión de datos estable. De este modo el usuario que tiene poca experiencia puede revisar si su problema es de cobertura celular, o inclusive que tiene el wifi apagado. </p>
       </div>
     </div>
+    <p class="text-justify">Inicialmente, podemos observar que el tab de Cola no presenta ningún problema, pues ninguna de sus funciones requiere una conexión estable. En el tab de Episodios vemos que se maneja bien la información, pues al no disponer de ningún podcats almacenado se informa al usuario la ausencia de estos en español y de manera clara. La falta de internet en este caso no afecta la navegabilidad de la pestaña. Las descargas manejan el caso donde no existe ningún podcast disponible, así que no se ve afectado realmente por la conectividad eventual. El historial de reproducciones muestra un logo de “Sin historial” por lo que se informa al usuario el problema o más bien estado actual de la aplicación y no se ve afectado en ningún caso por la falta de conectividad de la aplicación. El tab de suscripciones únicamente nos permite navegar a añadir podcast donde encontramos todos los problemas iniciales que ya hemos mencionado (cuando no se tienen ningún podcast agregado). </p>
     <div class="row">
-      <div class="col-sm-1 col-md-1">
-      </div>
-      <div class="col-sm-5 col-md-5">
+      <div class="col-sm-6 col-md-6">
         <p class="text-justify">Si se continua sin conectividad, la búsqueda local funciona bien (Buscar Podcast), sin embargo, al añadir una URL en Añadir pódcast por URL y dar en continuar se produce un error: Host Desconocido (Unable to resolve host “XXXX”: No address associated with hostname. No solo se da un manejo bastante inadecuado al mostrar el error completo al usuario (error generado por defecto) sino que además no se muestra en el mismo idioma las diferentes partes del error. Con esto, vemos que la aplicación tiene un diseño muy básico y muy poco enfoque en posibles problemas generados. Al presionar el botón de más en Descubrir encontramos el error java.net.UnknownHostException: Unable to resolve host etc. Nuevamente se hace evidente que se lanza la excepción de la aplicación sin capturarla y manejarla de acuerdo con las posibles interacciones del usuario final. Esto mismo ocurre al presionar Búsqueda avanzada, donde si se selecciona Buscar en Itunes, Explorar en gpodder.net o Buscar en fyyd, se genera también la misma excepción java mencionada anteriormente. Todo lo anterior se presenta en el video adjunto para que se pueda observar de primera mano el mal manejo de esta ventana. </p>
       </div>
-      <div class="col-sm-1 col-md-1">
-      </div>
-      <div class="col-sm-5 col-md-5">
+      <div class="col-sm-6 col-md-6">
         <iframe width="250" height="450" src="https://www.youtube.com/embed/tCCY31XxN_Y" frameborder="0" allowfullscreen=""></iframe>
       </div>
     </div>
@@ -62,6 +59,14 @@
       </div>
     </div>
     <h3>Fase de pruebas con Podcast (Descargado):</h3>
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <p class="text-justify">Al realizar la descarga de un podcast y luego entrar nuevamente a modo avión, se puede observar en los tabs de añadir podcast, historial de reproducciones y suscripciones los patrones de ejecución que se describieron en la fase inicial se repiten. En este caso, al observar la pestaña de episodios, se puede observar que se muestra un álbum con la información de los diferentes podcasts y solo se muestra disponible para la reproducción el que específicamente fue descargado. Al realizar click en los demás se evidencia el mismo problema que ocurría en la fase dos, donde el dispositivo reconocía que no se encontraba descargado e intentaba realizar la descarga a pesar de no tener una conexión estable a internet. Adicionalmente el fallo lo notifica por medio de push notifications. La otra opción a elegir redes móviles para realizar la descarga es agregar a la cola para poder realizar la descarga mas adelante. En este caso esta función no requiere intervención en cuanto a conectividad eventual, pues al quedar en cola el dispositivo puede reanudar o realizar la descarga cuando se recupere la conexión exitosamente. </p>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <h1>Video mostrando lo descrito</h1>
+      </div>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
