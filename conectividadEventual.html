@@ -29,7 +29,8 @@
         </ul>
       </div>
     </nav>
-    <h1 class="text-center">Aplicación AntennaPod</h1>
+
+    <h1 class="text-center">Análisis de conectividad eventual</h1>
     <h3>Fase de pruebas iniciales:</h3>
     <div class="row">
       <div class="col-sm-8 col-md-8">
@@ -40,11 +41,15 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6 col-md-6">
+      <div class="col-sm-1 col-md-1">
+      </div>
+      <div class="col-sm-5 col-md-5">
         <p class="text-justify">Si se continua sin conectividad, la búsqueda local funciona bien (Buscar Podcast), sin embargo, al añadir una URL en Añadir pódcast por URL y dar en continuar se produce un error: Host Desconocido (Unable to resolve host “XXXX”: No address associated with hostname. No solo se da un manejo bastante inadecuado al mostrar el error completo al usuario (error generado por defecto) sino que además no se muestra en el mismo idioma las diferentes partes del error. Con esto, vemos que la aplicación tiene un diseño muy básico y muy poco enfoque en posibles problemas generados. Al presionar el botón de más en Descubrir encontramos el error java.net.UnknownHostException: Unable to resolve host etc. Nuevamente se hace evidente que se lanza la excepción de la aplicación sin capturarla y manejarla de acuerdo con las posibles interacciones del usuario final. Esto mismo ocurre al presionar Búsqueda avanzada, donde si se selecciona Buscar en Itunes, Explorar en gpodder.net o Buscar en fyyd, se genera también la misma excepción java mencionada anteriormente. Todo lo anterior se presenta en el video adjunto para que se pueda observar de primera mano el mal manejo de esta ventana. </p>
       </div>
-      <div class="col-sm-6 col-md-6">
-        <h1>Video mostrando fallas</h1>
+      <div class="col-sm-1 col-md-1">
+      </div>
+      <div class="col-sm-5 col-md-5">
+        <iframe width="250" height="450" src="https://www.youtube.com/embed/tCCY31XxN_Y" frameborder="0" allowfullscreen=""></iframe>
       </div>
     </div>
     <h3>Fase de pruebas con Podcast (Suscripción):</h3>
