@@ -29,11 +29,35 @@
         </ul>
       </div>
     </nav>
+    <h1 class="text-center">Aplicación AntennaPod</h1>
+    <h3>Fase de pruebas iniciales:</h3>
+    <div class="row">
+      <div class="col-sm-8 col-md-8">
+        <h1>Dos fotos inicio</h1>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <p class="text-justify">En la ventana principal podemos encontrar los primeros errores evidentes en cuanto a la conectividad eventual. Luego de instalar la aplicación, podemos observar que, si esta se abre sin conectividad a internet utilizando el modo avión, la pestaña de descubrir no puede cargar los podcasts básicos de muestra de iTunes y sale el error “Unable to resolve host “itunes.apple.com”: No address associated with hostname”.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <p class="text-justify">Si se continua sin conectividad, la búsqueda local funciona bien (Buscar Podcast), sin embargo, al añadir una URL en Añadir pódcast por URL y dar en continuar se produce un error: Host Desconocido (Unable to resolve host “XXXX”: No address associated with hostname. No solo se da un manejo bastante inadecuado al mostrar el error completo al usuario (error generado por defecto) sino que además no se muestra en el mismo idioma las diferentes partes del error. Con esto, vemos que la aplicación tiene un diseño muy básico y muy poco enfoque en posibles problemas generados. Al presionar el botón de más en Descubrir encontramos el error java.net.UnknownHostException: Unable to resolve host etc. Nuevamente se hace evidente que se lanza la excepción de la aplicación sin capturarla y manejarla de acuerdo con las posibles interacciones del usuario final. Esto mismo ocurre al presionar Búsqueda avanzada, donde si se selecciona Buscar en Itunes, Explorar en gpodder.net o Buscar en fyyd, se genera también la misma excepción java mencionada anteriormente. Todo lo anterior se presenta en el video adjunto para que se pueda observar de primera mano el mal manejo de esta ventana. </p>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <h1>Video mostrando fallas</h1>
+      </div>
+    </div>
+    <h3>Fase de pruebas con Podcast (Suscripción):</h3>
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <h1>Video mostrando descripción</h1>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <p class="text-justify">Al realizar una suscripción podemos observar que tanto en la pestaña de Episodios como suscripciones aparece ya disponible el podcast (o álbum de podcast) al que nos hemos suscrito. Al presionar descargar en cualquiera de las dos pestañas, el celular reconoce que no tiene conexión a wifi; sin embargo, se asume de inmediato que el usuario si dispone de datos móviles. Así, procede a preguntar al usuario si le permite realizar la descarga por medio de datos móviles. Al aceptar esto, sale un letrero que evidencia que comenzó la descarga (Mensaje mostrado en un Toast cuando se debió utilizar un SnackBar), pero como tampoco se dispone de este tipo de conexión se informa por medio de una notificación nativa que la descarga ha fallado. Aun cuando se informa de esta manera (Manera incorrecta de hacerlo), no se le explica al usuario el porque de la falla en la descarga. Es decir, nunca se avisa al usuario que no dispone de una conexión a wifi o a internet por medio de datos móviles. Esto se evidencia en el video adjunto. Las demás ventanas presentan un comportamiento igual al mencionado en la fase inicial, pues realizar una suscripción no afecta de manera directa el contenido o la respuesta de alguna de estas. </p>
+      </div>
+    </div>
+    <h3>Fase de pruebas con Podcast (Descargado):</h3>
   </div>
-
-
-  <h1 class="text-center">Aplicación AntennaPod</h1>
-
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
