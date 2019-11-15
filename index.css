@@ -12,6 +12,12 @@ h1, h2{
 	width: 100%;
 }
 
+
+.container-fluid{
+	padding-right: 8%;
+}
+
+
 .descripcion{
 	font-size: 120%;
 	font-family: 'Archivo Narrow', sans-serif;
