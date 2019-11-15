@@ -29,8 +29,8 @@
         </ul>
       </div>
     </nav>
-    <h1 class="text-center">Análisis de UI - UX </h1>
-    <div class="ui">
+    <h1 class="text-center">Análisis de <a href="#ui">UI</a> - <a href="#ux">UX</a> </h1>
+    <div id="ui">
       <br/><br/>
       <h2 class="text-center"> UI - Metáforas </h2>
       <div class="row">
@@ -47,11 +47,11 @@
         
       <div class= "row">
         <div class = "col-md-3">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/AppBar.jpeg" alt="Imagen App Bar" height="150" width="250">        
+          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/AppBar.jpeg" alt="Imagen App Bar" height="150" width="100%">        
         </div>
 
         <div class = "col-md-3">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/SearchBar.jpeg" alt="Imagen Search Bar" height="150" width="250">        
+          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/SearchBar.jpeg" alt="Imagen Search Bar" height="150" width="100%">        
         </div>
         <div class= "col-md-6">
           <p class="text-justify"> En este activity se puede evidenciar el diseño Material dado que la barra superior muestra el título de la actividad en la que se encuentra y tiene un icono de navegación a la izquierda y cuenta con la opción de realizar una búsqueda en el mismo espacio. En adición a esto, en la segunda imagen se refleja el momento en el cuál se desea realizar una búsqueda y como el App Bar se transforma en un Search Bar   </p>
@@ -68,17 +68,36 @@
 
       </div>
 
-      <br/><br/>
-      <div class= "row">
-        <div class= "col-md-6">
-          <p class="text-justify"> En la página principal se refleja el uso de esta metafora debido a que los botones cumplen dos condiciones. En primer lugar se ven resaltados como si estuvieran en un nivel mas alto que la pantalla como se muestra en la primer imagen. Además en el momento en que se acciona el boton se torna oscuro en respuesta a la interacción con el usuario. </p>
+    </div>
+    <br/><br/>
+    <div id="ux">
+      <h2 class="text-center">UX - Fallas en la navegación</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <p class="text-justify">
+            Una de las principales fallas que encontramos en la navegacion por la aplicación fue el hecho de que si se navega por el Navigation Drawer al momento de efectuar de tratar de regresar al activity anterior no es posible realizar el proceso por lo cual se sale de la aplicación. Esto demuestra que dentro del desarrollo de la aplicación la pila solo maneja un activity a la vez y no le da al usuario una buena experiencia con la oportunidad de retroceder a donde se encontraba anteriormente.
+          </p>
         </div>
-        <div class = "col-md-6 text-center">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Gif%20Video%20Botones.gif" alt="Video Botones">
+        <div class="col-md-4">
+          <h3>Imagen act 1</h3>
+        </div>
+        <div class="col-md-4">
+          <h3>Imagen activity 2</h3>
+        </div>
+      </div>
+
+      <br/><br/>
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Video demostrando</h3>
+        </div>
+        <div class="col-md-8">
+          <p class="text-justify">
+            Otra falla importante de navegación y experiencia de usuario es en el momento de realizar una busqueda. Si se inicia una busqueda y se desea salir de ella, si se hace un tab fuera del area de busqueda el teclado no vuelve a esconderse y el usuario tiene que requerir la tecla "Atras" para poder continuar con la navegación.
+          </p>
         </div>
 
       </div>
-
     </div>
   </div>
 
