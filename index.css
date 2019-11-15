@@ -8,6 +8,10 @@ h1, h2{
 
 }
 
+.container{
+	width: 100%;
+}
+
 .descripcion{
 		font-size: 120%;
 		font-family: 'Archivo Narrow', sans-serif;
