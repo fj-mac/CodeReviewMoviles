@@ -1,9 +1,9 @@
 .textoDescripcion{
-		margin-top: auto;
+	margin-top: auto;
 	margin-bottom: auto;
 }
 
-h1{
+h1, h2{
 	font-family: 'Oswald', sans-serif;
 
 }
@@ -11,4 +11,12 @@ h1{
 .descripcion{
 		font-size: 120%;
 		font-family: 'Archivo Narrow', sans-serif;
+}
+
+.navbar-brand{
+	font-family: 'Oswald', sans-serif;
+}
+
+.nav-link{
+	font-family: 'Archivo Narrow', sans-serif;
 }
