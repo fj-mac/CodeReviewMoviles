@@ -1,0 +1,14 @@
+.textoDescripcion{
+		margin-top: auto;
+	margin-bottom: auto;
+}
+
+h1{
+	font-family: 'Oswald', sans-serif;
+
+}
+
+.descripcion{
+		font-size: 120%;
+		font-family: 'Archivo Narrow', sans-serif;
+}
