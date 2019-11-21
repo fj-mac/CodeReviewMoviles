@@ -84,13 +84,13 @@
       <p class="text-justify">A continuación, se evidencian estas 3 actividades donde se cubren aproximadamente el 80% de las funcionalidades de la aplicación para el usuario final:</p>
       <div class="row">
         <div class="col-sm-4 col-md-4">
-          <h1>Foto 1</h1>
+          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ARQUIAPP3.jpeg" alt="Imagen inicial" height="630">
         </div>
         <div class="col-sm-4 col-md-4">
-          <h1>Foto 2</h1>
+          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ARQUIAPP2.jpeg" alt="Imagen inicial" height="630">
         </div>
         <div class="col-sm-4 col-md-4">
-          <h1>Foto 3</h1>
+          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ARQUIAPP1.jpeg" alt="Imagen inicial" height="630">
         </div>
       </div>
       <p class="text-justify">Luego de observar el View, es claro ver el View Model. En este caso podemos observar que la vista dispone de al menos un view model que le permite adquirir la información necesaria para el usuario final. EN este caso la información puede ser desde nuevos podcast por defecto, podcast agregados por el usuario por alguna de sus diversas fuentes disponibles, podcast agregados mediante la URL especifica por parte del usuario o inclusive los podcast locales que el usuario ha guardado o descargado. Para lograrlo, se utilizan los observers del LiveData, donde en este caso corresponderían a los objetos que revisan las fuentes antes mencionadas. Así, en la aplicación se puede desplegar la información que sea necesaria para la actividad que presente un ciclo de vida activo. Lo anterior se evidencia cuando se realizan cambios entre las actividades o los fragmentos, pues la información únicamente es llamada cuando se considera necesario realizar el llamado y en las actividades especificas que el usuario mantiene “vivas” para esto. Se puede observar que una ves se realiza una descarga, existe la excepción donde el usuario puede continuar navegando por la aplicación mientras se termina de descargar el 100% de audio. Esta información se puede verificar posteriormente en la pestaña de descargas, donde se puede encontrar además del archivo descargado la información relacionada con dicha descarga. Esta puede ser catalogada de diversas formas como exitosa, o con falla ya sea por falta de conectividad o por falla en el servidor. </p>
