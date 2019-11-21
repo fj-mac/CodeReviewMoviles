@@ -3,6 +3,10 @@
 	margin-bottom: auto;
 }
 
+.imagenProfiling{
+	border:1px dotted grey;
+}
+
 h1, h2{
 	font-family: 'Oswald', sans-serif;
 
