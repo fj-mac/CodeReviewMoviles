@@ -47,12 +47,13 @@
     </div>
     <div class="col-sm-10 col-md-10 info">
       <h2>Librerias Utilizadas</h2>
+      <p>Inicialmente solo se muestran las librerías de implementación utilizadas. Las librerías de pruebas o AndroidTesting no directamente la experiencia del usuario, por lo que se omitieron de este análisis:</p>
       <div class="row">
-        <div class="col-sm-4 col-md-4">
-          <img src="./Fotos/ArquitecturaLibrerias1.jpeg" alt="Imagen inicial" height="630">
+        <div class="col-sm-5 col-md-5 text-center">
+          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ArquitecturaLibrerias1.PNG" alt="Imagen inicial" height="100">
         </div>
-        <div class="col-sm-8 col-md-8">
-          <h1>Descripción</h1>
+        <div class="col-sm-7 col-md-7">
+          <p>Como se puede observar, las librerías anteriores evidencian que la aplicación se ha migrado a androidX, pues han remplazado varios de sus componentes principales para utilizar las nuevas características. También se evidencia el uso de material, donde se pueden encontrar varios de los objetos utilizados. Vemos que se incluyen algunas librerías que no son necesarias declarar de manera explícita, pues al implementar material ya se están importando casi todas. Un claro ejemplo de esto es el import del recyclerview de androidX cuando ya se esta realizando el implementation de material:1.0.0.</p>
         </div>
       </div>
       <div class="row">
