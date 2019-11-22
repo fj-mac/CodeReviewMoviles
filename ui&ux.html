@@ -1,118 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>AntennaPod UI&UX</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="index.css"/>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>AntennaPod UI&UX</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="index.css"/>
 
-  <link rel="icon" type="image/png" sizes="192x192"  href="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/android-icon-192x192.png">
 
-  <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow&display=swap" rel="stylesheet">
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-    <a class="navbar-brand" href="./index.html">Sobre AntennaPod</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="diseno.html">Diseño</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="ui&ux.html">UX & UI <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Arquitectura.html">Arquitectura</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="conectividadEventual.html">Conectividad Eventual</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="performance.html">Performance</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark ">
+      <a class="navbar-brand" href="./index.html">Sobre AntennaPod</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="diseno.html">Diseño</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="ui&ux.html">UX & UI <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Arquitectura.html">Arquitectura</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="conectividadEventual.html">Conectividad Eventual</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="performance.html">Performance</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-  <div class="container">
-    <br/>
-    <h1 class="text-center">Análisis de <a href="#ui">UI</a> - <a href="#ux">UX</a> </h1>
-    <div id="ui">
-      <br/><br/>
-      <h2 class="text-center"> UI - Metáforas </h2>
+    <div class="container-fluid">
+      <br/>
+      <h1 class="text-center">Análisis de UI - UX</h1>
       <div class="row">
-        <div class="col-md-9 textoDescripcion">
-          <p class="text-justify descripcion"> En general la aplicación tiene un diseño basado en la metáfora Material Design, dado que en la mayoría de sus Activities se puede evidenciar el uso de sombras y de interactividad con el usuario. Además, prueba de esto se encuentra en los archivos XML en los cuales se utilizan clases de Andriod como List View o Text View, que son elementos de Material Design que ya han sido adoptados por Android. Sumado a esto algunos elementos están importados directamente desde Material (REVISAR ESTO). Los siguientes componentes muestran el uso de esta metáfora en el diseño de la App.</p>
+        <div class="col-sm-2 col-md-2">
+          <div class="affix"id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              <li class="sidebar-brand">UI & UX </li>
+              <li>UI</li>
+              <ul>
+                <li><a href="#AñadirPodcast">Metafora</a></li>
+                <li><a href="#Buscar">Elementos Material Design</a></li>
+                <li><a href="#Descubrir">Paleta Color</a></li>
+              </ul>
+              <li>UX</li>
+              <ul>
+                <li><a href="#AñadirPodcast">Fallas en navegacíon</a></li>
+              </ul>
+            </ul>
+          </div> 
         </div>
-        <div class="col-md-3">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/MaterialDesign.png" alt="Logo Material Design">
+        <div class="col-sm-9 col-md-9 offset-md-1 info">
+         <div id="ui">
+          <br/><br/>
+          <h2 class="text-center"> UI - Metáforas </h2>
+          <div class="row">
+            <div class="col-md-9 textoDescripcion">
+              <p class="text-justify descripcion"> En general la aplicación tiene un diseño basado en la metáfora Material Design, dado que en la mayoría de sus Activities se puede evidenciar el uso de sombras y de interactividad con el usuario. Además, prueba de esto se encuentra en los archivos XML en los cuales se utilizan clases de Andriod como List View o Text View, que son elementos de Material Design que ya han sido adoptados por Android. Sumado a esto algunos elementos están importados directamente desde Material (REVISAR ESTO). Los siguientes componentes muestran el uso de esta metáfora en el diseño de la App.</p>
+            </div>
+            <div class="col-md-3">
+              <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/MaterialDesign.png" alt="Logo Material Design">
+            </div>
+          </div>
+          <br/><br/>
+
+          <h2 class="text-center"> Elementos Material Design </h2>
+
+          <div class= "row">
+            <div class = "col-md-3">
+              <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/AppBar.jpeg" alt="Imagen App Bar" height="150" width="100%">
+            </div>
+
+            <div class = "col-md-3">
+              <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/SearchBar.jpeg" alt="Imagen Search Bar" height="150" width="100%">
+            </div>
+            <div class= "col-md-6 textoDescripcion">
+              <p class="text-justify descripcion"> En este activity se puede evidenciar el diseño Material dado que la barra superior muestra el título de la actividad en la que se encuentra y tiene un icono de navegación a la izquierda y cuenta con la opción de realizar una búsqueda en el mismo espacio. En adición a esto, en la segunda imagen se refleja el momento en el cuál se desea realizar una búsqueda y como el App Bar se transforma en un Search Bar   </p>
+            </div>
+          </div>
+          <br/><br/>
+          <div class= "row">
+            <div class= "col-md-6 textoDescripcion">
+              <p class="text-justify descripcion"> En la página principal se refleja el uso de esta metafora debido a que los botones cumplen dos condiciones. En primer lugar se ven resaltados como si estuvieran en un nivel mas alto que la pantalla como se muestra en la primer imagen. Además en el momento en que se acciona el boton se torna oscuro en respuesta a la interacción con el usuario. </p>
+            </div>
+            <div class = "col-md-6 text-center">
+              <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Gif%20Video%20Botones.gif" alt="Video Botones">
+            </div>
+
+          </div>
+
+        </div>
+        <br/><br/>
+        <div id="ux">
+          <h2 class="text-center">UX - Fallas en la navegación</h2>
+          <br/><br/>
+          <div class="row">
+
+            <div class="col-md-4 textoDescripcion"  >
+              <p class="text-justify descripcion">
+                Una de las principales fallas que encontramos en la navegacion por la aplicación fue el hecho de que si se navega por el Navigation Drawer al momento de efectuar de tratar de regresar al activity anterior no es posible realizar el proceso por lo cual se sale de la aplicación. Esto demuestra que dentro del desarrollo de la aplicación la pila solo maneja un activity a la vez y no le da al usuario una buena experiencia con la oportunidad de retroceder a donde se encontraba anteriormente.
+              </p>
+            </div>
+            <div class="col-md-4 text-center">
+              <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Gif%20Video%20Atras.gif" alt="Gif1 demostración hacer back" height="450">
+            </div>
+
+            <div class="col-md-4 text-center">
+              <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Video%20Atras%202.gif" alt="Gif2 demostración hacer back" height="450">
+            </div>
+          </div>
+
+          <br/><br/>
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Video demostrando</h3>
+            </div>
+            <div class="col-md-8 textoDescripcion">
+              <p class="text-justify descripcion">
+                Otra falla importante de navegación y experiencia de usuario es en el momento de realizar una busqueda. Si se inicia una busqueda y se desea salir de ella, si se hace un tab fuera del area de busqueda el teclado no vuelve a esconderse y el usuario tiene que requerir la tecla "Atras" para poder continuar con la navegación.
+              </p>
+            </div>
+
+          </div>
         </div>
       </div>
-      <br/><br/>
-
-      <h2 class="text-center"> Elementos Material Design </h2>
-
-      <div class= "row">
-        <div class = "col-md-3">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/AppBar.jpeg" alt="Imagen App Bar" height="150" width="100%">
-        </div>
-
-        <div class = "col-md-3">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/SearchBar.jpeg" alt="Imagen Search Bar" height="150" width="100%">
-        </div>
-        <div class= "col-md-6 textoDescripcion">
-          <p class="text-justify descripcion"> En este activity se puede evidenciar el diseño Material dado que la barra superior muestra el título de la actividad en la que se encuentra y tiene un icono de navegación a la izquierda y cuenta con la opción de realizar una búsqueda en el mismo espacio. En adición a esto, en la segunda imagen se refleja el momento en el cuál se desea realizar una búsqueda y como el App Bar se transforma en un Search Bar   </p>
-        </div>
-      </div>
-      <br/><br/>
-      <div class= "row">
-        <div class= "col-md-6 textoDescripcion">
-          <p class="text-justify descripcion"> En la página principal se refleja el uso de esta metafora debido a que los botones cumplen dos condiciones. En primer lugar se ven resaltados como si estuvieran en un nivel mas alto que la pantalla como se muestra en la primer imagen. Además en el momento en que se acciona el boton se torna oscuro en respuesta a la interacción con el usuario. </p>
-        </div>
-        <div class = "col-md-6 text-center">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Gif%20Video%20Botones.gif" alt="Video Botones">
-        </div>
-
-      </div>
-
     </div>
-    <br/><br/>
-    <div id="ux">
-      <h2 class="text-center">UX - Fallas en la navegación</h2>
-      <br/><br/>
-      <div class="row">
 
-        <div class="col-md-4 textoDescripcion"  >
-          <p class="text-justify descripcion">
-            Una de las principales fallas que encontramos en la navegacion por la aplicación fue el hecho de que si se navega por el Navigation Drawer al momento de efectuar de tratar de regresar al activity anterior no es posible realizar el proceso por lo cual se sale de la aplicación. Esto demuestra que dentro del desarrollo de la aplicación la pila solo maneja un activity a la vez y no le da al usuario una buena experiencia con la oportunidad de retroceder a donde se encontraba anteriormente.
-          </p>
-        </div>
-        <div class="col-md-4 text-center">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Gif%20Video%20Atras.gif" alt="Gif1 demostración hacer back" height="450">
-        </div>
 
-        <div class="col-md-4 text-center">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Video%20Atras%202.gif" alt="Gif2 demostración hacer back" height="450">
-        </div>
-      </div>
-
-      <br/><br/>
-      <div class="row">
-        <div class="col-md-4">
-          <h3>Video demostrando</h3>
-        </div>
-        <div class="col-md-8 textoDescripcion">
-          <p class="text-justify descripcion">
-            Otra falla importante de navegación y experiencia de usuario es en el momento de realizar una busqueda. Si se inicia una busqueda y se desea salir de ella, si se hace un tab fuera del area de busqueda el teclado no vuelve a esconderse y el usuario tiene que requerir la tecla "Atras" para poder continuar con la navegación.
-          </p>
-        </div>
-
-      </div>
-    </div>
+  </div>
   </div>
 
 
@@ -123,5 +147,5 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-</html>
+  </body>
+  </html>

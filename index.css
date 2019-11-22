@@ -28,13 +28,11 @@ p{
 	font-size: 120%;
 	font-family: 'Archivo Narrow', sans-serif;
 }
-.container{
-	width: 100%;
-}
-
 
 .container-fluid{
 	padding-right: 5%;
+  position: relative;
+  margin-top: auto;
 }
 
 
