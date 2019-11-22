@@ -44,9 +44,17 @@
    <br/>
    <div class="row">
     <div class="col-sm-2 col-md-2">
+      <div id="sidebar-wrapper">
+          <ul class="sidebar-nav">
+            <li class="sidebar-brand">Arquitectura</li>
+            <li><a href="#Librerias">Librerias Utilizadas</a></li>
+            <li><a href="#Arquitectura">Arquitectura</a></li>
+            
+          </ul>
+        </div> 
     </div>
-    <div class="col-sm-10 col-md-10 info">
-      <h2>Librerias Utilizadas</h2>
+    <div class="col-sm-10 col-md-10 info ">
+      <h2 id="Librerias">Librerias Utilizadas</h2>
       <p>Inicialmente solo se muestran las librerías de implementación utilizadas. Las librerías de pruebas o AndroidTesting no directamente la experiencia del usuario, por lo que se omitieron de este análisis:</p>
       <div class="row">
         <div class="col-sm-5 col-md-5 text-center">
@@ -80,7 +88,7 @@
           <h1>Descripción</h1>
         </div>
       </div>
-      <h2>Descripción general de la Arquitectura de la aplicación</h2>
+      <h2 id="Arquitectura">Descripción general de la Arquitectura de la aplicación</h2>
       <p class="text-justify">Se puede observar que en la aplicación AntennaPod se tiene un arquitectura MVVM. Se puede observar primero que se las diferentes vistas. En estas podemos observar que la aplicación cuenta con 28 fragmentos y 20 actividades para exponer al usuario sus actividades principales. En estas inicialmente se pueden identificar la actividad que organiza las diferentes maneras de añadir un podcast, las suscripciones realizadas a las diferentes fuentes y las descargas. En estas 3 actividades de puede encontrar la información Core de la aplicación, pues la gran mayoría de funcionalidades dependen de estas 3 actividades.</p>
       <p class="text-justify">A continuación, se evidencian estas 3 actividades donde se cubren aproximadamente el 80% de las funcionalidades de la aplicación para el usuario final:</p>
       <div class="row">

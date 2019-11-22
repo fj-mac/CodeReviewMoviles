@@ -3,13 +3,24 @@
 	margin-bottom: auto;
 }
 
-.imagenProfiling{
-	border:1px dotted grey;
+.menuContenido a{
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #2196F3;
+  display: block;
+
 }
+
 
 h1, h2{
 	font-family: 'Oswald', sans-serif;
 
+}
+
+li{
+	font-size: 120%;
+	font-family: 'Archivo Narrow', sans-serif;
 }
 p{
 	margin-top: auto;
@@ -38,4 +49,58 @@ p{
 
 .nav-link{
 	font-family: 'Archivo Narrow', sans-serif;
+}
+
+ul{
+  list-style: none;
+}
+
+.affix{
+  position: fixed;
+}
+
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+  	font-family: 'Archivo Narrow', sans-serif;
+}
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav>.sidebar-brand {
+  height: 65px;
+  font-size: 25px;
+  line-height: 60px;
+}
+
+.sidebar-nav>.sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav>.sidebar-brand a:hover {
+  color: #fff;
+  background: none;
 }

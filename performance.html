@@ -36,223 +36,247 @@
       </ul>
     </div>
   </nav>
-  <div class="container">
+
+  <div class="container-fluid">
     <br/>
     <h1 class="text-center">Performance AntennaPod</h1>
-    <h2 class="text-center">Profiling</h2>
-    <p class="text-justify">En general se puede evidenciar que la aplicación no tiene fallas de rendimiento sin embargo hay ciertos aspectos que se pueden resaltar. La memoria comienza en un uso de 128MB, sin embargo, a medida que se va utlilizando y se va navegando a traves de ella el uso de la memoria no decrece, por lo cual se podria afirmar que existe un problema de liberacion de recursos dado que no se vuelve a reducir el uso de la memoria RAM.</p>
-    <br>
-    <h2>Añadir Podcast</h2>
-    <br/>
     <div class="row">
-
-      <div class="col-md-4">
-        <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Activity%20Anadir%20Podcast.jpeg" alt="Activity Añadir Podcast" width="100%">
+      <div class="col-sm-2 col-md-2">
+        <div class="affix"id="sidebar-wrapper">
+          <ul class="sidebar-nav">
+            <li class="sidebar-brand">Performance </li>
+            <li>Profiling</li>
+              <ul>
+                <li><a href="#AñadirPodcast">Añadir Podcast</a></li>
+                <li><a href="#Buscar">Buscar Podcast</a></li>
+                <li><a href="#Descubrir">Descubrir</a></li>
+                <li><a href="#Cola">Cola</a></li>
+                <li><a href="#Descargar">Descargar Podcast</a></li>
+                <li><a href="#Descargas">Descargas</a></li>
+                <li><a href="#Episodios">Episodios</a></li>
+                <li><a href="#Reproducir">Reproducir</a></li>
+                <li><a href="#Suscripciones">Suscripciones</a></li>
+              </ul>
+          </ul>
+        </div> 
       </div>
-      <div class="col-md-8">
-
-        <div class="row">
-          <div class="col-md-12 textoDescripcion">
-            <p class="text-justify descripcion">Añadir Podcast es la primer Activity que se muestra cuando se abre la aplicacion. Mediante la herrameinta profiling de Android studio se realizo un estudio del desempeño de esta y obtuvimos los siguientes resultados. En general tiene un bajo uso del CPU dado que no necesita muchos recursos para mostrarla. Así mismo el uso de memoria es menor o igual 128MB lo cual demuestra que en esta actividad no existe ningún tipo de leak de memoria. El uso de energia se mantiene bajo solo en el momento en que se carga la actividad es un poco mas alto pero en general no usa mucha energia y por último el uso de la red se da solamente durante la carga de la actividad. En esta primera actividad no se evidencia ninguna falla de rendimiento notable hasta el momento. </p>
-          </div>
-        </div>
+      <div class="col-sm-10 col-md-10 info">
         <br>
-        <div class=row>
-          <div class="col-md-12 text-center  imagenProfiling">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfA%C3%B1adirPodCast.PNG" alt="Profiling añadir podcast" height="100%">
-          </div>
-        </div>
-      </div>
-    </div>
-    <br/>
-    <h2>Buscar Podcast</h2>
-    <br/>
-    <div class="row">
-      <div class="col-md-4">
-        <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Buscar.jpeg" alt="Imagen buscar Podcast" width="100%">
-      </div>
-      <div class="col-md-8">
+        <h2 class="text-center">Profiling</h2>
+        <p class="text-justify">En general se puede evidenciar que la aplicación no tiene fallas de rendimiento sin embargo hay ciertos aspectos que se pueden resaltar. La memoria comienza en un uso de 128MB, sin embargo, a medida que se va utlilizando y se va navegando a traves de ella el uso de la memoria no decrece, por lo cual se podria afirmar que existe un problema de liberacion de recursos dado que no se vuelve a reducir el uso de la memoria RAM.</p>
+        <br>
+        <h2 id="AñadirPodcast">Añadir Podcast</h2>
+        <br/>
         <div class="row">
-          <div class="col-md-12 textoDescripcion">
+
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Activity%20Anadir%20Podcast.jpeg" alt="Activity Añadir Podcast" width="100%">
+          </div>
+          <div class="col-md-8">
+
             <div class="row">
-              <div class="col-md-12">
-                <p class="text-justify descripcion"> Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU y en la red dado que esté se busca en recursos externos a la aplicación, sin embargo, en el código no se evidencia exactamente donde se realizan las peticiones dado que el método es importado desde una librería propia de ellos. Así mismo el uso de energía es proporcional a búsqueda de los recursos y la memoria no se ve afectada por esta acción. </p>
+              <div class="col-md-12 textoDescripcion">
+                <p class="text-justify descripcion">Añadir Podcast es la primer Activity que se muestra cuando se abre la aplicacion. Mediante la herrameinta profiling de Android studio se realizo un estudio del desempeño de esta y obtuvimos los siguientes resultados. En general tiene un bajo uso del CPU dado que no necesita muchos recursos para mostrarla. Así mismo el uso de memoria es menor o igual 128MB lo cual demuestra que en esta actividad no existe ningún tipo de leak de memoria. El uso de energia se mantiene bajo solo en el momento en que se carga la actividad es un poco mas alto pero en general no usa mucha energia y por último el uso de la red se da solamente durante la carga de la actividad. En esta primera actividad no se evidencia ninguna falla de rendimiento notable hasta el momento. </p>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <img class="imagenProfiling"src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoBusqueda.PNG" alt="Imagen código búsqueda" width="100%"> 
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfA%C3%B1adirPodCast.PNG" alt="Profiling añadir podcast" height="100%">
               </div>
-              <div class="col-md-6">
-                <img class ="imagenProfiling"src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/LibreriasBusqueda.PNG" alt="Imagen librerías búsqueda" width="100%">
-              </div> 
+            </div>
+          </div>
+        </div>
+        <br/>
+        <h2 id="Buscar">Buscar Podcast</h2>
+        <br/>
+        <div class="row">
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Buscar.jpeg" alt="Imagen buscar Podcast" width="100%">
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 textoDescripcion">
+                <div class="row">
+                  <div class="col-md-12">
+                    <p class="text-justify descripcion"> Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU y en la red dado que esté se busca en recursos externos a la aplicación, sin embargo, en el código no se evidencia exactamente donde se realizan las peticiones dado que el método es importado desde una librería propia de ellos. Así mismo el uso de energía es proporcional a búsqueda de los recursos y la memoria no se ve afectada por esta acción. </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <img class="imagenProfiling"src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoBusqueda.PNG" alt="Imagen código búsqueda" width="100%"> 
+                  </div>
+                  <div class="col-md-6">
+                    <img class ="imagenProfiling"src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/LibreriasBusqueda.PNG" alt="Imagen librerías búsqueda" width="100%">
+                  </div> 
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfBuscarPodCas.PNG" alt="Profiling buscar podcast" height="100%">
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <h2 id="Descubrir">Descubrir</h2>
+        <br/>
+        <div class="row">
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Descubrir.jpeg" alt="Imagen descubrir Podcast" width="100%">
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 textoDescripcion">
+                <p class="text-justify descripcion"> Existe una funcionalidad que permite descubrir nuevos podcasts, en esta se muestran en una lista las sugerencias que tiene la aplicación, sin embargo, estos no son los únicos que se pueden almacenar. En la medida en que la que se va navegando por la lista el uso de la memoria incrementa debido al almacenamiento de las imágenes que se muestran. Se evidencian picos de uso de red, dado que se buscan podcast en la web como en iTunes, o Fyyd Podcast Search Engine. El uso de energía incrementa en los momentos en que se buscan los podcasts en recursos externos. Por último, el uso del CPU es proporcional al uso de red también, por lo cual no se considera que tenga alguna falla de rendimiento en esta funcionalidad.  </p>
+              </div>
+            </div>
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfDescubrir.PNG" alt="Profiling descubrir podcast" height="100%">
+              </div>
             </div>
           </div>
         </div>
         <br>
-        <div class=row>
-          <div class="col-md-12 text-center  imagenProfiling">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfBuscarPodCas.PNG" alt="Profiling buscar podcast" height="100%">
-          </div>
-        </div>
-      </div>
-    </div>
-    <br/>
-    <h2>Descubrir</h2>
-    <br/>
-    <div class="row">
-      <div class="col-md-4">
-        <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Descubrir.jpeg" alt="Imagen descubrir Podcast" width="100%">
-      </div>
-      <div class="col-md-8">
+        <h2 id="Cola">Cola</h2>
+        <br/>
         <div class="row">
-          <div class="col-md-12 textoDescripcion">
-            <p class="text-justify descripcion"> Existe una funcionalidad que permite descubrir nuevos podcasts, en esta se muestran en una lista las sugerencias que tiene la aplicación, sin embargo, estos no son los únicos que se pueden almacenar. En la medida en que la que se va navegando por la lista el uso de la memoria incrementa debido al almacenamiento de las imágenes que se muestran. Se evidencian picos de uso de red, dado que se buscan podcast en la web como en iTunes, o Fyyd Podcast Search Engine. El uso de energía incrementa en los momentos en que se buscan los podcasts en recursos externos. Por último, el uso del CPU es proporcional al uso de red también, por lo cual no se considera que tenga alguna falla de rendimiento en esta funcionalidad.  </p>
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Cola.jpeg" alt="Imagnen cola de reproducción Podcast" width="100%">
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 textoDescripcion">
+                <p class="text-justify descripcion">  Esta aplicación cuenta con una funcionalidad que le permite ver los podcasts que tiene una cola de reproducción. Según el análisis del profiling, esta funcionalidad no registrar ningún tipo de falla en cuanto al rendimiento. El uso del CPU tiene unos picos bajos en los momentos que carga la actividad, la memoria incrementa dado que tiene unas referencias a lo que tiene que mostrar y el uso de energía es bajo. En cuanto de la red, no se registra uso de red porque no necesita solicitar recursos externos, sino extraer información del almacenamiento.  </p>
+              </div>
+            </div>
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfCola.PNG" alt="Profiling Cola reproducción podcast" height="100%">
+              </div>
+            </div>
           </div>
         </div>
-        <br>
-        <div class=row>
-          <div class="col-md-12 text-center  imagenProfiling">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfDescubrir.PNG" alt="Profiling descubrir podcast" height="100%">
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <h2>Cola</h2>
-    <br/>
-    <div class="row">
-      <div class="col-md-4">
-        <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Cola.jpeg" alt="Imagnen cola de reproducción Podcast" width="100%">
-      </div>
-      <div class="col-md-8">
+        <br/>
+        <h2 id="Descargar">Descargar Poscast</h2>
+        <br/>
         <div class="row">
-          <div class="col-md-12 textoDescripcion">
-            <p class="text-justify descripcion">  Esta aplicación cuenta con una funcionalidad que le permite ver los podcasts que tiene una cola de reproducción. Según el análisis del profiling, esta funcionalidad no registrar ningún tipo de falla en cuanto al rendimiento. El uso del CPU tiene unos picos bajos en los momentos que carga la actividad, la memoria incrementa dado que tiene unas referencias a lo que tiene que mostrar y el uso de energía es bajo. En cuanto de la red, no se registra uso de red porque no necesita solicitar recursos externos, sino extraer información del almacenamiento.  </p>
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Descargar.jpeg" alt="Imagen descargar Podcast" width="100%">
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 textoDescripcion">
+                <p class="text-justify descripcion"> Cuando se hace uso de la funcionalidad descargar podcast, la aplicación tiene el comportamiento esperado. Existen picos, aunque pequeños, en el uso del CPU, en el uso de la red y la energía, sin embargo, se evidencia un correcto uso de la memoria dado que el uso de memoria permanece constante aun cuando se está descargando un archivo. Al finalizar la descarga se deja de utilizar el CPU y la red, por lo cual se puede concluir que no existen leaks, ni de red, ni de energía, ni de CPU.  </p>
+              </div>
+            </div>
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfDescargarPodcast.PNG" alt="Profiling descargar podcast" height="100%">
+              </div>
+            </div>
           </div>
         </div>
-        <br>
-        <div class=row>
-          <div class="col-md-12 text-center  imagenProfiling">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfCola.PNG" alt="Profiling Cola reproducción podcast" height="100%">
-          </div>
-        </div>
-      </div>
-    </div>
-    <br/>
-    <h2>Descargar Poscast</h2>
-    <br/>
-    <div class="row">
-      <div class="col-md-4">
-        <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Descargar.jpeg" alt="Imagen descargar Podcast" width="100%">
-      </div>
-      <div class="col-md-8">
+        <br/>
+        <h2 id="Descargas">Descargas</h2>
+        <br/>
         <div class="row">
-          <div class="col-md-12 textoDescripcion">
-            <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU, de la red   </p>
-          </div>
-        </div>
-        <br>
-        <div class=row>
-          <div class="col-md-12 text-center  imagenProfiling">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfDescargarPodcast.PNG" alt="Profiling descargar podcast" height="100%">
-          </div>
-        </div>
-      </div>
-    </div>
-    <br/>
-    <h2>Descargas</h2>
-    <br/>
-    <div class="row">
 
-      <div class="col-md-4">
-        <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Descargas.jpeg" alt="Activity Añadir Podcast" width="100%">
-      </div>
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-12 textoDescripcion">
-            <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del 
-            CPU, de la red   </p>
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Descargas.jpeg" alt="Activity Añadir Podcast" width="100%">
           </div>
-        </div>
-        <br>
-        <div class=row>
-          <div class="col-md-12 text-center  imagenProfiling">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfDescargas.PNG" alt="Profiling buscar podcast" height="100%">
-          </div>
-        </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 textoDescripcion">
+                <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del 
+                CPU, de la red   </p>
+              </div>
+            </div>
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfDescargas.PNG" alt="Profiling buscar podcast" height="100%">
+              </div>
+            </div>
 
+          </div>
+        </div>
+        <br/>
+
+        <br/>
+        <h2 id="Episodios">Episodios</h2>
+        <br/>
+        <div class="row">
+
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Episodios.jpeg" alt="Activity Añadir Podcast" width="100%">
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 textoDescripcion">
+                <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU, de la red   </p>
+              </div>
+            </div>
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfEpisodios.PNG" alt="Profiling buscar podcast" height="100%">
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <h2 id="Reproducir">Reproducir</h2>
+        <br/>
+        <div class="row">
+
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Reproducir.jpeg" alt="Activity Añadir Podcast" width="100%">
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 textoDescripcion">
+                <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU, de la red   </p>
+              </div>
+            </div>
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfReproducir.PNG" alt="Profiling buscar podcast" height="100%">
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <h2 id="Suscripciones">Suscripciones</h2>
+        <br/>
+        <div class="row">
+
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Suscripciones.jpeg" alt="Activity Añadir Podcast" width="100%">
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 textoDescripcion">
+                <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU, de la red   </p>
+              </div>
+            </div>
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfSuscripciones.PNG" alt="Profiling buscar podcast" height="100%">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <br/>
-    
-    <br/>
-    <h2>Episodios</h2>
-    <br/>
-    <div class="row">
-
-      <div class="col-md-4">
-        <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Episodios.jpeg" alt="Activity Añadir Podcast" width="100%">
-      </div>
-      <div class="col-md-8">
-        <div class=row>
-          <div class="col-md-12 text-center  imagenProfiling">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfEpisodios.PNG" alt="Profiling buscar podcast" height="100%">
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-md-12 textoDescripcion">
-            <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU, de la red   </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br/>
-    <h2>Reproducir</h2>
-    <br/>
-    <div class="row">
-
-      <div class="col-md-4">
-        <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Reproducir.jpeg" alt="Activity Añadir Podcast" width="100%">
-      </div>
-      <div class="col-md-8">
-        <div class=row>
-          <div class="col-md-12 text-center  imagenProfiling">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfReproducir.PNG" alt="Profiling buscar podcast" height="100%">
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-md-12 textoDescripcion">
-            <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU, de la red   </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br/>
-    <h2>Suscripciones</h2>
-    <br/>
-    <div class="row">
-
-      <div class="col-md-4">
-        <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Suscripciones.jpeg" alt="Activity Añadir Podcast" width="100%">
-      </div>
-      <div class="col-md-8">
-        <div class=row>
-          <div class="col-md-12 text-center  imagenProfiling">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfSuscripciones.PNG" alt="Profiling buscar podcast" height="100%">
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-md-12 textoDescripcion">
-            <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU, de la red   </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
