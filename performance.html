@@ -11,6 +11,9 @@
   <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow&display=swap" rel="stylesheet">
 </head>
 <body>
+  <script>
+    window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+  </script>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark ">
     <a class="navbar-brand" href="./index.html">Sobre AntennaPod</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,32 +41,33 @@
   </nav>
 
   <div class="container-fluid">
-    <br/>
-    <h1 class="text-center">Performance AntennaPod</h1>
     <div class="row">
       <div class="col-sm-2 col-md-2">
         <div class="affix"id="sidebar-wrapper">
           <ul class="sidebar-nav">
             <li class="sidebar-brand">Performance </li>
             <li>Profiling</li>
-              <ul>
-                <li><a href="#AñadirPodcast">Añadir Podcast</a></li>
-                <li><a href="#Buscar">Buscar Podcast</a></li>
-                <li><a href="#Descubrir">Descubrir</a></li>
-                <li><a href="#Cola">Cola</a></li>
-                <li><a href="#Descargar">Descargar Podcast</a></li>
-                <li><a href="#Descargas">Descargas</a></li>
-                <li><a href="#Episodios">Episodios</a></li>
-                <li><a href="#Reproducir">Reproducir</a></li>
-                <li><a href="#Suscripciones">Suscripciones</a></li>
-              </ul>
+            <ul>
+              <li><a href="#AñadirPodcast">Añadir Podcast</a></li>
+              <li><a href="#Buscar">Buscar Podcast</a></li>
+              <li><a href="#Descubrir">Descubrir</a></li>
+              <li><a href="#Cola">Cola</a></li>
+              <li><a href="#Descargar">Descargar Podcast</a></li>
+              <li><a href="#Descargas">Descargas</a></li>
+              <li><a href="#Episodios">Episodios</a></li>
+              <li><a href="#Reproducir">Reproducir</a></li>
+              <li><a href="#Suscribir">Suscribir</a></li>
+              <li><a href="#Suscripciones">Suscripciones</a></li>
+            </ul>
           </ul>
         </div> 
       </div>
       <div class="col-sm-9 col-md-9 offset-md-1 info">
+        <br/>
+        <h1 class="text-center">Performance AntennaPod</h1>
         <br>
         <h2 class="text-center">Profiling</h2>
-        <p class="text-justify">En general se puede evidenciar que la aplicación no tiene fallas de rendimiento sin embargo hay ciertos aspectos que se pueden resaltar. La memoria comienza en un uso de 128MB, sin embargo, a medida que se va utlilizando y se va navegando a traves de ella el uso de la memoria no decrece, por lo cual se podria afirmar que existe un problema de liberacion de recursos dado que no se vuelve a reducir el uso de la memoria RAM.</p>
+        <p class="text-justify">En general se puede evidenciar que la aplicación no tiene fallas de rendimiento sin embargo hay ciertos aspectos que se pueden resaltar. En cuanto al uso de la memoria cabe resaltar que mantiene un uso maximo de 258MB, lo cual demuestra de existen una estrategia de eso de la memoria para no pasar este nivel. El uso del CPU, red y energía se da solo en los momentos en que es realmente necesario. La aplicación responde al uso de los usuarios. Es decir que el uso de la red, CPU y energia se da cuando el usuario realiza alguna acción, en los momentos intermedios no utiliza estos recursos dado que no son necesarios.</p>
         <br>
         <h2 id="AñadirPodcast">Añadir Podcast</h2>
         <br/>
@@ -90,7 +94,7 @@
         <br/>
         <h2 id="Buscar">Buscar Podcast</h2>
         <br/>
-        <div class="row">
+        <div class="row ">
           <div class="col-md-4">
             <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Buscar.jpeg" alt="Imagen buscar Podcast" width="100%">
           </div>
@@ -141,6 +145,30 @@
             </div>
           </div>
         </div>
+
+        <br/>
+        <h2 id="Episodios">Episodios</h2>
+        <br/>
+        <div class="row">
+
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Episodios.jpeg" alt="Activity Añadir Podcast" width="100%">
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 textoDescripcion">
+                <p class="text-justify descripcion">Buscar los episodios de los canales a los que se está suscrito no tienen ningún tipo de conexión a recursos exteriores. Por este motivo, no se evidencian cambios en el comportamiento de la red. Sin embargo, si se decide descargar un nuevo episodio para escucharlo, esta es una funcionalidad diferente y requiere diferentes recursos. Los usos de la CPU y energía que se registran corresponden a el cambio entre las pestañas de “Nuevos”, “Todos” y “Favoritos” dado que cada uno corresponde a una solicitud diferente.</p>
+              </div>
+            </div>
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfEpisodios.PNG" alt="Profiling buscar podcast" height="100%">
+              </div>
+            </div>
+          </div>
+        </div>
+
         <br>
         <h2 id="Cola">Cola</h2>
         <br/>
@@ -194,8 +222,7 @@
           <div class="col-md-8">
             <div class="row">
               <div class="col-md-12 textoDescripcion">
-                <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del 
-                CPU, de la red   </p>
+                <p class="text-justify descripcion"> Consultar las descargas realizadas no tiene necesidad de recurrir a recursos externos, razón por la cual esta funcionalidad no tiene ningún registro de uso de la red. Al ser una consulta sobre la información que ya tiene la aplicación solo se evidencian cambios pequeños en el CPU y en la energía en los momentos que realiza las consultas para mostrar los resultados. Por otra parte, el uso de memoria permanece constante durante el procedimiento como es lo esperado.</p>
               </div>
             </div>
             <br>
@@ -205,30 +232,6 @@
               </div>
             </div>
 
-          </div>
-        </div>
-        <br/>
-
-        <br/>
-        <h2 id="Episodios">Episodios</h2>
-        <br/>
-        <div class="row">
-
-          <div class="col-md-4">
-            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Episodios.jpeg" alt="Activity Añadir Podcast" width="100%">
-          </div>
-          <div class="col-md-8">
-            <div class="row">
-              <div class="col-md-12 textoDescripcion">
-                <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU, de la red   </p>
-              </div>
-            </div>
-            <br>
-            <div class=row>
-              <div class="col-md-12 text-center  imagenProfiling">
-                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfEpisodios.PNG" alt="Profiling buscar podcast" height="100%">
-              </div>
-            </div>
           </div>
         </div>
         <br/>
@@ -242,7 +245,29 @@
           <div class="col-md-8">
             <div class="row">
               <div class="col-md-12 textoDescripcion">
-                <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU, de la red   </p>
+                <p class="text-justify descripcion">Se puede considerar que la reproducción de un podcast tiene un buen rendimiento ya que el uso de la memoria permanece constante por lo cual no hay desperdicio de este recurso. Por otro lado, los picos que se registran en el uso del CPU y energía son pequeños, el más grande se da en el momento en que se envía la instrucción de reproducir lo cual muestra que no es una funcionalidad que pueda generar un fallo en la aplicación al estar bien estructurada.</p>
+              </div>
+            </div>
+            <br>
+            <div class=row>
+              <div class="col-md-12 text-center  imagenProfiling">
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ProfReproducir.PNG" alt="Profiling buscar podcast" height="100%">
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <h2 id="Suscribir">Suscribir</h2>
+        <br/>
+        <div class="row">
+
+          <div class="col-md-4">
+            <img class="imagenProfiling" src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Reproducir.jpeg" alt="Activity Añadir Podcast" width="100%">
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 textoDescripcion">
+                <p class="text-justify descripcion">El proceso de suscripción utiliza todos los recursos analizados. Requiere memoria dado que la búsqueda del podcast almacena lo que recibe de búsquedas externas. Además, requiere conectividad a la red, CPU y energía para realizar la búsqueda del podcast realizando peticiones a recursos externos y registrar la suscripción de manera que cuando el canal suscrito cargue nuevo contenido se le notifique al usuario y se agreguen los episodios a la actividad episodios en la pestaña de nuevos. Aun cuando requiere de todos los recursos analizados se puede evidenciar que no son usos desmesurados y que se dan solo en el momento en que son solicitados y luego se liberan.  </p>
               </div>
             </div>
             <br>
@@ -264,7 +289,7 @@
           <div class="col-md-8">
             <div class="row">
               <div class="col-md-12 textoDescripcion">
-                <p class="text-justify descripcion">Buscar un Podcast en una de las acciones que se pueden llevar a cabo en añadir podcast. El rendimiento de esta acción se puede evidenciar en la imagen superior. Al comenzar a buscar un podcast se evidencian picos en el uso del CPU, de la red   </p>
+                <p class="text-justify descripcion">Visualizar las suscripciones del usuario es una funcionalidad que no consume ningún tipo de recurso externo por lo cual se evidencia que no ningún comportamiento anormal en el uso de la red y CPU. En general durante esta actividad se evidencia un comportamiento estático de la aplicación en el cual solo se generan cambios cuando se navega a través de la lista de suscripciones, aun así, esta acción tiene poco impacto en el rendimiento de la aplicación.</p>
               </div>
             </div>
             <br>

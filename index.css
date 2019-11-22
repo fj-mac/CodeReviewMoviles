@@ -9,9 +9,7 @@
   font-size: 25px;
   color: #2196F3;
   display: block;
-
 }
-
 
 h1, h2{
 	font-family: 'Oswald', sans-serif;
@@ -22,6 +20,7 @@ li{
 	font-size: 120%;
 	font-family: 'Archivo Narrow', sans-serif;
 }
+
 p{
 	margin-top: auto;
 	margin-bottom: auto;
@@ -31,8 +30,6 @@ p{
 
 .container-fluid{
 	padding-right: 5%;
-  position: relative;
-  margin-top: auto;
 }
 
 

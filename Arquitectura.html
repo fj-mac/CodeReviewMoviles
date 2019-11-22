@@ -13,6 +13,9 @@
   <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow&display=swap" rel="stylesheet">
 </head>
 <body>
+  <script>
+    window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+  </script>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark ">
     <a class="navbar-brand" href="./index.html">Sobre AntennaPod</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,79 +42,79 @@
     </div>
   </nav>
   <div class="container-fluid">
-   <br/>
-   <h1 class="text-center">Análisis de Arquitectura AntennaPod</h1>
-   <br/>
    <div class="row">
     <div class="col-sm-2 col-md-2">
       <div id="sidebar-wrapper">
-          <ul class="sidebar-nav">
-            <li class="sidebar-brand">Arquitectura</li>
-            <li><a href="#Librerias">Librerias Utilizadas</a></li>
-            <li><a href="#Arquitectura">Arquitectura</a></li>
-            
-          </ul>
-        </div> 
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand">Arquitectura</li>
+          <li><a href="#Librerias">Librerias Utilizadas</a></li>
+          <li><a href="#Arquitectura">Arquitectura</a></li>
+          
+        </ul>
+      </div> 
     </div>
-      <div class="col-sm-9 col-md-9 offset-md-1 info">
-      <h2 id="Librerias">Librerias Utilizadas</h2>
-      <p>Inicialmente solo se muestran las librerías de implementación utilizadas. Las librerías de pruebas o AndroidTesting no directamente la experiencia del usuario, por lo que se omitieron de este análisis:</p>
-      <div class="row">
-        <div class="col-sm-5 col-md-5 text-center">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ArquitecturaLibrerias1.PNG" alt="Imagen inicial" height="100">
-        </div>
-        <div class="col-sm-7 col-md-7">
-          <p>Como se puede observar, las librerías anteriores evidencian que la aplicación se ha migrado a androidX, pues han remplazado varios de sus componentes principales para utilizar las nuevas características. También se evidencia el uso de material, donde se pueden encontrar varios de los objetos utilizados. Vemos que se incluyen algunas librerías que no son necesarias declarar de manera explícita, pues al implementar material ya se están importando casi todas. Un claro ejemplo de esto es el import del recyclerview de androidX cuando ya se esta realizando el implementation de material:1.0.0.</p>
-        </div>
+    <div class="col-sm-9 col-md-9 offset-md-1 info">
+     <br/>
+     <h1 class="text-center">Análisis de Arquitectura AntennaPod</h1>
+     <br/>
+     <h2 id="Librerias">Librerias Utilizadas</h2>
+     <p>Inicialmente solo se muestran las librerías de implementación utilizadas. Las librerías de pruebas o AndroidTesting no directamente la experiencia del usuario, por lo que se omitieron de este análisis:</p>
+     <div class="row">
+      <div class="col-sm-5 col-md-5 text-center">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ArquitecturaLibrerias1.PNG" alt="Imagen inicial" height="100">
       </div>
-      <div class="row">
-        <div class="col-sm-4 col-md-4">
-          <h1>Fotos</h1>
-        </div>
-        <div class="col-sm-8 col-md-8">
-          <h1>Descripción</h1>
-        </div>
+      <div class="col-sm-7 col-md-7">
+        <p>Como se puede observar, las librerías anteriores evidencian que la aplicación se ha migrado a androidX, pues han remplazado varios de sus componentes principales para utilizar las nuevas características. También se evidencia el uso de material, donde se pueden encontrar varios de los objetos utilizados. Vemos que se incluyen algunas librerías que no son necesarias declarar de manera explícita, pues al implementar material ya se están importando casi todas. Un claro ejemplo de esto es el import del recyclerview de androidX cuando ya se esta realizando el implementation de material:1.0.0.</p>
       </div>
-      <div class="row">
-        <div class="col-sm-4 col-md-4">
-          <h1>Fotos</h1>
-        </div>
-        <div class="col-sm-8 col-md-8">
-          <h1>Descripción</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 col-md-4">
-          <h1>Fotos</h1>
-        </div>
-        <div class="col-sm-8 col-md-8">
-          <h1>Descripción</h1>
-        </div>
-      </div>
-      <h2 id="Arquitectura">Descripción general de la Arquitectura de la aplicación</h2>
-      <p class="text-justify">Se puede observar que en la aplicación AntennaPod se tiene un arquitectura MVVM. Se puede observar primero que se las diferentes vistas. En estas podemos observar que la aplicación cuenta con 28 fragmentos y 20 actividades para exponer al usuario sus actividades principales. En estas inicialmente se pueden identificar la actividad que organiza las diferentes maneras de añadir un podcast, las suscripciones realizadas a las diferentes fuentes y las descargas. En estas 3 actividades de puede encontrar la información Core de la aplicación, pues la gran mayoría de funcionalidades dependen de estas 3 actividades.</p>
-      <p class="text-justify">A continuación, se evidencian estas 3 actividades donde se cubren aproximadamente el 80% de las funcionalidades de la aplicación para el usuario final:</p>
-      <div class="row">
-        <div class="col-sm-4 col-md-4">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ARQUIAPP3.jpeg" alt="Imagen inicial" height="630">
-        </div>
-        <div class="col-sm-4 col-md-4">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ARQUIAPP2.jpeg" alt="Imagen inicial" height="630">
-        </div>
-        <div class="col-sm-4 col-md-4">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ARQUIAPP1.jpeg" alt="Imagen inicial" height="630">
-        </div>
-      </div>
-      <p class="text-justify">Luego de observar el View, es claro ver el View Model. En este caso podemos observar que la vista dispone de al menos un view model que le permite adquirir la información necesaria para el usuario final. EN este caso la información puede ser desde nuevos podcast por defecto, podcast agregados por el usuario por alguna de sus diversas fuentes disponibles, podcast agregados mediante la URL especifica por parte del usuario o inclusive los podcast locales que el usuario ha guardado o descargado. Para lograrlo, se utilizan los observers del LiveData, donde en este caso corresponderían a los objetos que revisan las fuentes antes mencionadas. Así, en la aplicación se puede desplegar la información que sea necesaria para la actividad que presente un ciclo de vida activo. Lo anterior se evidencia cuando se realizan cambios entre las actividades o los fragmentos, pues la información únicamente es llamada cuando se considera necesario realizar el llamado y en las actividades especificas que el usuario mantiene “vivas” para esto. Se puede observar que una ves se realiza una descarga, existe la excepción donde el usuario puede continuar navegando por la aplicación mientras se termina de descargar el 100% de audio. Esta información se puede verificar posteriormente en la pestaña de descargas, donde se puede encontrar además del archivo descargado la información relacionada con dicha descarga. Esta puede ser catalogada de diversas formas como exitosa, o con falla ya sea por falta de conectividad o por falla en el servidor. </p>
-      <p class="text-justify">En este caso, el dataModel de la aplicación dispone de la lógica y las reglas de negocio de la aplicación requeridas para lograr una buena experiencia de usuario. Se puede observar que cuando la aplicación comienza a demandar recursos, en este caso de almacenamiento local en el dispositivo, se requiere un db local para almacenar las descargas o la información de las suscripciones. En este caso se puede observar que la aplicación no dispone de una base de datos en la nuve para gestionar información especifica del usuario. Así, es el mismo front el encargado de gestionar la información de otros sitos (iTunes, etc.) y almacenar dicha información ya sea a modo de descarga o a modo de suscripción dentro del teléfono del usuario final. </p>
-
-
-
-
     </div>
+    <div class="row">
+      <div class="col-sm-4 col-md-4">
+        <h1>Fotos</h1>
+      </div>
+      <div class="col-sm-8 col-md-8">
+        <h1>Descripción</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-md-4">
+        <h1>Fotos</h1>
+      </div>
+      <div class="col-sm-8 col-md-8">
+        <h1>Descripción</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-md-4">
+        <h1>Fotos</h1>
+      </div>
+      <div class="col-sm-8 col-md-8">
+        <h1>Descripción</h1>
+      </div>
+    </div>
+    <h2 id="Arquitectura">Descripción general de la Arquitectura de la aplicación</h2>
+    <p class="text-justify">Se puede observar que en la aplicación AntennaPod se tiene un arquitectura MVVM. Se puede observar primero que se las diferentes vistas. En estas podemos observar que la aplicación cuenta con 28 fragmentos y 20 actividades para exponer al usuario sus actividades principales. En estas inicialmente se pueden identificar la actividad que organiza las diferentes maneras de añadir un podcast, las suscripciones realizadas a las diferentes fuentes y las descargas. En estas 3 actividades de puede encontrar la información Core de la aplicación, pues la gran mayoría de funcionalidades dependen de estas 3 actividades.</p>
+    <p class="text-justify">A continuación, se evidencian estas 3 actividades donde se cubren aproximadamente el 80% de las funcionalidades de la aplicación para el usuario final:</p>
+    <div class="row">
+      <div class="col-sm-4 col-md-4">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ARQUIAPP3.jpeg" alt="Imagen inicial" height="630">
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ARQUIAPP2.jpeg" alt="Imagen inicial" height="630">
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ARQUIAPP1.jpeg" alt="Imagen inicial" height="630">
+      </div>
+    </div>
+    <p class="text-justify">Luego de observar el View, es claro ver el View Model. En este caso podemos observar que la vista dispone de al menos un view model que le permite adquirir la información necesaria para el usuario final. EN este caso la información puede ser desde nuevos podcast por defecto, podcast agregados por el usuario por alguna de sus diversas fuentes disponibles, podcast agregados mediante la URL especifica por parte del usuario o inclusive los podcast locales que el usuario ha guardado o descargado. Para lograrlo, se utilizan los observers del LiveData, donde en este caso corresponderían a los objetos que revisan las fuentes antes mencionadas. Así, en la aplicación se puede desplegar la información que sea necesaria para la actividad que presente un ciclo de vida activo. Lo anterior se evidencia cuando se realizan cambios entre las actividades o los fragmentos, pues la información únicamente es llamada cuando se considera necesario realizar el llamado y en las actividades especificas que el usuario mantiene “vivas” para esto. Se puede observar que una ves se realiza una descarga, existe la excepción donde el usuario puede continuar navegando por la aplicación mientras se termina de descargar el 100% de audio. Esta información se puede verificar posteriormente en la pestaña de descargas, donde se puede encontrar además del archivo descargado la información relacionada con dicha descarga. Esta puede ser catalogada de diversas formas como exitosa, o con falla ya sea por falta de conectividad o por falla en el servidor. </p>
+    <p class="text-justify">En este caso, el dataModel de la aplicación dispone de la lógica y las reglas de negocio de la aplicación requeridas para lograr una buena experiencia de usuario. Se puede observar que cuando la aplicación comienza a demandar recursos, en este caso de almacenamiento local en el dispositivo, se requiere un db local para almacenar las descargas o la información de las suscripciones. En este caso se puede observar que la aplicación no dispone de una base de datos en la nuve para gestionar información especifica del usuario. Así, es el mismo front el encargado de gestionar la información de otros sitos (iTunes, etc.) y almacenar dicha información ya sea a modo de descarga o a modo de suscripción dentro del teléfono del usuario final. </p>
+
+
+
+
   </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

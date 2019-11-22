@@ -11,7 +11,9 @@
   <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow&display=swap" rel="stylesheet">
 </head>
 <body>
-
+  <script>
+    window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+  </script>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark  ">
     <a class="navbar-brand" href="./index.html">Sobre AntennaPod</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,9 +40,6 @@
     </div>
   </nav>
   <div class="container-fluid"> 
-    <br/>
-    <h1 class="text-center">Análisis de conectividad eventual</h1>
-    <br/>
     <div class="row">
       <div class="col-sm-2 col-md-2">
         <div class="affix" id="sidebar-wrapper">
@@ -60,6 +59,9 @@
         </div> 
       </div>
       <div class="col-sm-9 col-md-9 offset-md-1 info">
+        <br/>
+        <h1 class="text-center">Análisis de conectividad eventual</h1>
+        <br/>
         <h2>Fase de pruebas iniciales:</h2>
         <div class="row">
           <div class="col-sm-4 col-md-4">
