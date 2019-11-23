@@ -101,8 +101,14 @@
     <h2>UI & UX:</h2>
 
     <h2>Arquitectura:</h2>
+    <p class="text-justify">Para realizar el análisis de la arquitectura lo primero que se realizo fue estudiar los imports utilizados por la aplicación. Para esto se buscaron cada uno y puesto que la aplicación es libre y de código abierto, la mayoría de las librerías implementadas también lo son. Se estudio el propósito de cada una y se buscó en el código cual era la función que cumplía cada una. Se pudo observar que algunas no cumplían ningún objetivo y otras eran innecesarias como se evidencia en el detalle técnico. </p>
+
+    <p class="text-justify">La segunda parte que se estudio fue la arquitectura en si de la aplicación. Pudimos encontrar que se realiza la mezcla de dos arquitecturas principalmente. La primera es MVVC, que gran parte de la aplicación utiliza para realizar muchas de las funciones principales. La segunda arquitectura frecuente utilizada es Publicador/Suscriptor donde publican muchos de los servicios ofrecidos, en especial los de las configuraciones en ajustes de la aplicación.</p>
 
     <h2>Conectividad Eventual:</h2>
+    <p class="text-justify">Para poder realizar un estudio de conectividad eventual se observaron los features principales que ofrece la aplicación. Luego se probo una falla de conectividad en el celular al encontrarse en alguno de los 3 estados posibles de la aplicación realizando alguno de los features correspondientes. Al encontrarse en estos estados se navego por todas las posibles actividades de la aplicación que podrían requerir conectividad. Se estudiaron los errores observados y el manejo interno del código.</p>
+
+    <p class="text-justify">Encontramos que la aplicación posee grandes fallos en cuanto a conectividad eventual. En la posible pérdida de conexión en cualquiera de las funcionalidades de la aplicación se generan errores que no son comprensibles por los usuarios. Como se da a evidenciar en el reporte técnico, muchos mensajes son genéricos, e incluso otros son o arrojados directamente del código java, o capturados del servidos y pasados al usuario final. </p>
 
     <h2>Performance:</h2>
 
