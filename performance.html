@@ -59,6 +59,8 @@
               <li><a href="#Suscribir">Suscribir</a></li>
               <li><a href="#Suscripciones">Suscripciones</a></li>
             </ul>
+            <li><a href="#Detallado">Detalle Memoria</a></li>
+            
           </ul>
         </div> 
       </div>
@@ -80,7 +82,7 @@
 
             <div class="row">
               <div class="col-md-12 textoDescripcion">
-                <p class="text-justify descripcion">Añadir Podcast es la primer Activity que se muestra cuando se abre la aplicacion. Mediante la herrameinta profiling de Android studio se realizo un estudio del desempeño de esta y obtuvimos los siguientes resultados. En general tiene un bajo uso del CPU dado que no necesita muchos recursos para mostrarla. Así mismo el uso de memoria es menor o igual 128MB lo cual demuestra que en esta actividad no existe ningún tipo de leak de memoria. El uso de energia se mantiene bajo solo en el momento en que se carga la actividad es un poco mas alto pero en general no usa mucha energia y por último el uso de la red se da solamente durante la carga de la actividad. En esta primera actividad no se evidencia ninguna falla de rendimiento notable hasta el momento. </p>
+                <p class="text-justify descripcion">Añadir Podcast es la primer Activity que se muestra cuando se abre la aplicacion. Mediante la herramienta profiling de Android Studio se realizó un estudio del desempeño de esta y obtuvimos los siguientes resultados sin realizar ninguna operación sobre el celular. En general tiene un bajo uso del CPU dado que no necesita muchos recursos para mostrarla. Así mismo el uso de memoria es constante sin embargo en este punto no se puede determinar si se está manejando la memoria de manera correcta. El uso de energía se mantiene bajo solo en el momento en que se carga la actividad es un poco más alto, pero en general no usa mucha energía y por último el uso de la red se da solamente durante la carga de la actividad. En esta primera actividad no se evidencia ninguna falla de rendimiento notable hasta el momento. </p>
               </div>
             </div>
             <br>
@@ -299,7 +301,42 @@
               </div>
             </div>
           </div>
-        </div>
+
+          <h2>Detalle casos de uso</h2>
+          <p class="text-justify"> Luego de realizar un análisis de rendimiento general sobre las funcionalidades de la aplicación decidimos prestar especial atención al manejo de la memoria dentro de la aplicación ya que se pudo observar que la memoria no era liberada luego de realizar una operación lo cual podría indicar que existe un leak de memoria al no liberar los recursos luego de utilizarlos. Para esto, diseñamos unos escenarios de prueba en los cuales pudiéramos analizar el comportamiento del uso de la memoria en la aplicación en cada situación. </p>
+          <div class="row">
+            <div class="col-md-12">
+                <p>En primer lugar, se consideró el caso de descargar un podcast, se realizó la misma acción 10 veces con el fin de revisar el rendimiento en cada una de estas verificando que el comportamiento de la aplicación fuera similar en todos los casos. En todos los intentos se descargó el mismo podcast para que los datos fueran comparables entre sí. Cada punto en los diagramas de rendimiento indica la instrucción de descarga del podcast y posteriormente eliminar el podcast. </p>
+            </div>
+          </div>
+          <h3>Conexión red</h3>  
+          <div class="row"> 
+            <div class="col-md-4"> 
+                IMAGEN CONEXION RED
+            </div>
+            <div class="col-md-8"> 
+              <p class="text-justify"> En la imagen se pueden identificar 10 picos de conexión a la red donde se realizaron las descargas, esto demuestra que solo se reciben datos en los momentos en que se pide descargar. Además, que a mayor velocidad de descarga es menor el periodo de tiempo en el que se lleva a cabo la descarga como es de esperarse. Con el fin de realizar comparaciones se graficó el punto máximo de red alcanzado y el número de conexiones máximo que se reporta en cada uno del escenario. </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8"> 
+              <p class="text-justify"> Al realizar los grafico se puede evidenciar que la velocidad de descargar oscila entre 1,5 MB/s y 2,5MB/s, lo cual es un nivel de velocidad apropiado para descargar el contenido dado que el tamaño del archivo eran 4MB. Sin embargo, se puede evidenciar un patrón en el número de conexiones que crece a medida que se realizan nuevas descargas, lo cual según la gráfica y el comportamiento da el indicio de que al solicitar una descarga se abre una conexión que no se cierra inmediatamente termina la descarga sino un buen tiempo después y esto puede representar una falla en la seguridad al dejar el canal abierto para recibir más información.</p>
+            </div>
+            <div class="col-md-4"> 
+              IMAGEN GRAFICO
+            </div>
+          </div>
+          <h3>Uso memoria</h3>
+          <div class="row">
+            <div class="col-md-4"> 
+              IMAGEN MEMORIA
+            </div>
+            <div class="col-md-8"> 
+              <p class="text-justify"> En cuanto al uso de la memoria encontramos el siguiente comportamiento. Al igual que en la imagen anterior cada uno de los puntos indica una acción sobre el teléfono, el inicio o finalización de una descarga. El manejo de memoria desde el código Java se evidencia en la parte inferior de la imagen que corresponde al uso de memoria de java ya que este es el espacio de memoria asignado por código java. Podemos observar como la aplicación si maneja el uso de memoria en los espacios donde se activa el garbage collector (Icono de basura), en estos puntos el uso de memoria java alcanzo un máximo de 20MB, se activa el garbage colector y se libera la memoria por lo cual no permite que la memoria en uso sobrepase este nivel. Aunque no libera los recursos inmediatamente si tiene una táctica para restringir el uso de memoria.  </p>    
+            </div>
+          </div>
+
+        </div>       
       </div>
     </div>
   </div>
