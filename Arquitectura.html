@@ -49,9 +49,9 @@
           <li class="sidebar-brand">Arquitectura</li>
           <li><a href="#Librerias">Librerias Utilizadas</a></li>
           <li><a href="#Arquitectura">Arquitectura</a></li>
-          
+
         </ul>
-      </div> 
+      </div>
     </div>
     <div class="col-sm-10 col-md-10 info">
      <br/>
@@ -64,35 +64,55 @@
         <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ArquitecturaLibrerias1.PNG" alt="Imagen inicial" height="100">
       </div>
       <div class="col-sm-7 col-md-7">
-        <p>Como se puede observar, las librerías anteriores evidencian que la aplicación se ha migrado a androidX, pues han remplazado varios de sus componentes principales para utilizar las nuevas características. También se evidencia el uso de material, donde se pueden encontrar varios de los objetos utilizados. Vemos que se incluyen algunas librerías que no son necesarias declarar de manera explícita, pues al implementar material ya se están importando casi todas. Un claro ejemplo de esto es el import del recyclerview de androidX cuando ya se esta realizando el implementation de material:1.0.0.</p>
+        <p class="text-justify">Como se puede observar, las librerías anteriores evidencian que la aplicación se ha migrado a androidX, pues han remplazado varios de sus componentes principales para utilizar las nuevas características. También se evidencia el uso de material, donde se pueden encontrar varios de los objetos utilizados. Vemos que se incluyen algunas librerías que no son necesarias declarar de manera explícita, pues al implementar material ya se están importando casi todas. Un claro ejemplo de esto es el import del recyclerview de androidX cuando ya se esta realizando el implementation de material:1.0.0.</p>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4 col-md-4">
-        <h1>Fotos</h1>
-      </div>
-      <div class="col-sm-8 col-md-8">
-        <h1>Descripción</h1>
-      </div>
+        <img src="" alt="Codigo mostrando libreria" height="100">
+        <p class="text-justify">Las librerías anteriores se utilizan para dar un manejo adecuado a las imágenes. Aunque las librerías tienen un diseño para facilitar la renderización de imágenes durante el scrolling, AntennaPod utiliza las imágenes simplemente para la renderización normal, pues no utilizan la función del scolling en imágenes grandes. </p>
     </div>
     <div class="row">
-      <div class="col-sm-4 col-md-4">
-        <h1>Fotos</h1>
-      </div>
-      <div class="col-sm-8 col-md-8">
-        <h1>Descripción</h1>
-      </div>
+        <img src="" alt="Codigo mostrando libreria" height="100">
+        <p class="text-justify">Aunque la aplicación utiliza esta librería que tiene como función habilitar la posibilidad de habilitar la compatibilidad con dispositivos no celulares (relojes), la aplicación en ningún momento llama alguna función de esta librería. Al eliminarla las funcionalidades de la aplicación funcionan correctamente y no se ven afectadas. La aplicación no genera ningún error en el código por lo que lo mejor en este caso sería eliminarla, pues en el código tampoco se evidencia una sección para realizar compatibilidad a futuro. </p>
     </div>
     <div class="row">
-      <div class="col-sm-4 col-md-4">
-        <h1>Fotos</h1>
-      </div>
-      <div class="col-sm-8 col-md-8">
-        <h1>Descripción</h1>
-      </div>
+        <img src="" alt="Codigo mostrando libreria" height="100">
+        <p class="text-justify">La librería anterior se utiliza para trabajar dentro de java con código HTML, CSS y JavaScript. En el caso de la aplicación se utiliza en el fragmento de onlineViewFeedActivity en el feedInfoFragment para cargar la información, en caso de obtener un error del servidor y así poder mostrarle al usuario el problema. Aunque capturan el mensaje no lo transforman para explicarle al usuario el motivo de la falla. </p>
     </div>
-    <h2 id="Arquitectura">Descripción general de la Arquitectura de la aplicación</h2>
-    <p class="text-justify">Se puede observar que en la aplicación AntennaPod se tiene un arquitectura MVVM. Se puede observar primero que se las diferentes vistas. En estas podemos observar que la aplicación cuenta con 28 fragmentos y 20 actividades para exponer al usuario sus actividades principales. En estas inicialmente se pueden identificar la actividad que organiza las diferentes maneras de añadir un podcast, las suscripciones realizadas a las diferentes fuentes y las descargas. En estas 3 actividades de puede encontrar la información Core de la aplicación, pues la gran mayoría de funcionalidades dependen de estas 3 actividades.</p>
+    <div class="row">
+        <img src="" alt="Codigo mostrando libreria" height="100">
+        <p class="text-justify">Las librerías anteriores se utilizan para darle manejo adecuado a las peticiones. Por ejemplo, cuando la aplicación va a realizar la reproducción de contenido o la descarga de contenido se conecta a un host de destino que no es propio. En el caso de realizar una descarga de iTunes, por ejemplo, la aplicación utiliza el mismo socket que crea para la conexión con iTunes para descargar mas de un podcast si el usuario así lo ha especificado. Esta librería permite también realizar desconexión y conexión por IP alternativa a los servidores en caso de que la línea principal no se encuentre funcionando.  </p>
+    </div>
+    <div class="row">
+        <img src="" alt="Codigo mostrando libreria" height="100">
+        <p class="text-justify"> La librería anterior facilita utilizar la arquitectura de publicador suscriptor. En este caso habilita la opción para agregar eventos, preparar suscriptores y publicar contenido. Así, los suscriptores podrán recibir dicho contenido. En la aplicación, esto se utiliza para varios servicios. Un ejemplo es cuando se publican nuevos diálogos en el alertDialog dentro del sleep para la función de finalizar la reproducción en caso de que el usuario especifique que va a dejar de utilizar el servicio después de un tiempo. Como este la aplicación tiene varios otros publicadores creados.</p>
+        <img src="" alt="Codigo mostrando libreria" height="100">
+    </div>
+
+<div class="row">
+        <img src="" alt="Codigo mostrando libreria" height="100">
+        <p class="text-justify">Las librerías anteriores facilitan crear objetos con reactividad en código Java. Dentro del código se utiliza frecuentemente dentro de los fragmentos, pues la carga de mucha información se realiza por medio de el uso de esta librería. Un ejemplo concreto de carga se puede ver a continuación, donde se despliega el LOG de las descargas. </p>
+        <img src="" alt="Codigo mostrando libreria" height="100">
+    </div>
+
+<div class="row">
+        <img src="" alt="Codigo mostrando libreria" height="100">
+        <p class="text-justify"> La librería anterior se utiliza para introducir iconos, sin embargo, el desarrollador de esta librería ya a publicado que se encuentra desactualizada y actualmente no brinda soporte o servicio para fututas actualizaciones, por lo que seria bueno buscar una alternativa activa también libre para poder continuar utilizando estas funcionalidades.</p>
+    </div>
+
+<div class="row">
+
+        <p class="text-justify"> Los demás imports en la aplicación que se utilizan son nativos encargados ya sea de realizar procedimientos como los explicados en performance o pintar objetos personalizados en las actividades o fragmentos de la aplicación. Un claro ejemplo de eso son los botones de reproducción, pausa y siguiente o anterior. </p>
+    </div>
+
+
+
+
+
+    <h1 id="Arquitectura">Descripción general de la Arquitectura de la aplicación</h2>
+    <p class="text-justify">Se puede observar que en la aplicación AntennaPod se tiene un arquitectura mixta. La primera parte claramente se encuentra definida como MVVM. La segunda parte clara que utiliza la aplicación es la arquitectura publicador suscriptor. Primero se realizará un análisis de la parte construida en MVVM y luego se mostrarán ejemplos donde se utiliza la arquitectura Publicados/Suscriptor.</p>
+    <h2>MVVM</h2>
+    <p class="text-justify">Lo primero que se puede observar claramente es las diversas vistas que tiene la aplicación, donde al analizar el código se ve que esta compuesta tanto de actividades generales como fragmentos varios contenidos en dichas actividades. Actualmente la aplicación cuenta con 28 fragmentos y 20 actividades para exponer al usuario sus actividades principales. En estas inicialmente se pueden identificar la actividad que organiza las diferentes maneras de añadir un podcast, las suscripciones realizadas a las diferentes fuentes y las descargas. En estas 3 actividades de puede encontrar la información Core de la aplicación, pues la gran mayoría de funcionalidades dependen de estas 3 actividades.</p>
     <p class="text-justify">A continuación, se evidencian estas 3 actividades donde se cubren aproximadamente el 80% de las funcionalidades de la aplicación para el usuario final:</p>
     <div class="row">
       <div class="col-sm-4 col-md-4">
