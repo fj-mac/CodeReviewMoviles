@@ -46,26 +46,31 @@ p{
 	font-family: 'Archivo Narrow', sans-serif;
 }
 
-ul{
-  list-style: none;
-}
-
 .affix{
   position: fixed;
 }
 
+ul{
+    list-style:none;
+    white-space: nowrap;
+    margin-bottom: -20rem;
+}
 
 .sidebar-nav {
   position: absolute;
   top: 0;
   padding: 0;
   list-style: none;
+  list-style-type: none;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+
 }
 
 .sidebar-nav li {
-  text-indent: px;
-  line-height: 40px;
-    font-size:  15px;
+  text-indent: 2px;
+  line-height: 30px;
+  font-size:  15px;
 }
 
 .sidebar-nav li a {
@@ -84,9 +89,9 @@ ul{
 }
 
 .sidebar-nav>.sidebar-brand {
-  height: 65px;
-  font-size: 15px;
-  line-height: 60px;
+  height: 45px;
+  font-size: 20px;
+  line-height: 50px;
 }
 
 .sidebar-nav>.sidebar-brand a {
