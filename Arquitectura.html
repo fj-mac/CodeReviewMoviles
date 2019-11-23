@@ -68,35 +68,35 @@
       </div>
     </div>
     <div class="row">
-        <img src="" alt="Codigo mostrando libreria" height="100">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/import1.png" alt="Codigo mostrando libreria" >
         <p class="text-justify">Las librerías anteriores se utilizan para dar un manejo adecuado a las imágenes. Aunque las librerías tienen un diseño para facilitar la renderización de imágenes durante el scrolling, AntennaPod utiliza las imágenes simplemente para la renderización normal, pues no utilizan la función del scolling en imágenes grandes. </p>
     </div>
     <div class="row">
-        <img src="" alt="Codigo mostrando libreria" height="100">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/import2.png" alt="Codigo mostrando libreria" >
         <p class="text-justify">Aunque la aplicación utiliza esta librería que tiene como función habilitar la posibilidad de habilitar la compatibilidad con dispositivos no celulares (relojes), la aplicación en ningún momento llama alguna función de esta librería. Al eliminarla las funcionalidades de la aplicación funcionan correctamente y no se ven afectadas. La aplicación no genera ningún error en el código por lo que lo mejor en este caso sería eliminarla, pues en el código tampoco se evidencia una sección para realizar compatibilidad a futuro. </p>
     </div>
     <div class="row">
-        <img src="" alt="Codigo mostrando libreria" height="100">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/import3.png" alt="Codigo mostrando libreria" >
         <p class="text-justify">La librería anterior se utiliza para trabajar dentro de java con código HTML, CSS y JavaScript. En el caso de la aplicación se utiliza en el fragmento de onlineViewFeedActivity en el feedInfoFragment para cargar la información, en caso de obtener un error del servidor y así poder mostrarle al usuario el problema. Aunque capturan el mensaje no lo transforman para explicarle al usuario el motivo de la falla. </p>
     </div>
     <div class="row">
-        <img src="" alt="Codigo mostrando libreria" height="100">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/import4.png" alt="Codigo mostrando libreria">
         <p class="text-justify">Las librerías anteriores se utilizan para darle manejo adecuado a las peticiones. Por ejemplo, cuando la aplicación va a realizar la reproducción de contenido o la descarga de contenido se conecta a un host de destino que no es propio. En el caso de realizar una descarga de iTunes, por ejemplo, la aplicación utiliza el mismo socket que crea para la conexión con iTunes para descargar mas de un podcast si el usuario así lo ha especificado. Esta librería permite también realizar desconexión y conexión por IP alternativa a los servidores en caso de que la línea principal no se encuentre funcionando.  </p>
     </div>
     <div class="row">
-        <img src="" alt="Codigo mostrando libreria" height="100">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/import5.png" alt="Codigo mostrando libreria">
         <p class="text-justify"> La librería anterior facilita utilizar la arquitectura de publicador suscriptor. En este caso habilita la opción para agregar eventos, preparar suscriptores y publicar contenido. Así, los suscriptores podrán recibir dicho contenido. En la aplicación, esto se utiliza para varios servicios. Un ejemplo es cuando se publican nuevos diálogos en el alertDialog dentro del sleep para la función de finalizar la reproducción en caso de que el usuario especifique que va a dejar de utilizar el servicio después de un tiempo. Como este la aplicación tiene varios otros publicadores creados.</p>
-        <img src="" alt="Codigo mostrando libreria" height="100">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/import6.png" alt="Codigo mostrando libreria">
     </div>
 
 <div class="row">
-        <img src="" alt="Codigo mostrando libreria" height="100">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/import7.png" alt="Codigo mostrando libreria" >
         <p class="text-justify">Las librerías anteriores facilitan crear objetos con reactividad en código Java. Dentro del código se utiliza frecuentemente dentro de los fragmentos, pues la carga de mucha información se realiza por medio de el uso de esta librería. Un ejemplo concreto de carga se puede ver a continuación, donde se despliega el LOG de las descargas. </p>
-        <img src="" alt="Codigo mostrando libreria" height="100">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/import8.png" alt="Codigo mostrando libreria" >
     </div>
 
 <div class="row">
-        <img src="" alt="Codigo mostrando libreria" height="100">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/import9.png" alt="Codigo mostrando libreria">
         <p class="text-justify"> La librería anterior se utiliza para introducir iconos, sin embargo, el desarrollador de esta librería ya a publicado que se encuentra desactualizada y actualmente no brinda soporte o servicio para fututas actualizaciones, por lo que seria bueno buscar una alternativa activa también libre para poder continuar utilizando estas funcionalidades.</p>
     </div>
 
