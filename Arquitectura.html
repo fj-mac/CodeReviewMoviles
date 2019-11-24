@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AntennaPod Diseño</title>
+  <title>AntennaPod Arquitectura</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="index.css"/>
@@ -44,14 +44,18 @@
   <div class="container-fluid">
    <div class="row">
     <div class="col-sm-2 col-md-2">
-      <div id="sidebar-wrapper">
+      <div class="affix"id="sidebar-wrapper">
         <ul class="sidebar-nav">
-          <li class="sidebar-brand">Arquitectura</li>
-          <li><a href="#Librerias">Librerias Utilizadas</a></li>
-          <li><a href="#Arquitectura">Arquitectura</a></li>
-
+          <li class="sidebar-brand">Arquitectura </li>
+          <li><a href="#Librerias">Librerías</a></li>
+          <li><a href="#Arquitectura">Descripción</a></li>
+          <ul>
+            <li><a href="#MVM">MVM</a></li>
+            <li><a href="#Publicador">Publicador Suscriptor</a></li>
+          </ul>
+          <li><a href="#Seguridad">Seguridad</a></li>
         </ul>
-      </div>
+      </div> 
     </div>
     <div class="col-sm-10 col-md-10 info">
      <br/>
@@ -111,7 +115,7 @@
 
     <h1 id="Arquitectura">Descripción general de la Arquitectura de la aplicación</h2>
       <p class="text-justify">Se puede observar que en la aplicación AntennaPod se tiene un arquitectura mixta. La primera parte claramente se encuentra definida como MVVM. La segunda parte clara que utiliza la aplicación es la arquitectura publicador suscriptor. Primero se realizará un análisis de la parte construida en MVVM y luego se mostrarán ejemplos donde se utiliza la arquitectura Publicados/Suscriptor.</p>
-      <h2>MVVM</h2>
+      <h2 id="MVM">MVVM</h2>
       <div class="text-center">
         <img src="https://user-content.gitlab-static.net/5428fed4ee0feff272d4137661cf82a3fbbca1d9/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f3737312f312a5f444d76616a6647634b516f494f57704c79736131512e706e67" alt="Imagen de la arquitectura de la aplicacion">
       </div>
@@ -141,7 +145,7 @@
 
 
 
-      <h2>Publicador/Suscriptor</h2>
+      <h2 id="Publicador">Publicador/Suscriptor</h2>
       <div class="text-center">
         <img src="http://4.bp.blogspot.com/-9kdnwli3kGc/VH53cHHqf5I/AAAAAAAACW4/2ew4Y4facV8/s1600/Captura.PNG" alt="imagen de publicador suscriptor">
       </div>
@@ -149,7 +153,7 @@
       <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/codigoEjemploPS.png" alt="Imagen PS">
       <p class="text-justify">Como esta suscripción existen muchas otras en la aplicación (por fuera del MainActivity). En esta actividad se puede observar que se utiliza principalmente un suscriptor para detectar posibles cambios en la aplicación y así notificar ya sea al usuario por medio de un snackbar o al desarrollador por medio del log el lanzamiento de un evento. También se utiliza en algunos otros método principalmente observado cuando ocurren cambios o son notificados cambios. Así, es suscriptor recibe la información necesaria y logra realizar las modificaciones que se consideren apropiadas. En estos casos vemos que se llama directamente al objeto del view y se modifica. Por esto se puede afirmar que en estos métodos específicos no se trabaja con MVVM. </p>
 
-      <h1>Seguridad: </h1>
+      <h1 id="Seguridad">Seguridad: </h1>
       <p class="text-justify">Esta aplicación tiene una particularidad clara desde el momento en que se realiza la descarga. Los desarrolladores originales no deseaban recibir un ingreso a partir del código y la aplicación publicada. Así, la aplicación no solo es gratis, sino que es de código libre. Esto implica que cualquier usuario puede descargar tanto la aplicación como el código fuente de manera 100% gratuita. Así, esta aplicación no tiene publicidad, pues estos ingresos no tienen un destino. Al tener esto en cuenta se tuvo en cuenta la posibilidad de experimentar una gran escalabilidad como ha tenido la aplicación sobre todo en los últimos meses. </p>
       <p class="text-justify">Al considerar lo anterior, se puede observar desde el momento en que se descarga la aplicación que no se dispone de una base de datos del usuario. De hecho, la aplicación no almacena ninguna información de manera remota sobre el usuario que utiliza cada aplicación. Una persona con dos dispositivos no tiene la posibilidad de realizar una sincronización simultánea, pues no existe un mecanismo de reconocimiento de usuarios. La aplicación esta lista para utilizar desde el momento en que se descarga, por lo que debido a la lógica del negocio utilizada no experimentan problemas de seguridad. </p>
       <p class="text-justify">Adicionalmente, en el dispositivo de manera local únicamente se almacena la información correspondiente a las suscripciones a diferentes podcasts o los que se han descargado y quedan en el almacenamiento local (o externo dependiendo de las preferencias de los usuarios). Así, tampoco existe una vulnerabilidad de seguridad donde pueda peligrar información sensible del usuario per medio de ataque de un virus o una aplicación maligna. La aplicación únicamente expone los nombres de las redes WIFI a las que el usuario se ha conectado, pues permite realizar una configuración para descargar contenido únicamente en redes autorizadas, pero no consideramos que esto sea una vulnerabilidad critica en caso de que llegue a manos de personas o aplicaciones no autorizadas. </p>

@@ -45,20 +45,20 @@
         <div class="affix divConectividad" id="sidebar-wrapper">
           <ul class="sidebar-nav">
             <li class="sidebar-brand"> Conectividad Eventual</li>
-            <li><a href="#">Fase pruebas</a></li>
+            <li>Fase pruebas</li>
             <ul>
-              <li><a href="">Iniciales</a></li>
-              <li><a href="">Con Podcast</a></li>
+              <li><a href="#Iniciales">Iniciales</a></li>
+              <li>Con Podcast</li>
               <ul>
-                <li><a href="">Suscripción</a></li>
-                <li><a href="">Descargado</a></li>
+                <li><a href="#Suscripcion">Suscripción</a></li>
+                <li><a href="#Descargado">Descargado</a></li>
               </ul>
             </ul>
-            <li><a href="#">Reporte Detallado</a></li>
+            <li><a href="#Detallado">Reporte Detallado</a></li>
             <ul>
-              <li><a href="#">Fase 1</a></li>
-              <li><a href="#">Fase 2</a></li>
-              <li><a href="#">Fase 3</a></li>
+              <li><a href="#Fase1">Fase 1</a></li>
+              <li><a href="#Fase2">Fase 2</a></li>
+              <li><a href="#Fase3">Fase 3</a></li>
             </ul>
           </ul>
         </div> 
@@ -67,7 +67,7 @@
         <br/>
         <h1 class="text-center">Análisis de conectividad eventual</h1>
         <br/>
-        <h2>Fase de pruebas iniciales:</h2>
+        <h2 id="Iniciales">Fase de pruebas iniciales:</h2>
         <div class="row">
           <div class="col-sm-4 col-md-4">
             <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Inicial.jpeg" alt="Imagen inicial" height="630">
@@ -92,7 +92,7 @@
           </div>
         </div>
         <br/>
-        <h2>Fase de pruebas con Podcast (Suscripción):</h2>
+        <h2 id="Suscripcion">Fase de pruebas con Podcast (Suscripción):</h2>
         <div class="row">
           <div class="col-sm-6 col-md-6 text-center">
             <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/gifVideo2conectividad.gif" alt="video mostrando usabilidad" height="450" >
@@ -102,7 +102,7 @@
           </div>
         </div>
         <br/>
-        <h2>Fase de pruebas con Podcast (Descargado):</h2>
+        <h2 id="Descargado">Fase de pruebas con Podcast (Descargado):</h2>
         <div class="row">
           <div class="col-sm-6 col-md-6 textoDescripcion">
             <p class="text-justify descripcion">Al realizar la descarga de un podcast y luego entrar nuevamente a modo avión, se puede observar en los tabs de añadir podcast, historial de reproducciones y suscripciones los patrones de ejecución que se describieron en la fase inicial se repiten. En este caso, al observar la pestaña de episodios, se puede observar que se muestra un álbum con la información de los diferentes podcasts y solo se muestra disponible para la reproducción el que específicamente fue descargado. Al realizar click en los demás se evidencia el mismo problema que ocurría en la fase dos, donde el dispositivo reconocía que no se encontraba descargado e intentaba realizar la descarga a pesar de no tener una conexión estable a internet. Adicionalmente el fallo lo notifica por medio de push notifications. La otra opción a elegir redes móviles para realizar la descarga es agregar a la cola para poder realizar la descarga mas adelante. En este caso esta función no requiere intervención en cuanto a conectividad eventual, pues al quedar en cola el dispositivo puede reanudar o realizar la descarga cuando se recupere la conexión exitosamente. </p>
@@ -112,9 +112,9 @@
           </div>
         </div>
       </br>
-      <h2 class="text-center">Reporte Especifico con detalle técnico:</h2>
+      <h2 class="text-center" id="Detallado">Reporte Especifico con detalle técnico:</h2>
       <p class="text-justify descripcion">A lo largo de la investigación de las 3 fases se pudieron identificar varios problemas de conectividad eventual como fue mencionado. A continuación, se presentará uno a uno los errores con su tipo de falla y la forma como se debería dar un manejo adecuado para arreglar la falla. Primero se presentarán las fallas encontradas en la fase inicial donde no se perdía la conexión justo después de instalar la aplicación. Luego la segunda fase donde se realizaba una suscripción y por ultimo la fase donde se descarga un podcast y se observa el comportamiento general de la aplicación.</p>
-      <h2>Fase 1: </h2>
+      <h2 id="Fase1">Fase 1: </h2>
       <p class="text-justify descripcion">Esta fase se realizó con el fin de identificar el “Data Fetching Stategie” utilizada en la aplicación. Claramente se puede observar que la aplicación utiliza un mecanismo Pull, pues la información solo se recibe cuando el usuario solicita descargar o visualizar un podcast nuevo. Esto es verdad para toda la información disponible excepto para la sección de Descubrir, donde se utiliza “Launch-Time”, pues es necesario mostrar al usuario la información de posibles podcast sugeridos sin que este solicite más información. De esta forma se atrae al usuario a buscar posible información que puede llegar a ser de su interés. Dada la naturaleza de la aplicación y la lógica de negocio que la rige, únicamente se utilizan estos dos tipos de “Data Fetching”. </p>
       <div class="row">
         <div class="col-sm-6 col-md-6 textoDescripcion">
@@ -179,7 +179,7 @@
       <p class="text-justify descripcion"> Los 3 errores anteriores se producen cuando se realiza una Búsqueda avanzada ya sea por Itunes, por gpodder.net o por fyyd. En este caso las 3 opciones generar el mismo error, donde en este caso es un “Message with Exception Trace”. Así, se muestra literalmente el mensaje de excepción generado desde el código java “UnknownHostException”. Al tener en cuenta que esto se genera al momento de perder la conexión a internet, solucionar este problema es relativamente sencillo. Una ves se hace clic en búsqueda avanzada se debería verificar si se dispone de una conexión estable a la red de datos o wifi. Así, no se debería permitir que el usuario avance a la actividad de búsqueda, sino que solo debería aparecer un mensaje informativo y claro que le permita al usuario saber que no posee internet. Así, este puede realizar las correcciones necesarias en su dispositivo o en su entorno para poder continuar con el uso adecuado de la aplicación. Al tener una conexión estable estos mensajes no aparecen y se redirige correctamente a los respectivos servicios para realizar la descarga correctamente.  </p>
     </br>
 
-    <h2>Fase 2: </h2>
+    <h2 id="Fase2">Fase 2: </h2>
     <p class="text-justify descripcion">Esta fase se investigo con el fin de encontrar posibles errores previos a una descarga. Así, buscamos encontrar posibles funcionalidades perdidas, o funcionalidades no permitidas luego de restablecer la conexión a datos. Para lograr esto se realizó una suscripción (una de las funciones principales de la aplicación) a un canal de podcasts así, el historial del usuario debía existir, pero no reproducir, pues no se selecciono realizar la descarga del contenido. Con el fin de replicar estas pruebas se debe realizar la suscripción con conexión a datos móviles o wifi disponibles y luego activar el modo avión para simular la perdida total de conexión. Además de las mismas fallas que la fase anterior, algunos de los problemas identificados se presentan a continuación:  </p>
 
     <div class="row">
@@ -212,7 +212,7 @@
     </div>
     <p class="text-justify descripcion"> Para solucionar esta falla se debe capturar la excepción generada correctamente y en lugar de especificar un mensaje genérico agregar el motivo de la falla. En este caso se podría explicar que el motivo se debió a falta de conectividad cuando el usuario se encontraba realizando la descarga. Adicionalmente se debería implementar un reintento de descarga para que el usuario una ves sea notificado pueda volver a realizar la descarga del Podcast.</p>
 
-    <h2>Fase 3: </h2>
+    <h2 id="Fase3">Fase 3: </h2>
     <p class="text-justify descripcion">En esta fase únicamente se evidencian los problemas anteriores, pues al tener un podcast descargado las opciones diferentes a realizar son escucharlo sin necesidad de conectividad esto ocurre con normalidad y las fallas en conectividad eventual realmente no afectan de la misma manera que se afectaban las dos fases anteriores. Lógicamente se encuentran los mismos errores antes reportados, pero al reproducir el contenido descargado tanto el audio como el texto y las fotografías funcionan correctamente.  </p>
   </div>
 </div>
