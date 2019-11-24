@@ -59,11 +59,7 @@
       </div>
     </div>
     <br/><br/>
-    <div class="row">
-      <div class="col-md-12">
-        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Funcionalidades.PNG" alt="Funcionalidades AntennaPod" width="100%">
-      </div>
-    </div>
+
     <h1 class="tex">Resumen ejecutivo</h1>
     <h2>Descripción de aplicación:</h2>
     <p>AntennaPod es un reproductor y administrador de podcast de uso gratuito y de código libre. Esta aplicación permite integrar podcasts de diversas fuentes ya sean de pago o gratuitas en una misma aplicación. Posee acceso a diversas fuentes de datos para realizar búsquedas de contenido y permite agregar links URL de tipo RSS a la biblioteca personalizada. Esta aplicación se caracteriza por su facilidad para integrar y administrar los podcast y las descargas de estos. Se permite personalizar el tipo de redes para realizar las descargas, así como los horarios en que se desean hacer las descargas. También permiten realizar la reproducción en Streaming para evitar utilizar exceso de memoria cuando los usuarios disponen de una red wifi y no necesitan el podcast listo en cualquier momento. </p>
@@ -93,12 +89,24 @@
     <p>Actualmente la aplicación cuenta con 5,746 commits, 86 versiones sacadas, 119 colaboradores, 249 problemas identificados por la comunidad y 10 pull Requests activos. Actualmente se tienen 2.6 millones de ratings en github y cuenta con 776 forks. El código cuenta con ######## líneas de código y se encuentra modularizado en diferentes carpetas correspondientes a los diferentes objetos o clasificaciones de cada clase. </p>
     <h2>Features principales:</h2>
     <p>AnetnnaPod permite gestionar y administrar los podcast de diferentes plataformas en un solo lugar. Permite realizar la reproducción en vivo, o realizar la descarga de contenido. Con la cola disponible permite administrar el orden tanto de la descarga como de la reproducción y además permite personalizar la forma como se desea realizar los procedimientos anteriores. Así, se puede establecer horarios para la descarga, red wifi a la cual se debe conectar para realizar la descarga y bloqueo o no del uso de datos móviles para realizar operaciones en la aplicación. </p>
+    <div class="row">
+      <div class="col-md-12">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Funcionalidades.PNG" alt="Funcionalidades AntennaPod" width="100%">
+      </div>
+    </div>
 
     <h1>Trabajo Realizado: </h1>
-
+    <br>
     <h2>Diseño:</h2>
-
+    <br>
     <h2>UI & UX:</h2>
+    <p class="text-justify">
+      En general en términos de interfaz de usuario, encontramos que el diseño está basado en la metáfora de Material Design. Utiliza componentes importados directamente de la librería de Material como el Recycler View o el Navigation Drawer. Sin embargo, algunos elementos son creación propia de los propietarios que, aunque están basados en Material design tienen estilos diferentes. En cuanto a la paleta de color, encontramos que utilizan una escala de color sencilla, compuesta de azul (logo) blanco, gris y negro. 
+
+      Por otra parte, la experiencia de usuario se puede mejorar, en cuestión de navegación debería poder devolverse entre las actividades principales sin salirse de la aplicación de esta manera no corta la experiencia al utilizar el botón de atrás. Además, cuando se realiza una búsqueda el teclado debería esconderse en el momento que se interactúe con otra parte de la pantalla, lo cual en el momento no sucede. Sin embargo, la aplicación ha ido mejorando con el tiempo buscando mejorar la interfaz de usuario ofreciendo diversas opciones para personalizar el uso de la aplicación.
+    </p>
+
+    <br>
 
     <h2>Arquitectura:</h2>
     <p class="text-justify">Para realizar el análisis de la arquitectura lo primero que se realizo fue estudiar los imports utilizados por la aplicación. Para esto se buscaron cada uno y puesto que la aplicación es libre y de código abierto, la mayoría de las librerías implementadas también lo son. Se estudio el propósito de cada una y se buscó en el código cual era la función que cumplía cada una. Se pudo observar que algunas no cumplían ningún objetivo y otras eran innecesarias como se evidencia en el detalle técnico. </p>
@@ -111,6 +119,8 @@
     <p class="text-justify">Encontramos que la aplicación posee grandes fallos en cuanto a conectividad eventual. En la posible pérdida de conexión en cualquiera de las funcionalidades de la aplicación se generan errores que no son comprensibles por los usuarios. Como se da a evidenciar en el reporte técnico, muchos mensajes son genéricos, e incluso otros son o arrojados directamente del código java, o capturados del servidos y pasados al usuario final. </p>
 
     <h2>Performance:</h2>
+    <p class="text-justify">Encontramos que la aplicación a primera vista tiene un comportamiento aceptable sin embargo al hacer un análisis más detallado de las funciones, encontramos dos fallas de rendimiento notables. En primer lugar, encontramos que al realizar las descargas de los podcasts las conexiones que se crean no se cierran inmediatamente al terminar la conexión, y si se vuelve a descargar el mismo episodio no se utiliza esa última conexión, sino que se genera una nueva, razón por la cual el número de conexiones activas cuando se realizan las descargas aumenta en la medida en que se realizan descargas consecutivas lo cual puede representar un leak de seguridad en la aplicación. En segundo lugar, encontramos que la memoria no la maneja correctamente dado cuando se realizó una prueba en la cual se entraba y salía de la funcionalidad descubrir, el uso de memoria seguía incrementando y no se liberaban los recursos al consultar nuevos, ni se utilizaban los anteriores.
+    </p>
 
 
 
@@ -122,4 +132,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+<footer>
+  <br>
+  <p class="pieDePagina">Hecho por: Laura Maya & Francisco José MacAllister</p>
+</footer>
 </html>
