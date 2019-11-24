@@ -112,6 +112,9 @@
     <h1 id="Arquitectura">Descripción general de la Arquitectura de la aplicación</h2>
       <p class="text-justify">Se puede observar que en la aplicación AntennaPod se tiene un arquitectura mixta. La primera parte claramente se encuentra definida como MVVM. La segunda parte clara que utiliza la aplicación es la arquitectura publicador suscriptor. Primero se realizará un análisis de la parte construida en MVVM y luego se mostrarán ejemplos donde se utiliza la arquitectura Publicados/Suscriptor.</p>
       <h2>MVVM</h2>
+      <div class="text-center">
+        <img src="https://user-content.gitlab-static.net/5428fed4ee0feff272d4137661cf82a3fbbca1d9/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f3737312f312a5f444d76616a6647634b516f494f57704c79736131512e706e67" alt="Imagen de la arquitectura de la aplicacion">
+      </div>
       <p class="text-justify">Lo primero que se puede observar claramente es las diversas vistas que tiene la aplicación, donde al analizar el código se ve que esta compuesta tanto de actividades generales como fragmentos varios contenidos en dichas actividades. Actualmente la aplicación cuenta con 28 fragmentos y 20 actividades para exponer al usuario sus actividades principales. En estas inicialmente se pueden identificar la actividad que organiza las diferentes maneras de añadir un podcast, las suscripciones realizadas a las diferentes fuentes y las descargas. En estas 3 actividades de puede encontrar la información Core de la aplicación, pues la gran mayoría de funcionalidades dependen de estas 3 actividades.</p>
 
       <p class="text-justify">A continuación, se evidencian estas 3 actividades donde se cubren aproximadamente el 80% de las funcionalidades de la aplicación para el usuario final:</p>
@@ -139,6 +142,9 @@
 
 
       <h2>Publicador/Suscriptor</h2>
+      <div class="text-center">
+        <img src="http://4.bp.blogspot.com/-9kdnwli3kGc/VH53cHHqf5I/AAAAAAAACW4/2ew4Y4facV8/s1600/Captura.PNG" alt="imagen de publicador suscriptor">
+      </div>
       <p class="text-justify"> Para realizar varias funciones de la aplicación por medio de la librería antes mencionada (eventbus). Para esto, primero se crean los publicadores. A estos se les da funciones especificas dependiendo de cuál es la lógica de negocio que le servirán a la aplicación. Luego se crean los suscriptores a dicha información en los endpoints necesarios para lograr conocer la información que se considere necesaria. Finalmente se da la orden para realizar la publicación necesaria cuando se camia el contenido o cuando este se considere necesario republicar. Así, los suscriptores capturan la información y la pueden manejar, traducir e interpretar para que el usuario final pueda interactuar adecuadamente. En la aplicación las algunas de las publicaciones se realizan por medio de librerías propias, por lo que no se dispone de este código fuente. A continuación, se presentan alguno de los suscriptores presentes en el código de la actividad principal:</p>
       <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/codigoEjemploPS.png" alt="Imagen PS">
       <p class="text-justify">Como esta suscripción existen muchas otras en la aplicación (por fuera del MainActivity). En esta actividad se puede observar que se utiliza principalmente un suscriptor para detectar posibles cambios en la aplicación y así notificar ya sea al usuario por medio de un snackbar o al desarrollador por medio del log el lanzamiento de un evento. También se utiliza en algunos otros método principalmente observado cuando ocurren cambios o son notificados cambios. Así, es suscriptor recibe la información necesaria y logra realizar las modificaciones que se consideren apropiadas. En estos casos vemos que se llama directamente al objeto del view y se modifica. Por esto se puede afirmar que en estos métodos específicos no se trabaja con MVVM. </p>
