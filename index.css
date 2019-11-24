@@ -16,6 +16,11 @@ p.pieDePagina{
   font-weight: bold;
 }
 
+h1.tituloDemo{
+  font-size: 500%;
+  font-family: 'Oswald', sans-serif;
+}
+
 h1, h2, h3{
 	font-family: 'Oswald', sans-serif;
 

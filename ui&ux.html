@@ -69,7 +69,7 @@
           <h2 class="text-center" id="Metafora"> UI - Metáforas </h2>
           <div class="row">
             <div class="col-md-9 textoDescripcion">
-              <p class="text-justify descripcion"> En general la aplicación tiene un diseño basado en la metáfora Material Design, dado que en la mayoría de sus Activities se puede evidenciar el uso de sombras y de interactividad con el usuario. Además, prueba de esto se encuentra en los archivos XML en los cuales se utilizan clases de Andriod como List View o Text View, que son elementos de Material Design que ya han sido adoptados por Android. Sumado a esto algunos elementos están importados directamente desde Material (REVISAR ESTO). Los siguientes componentes muestran el uso de esta metáfora en el diseño de la App.</p>
+              <p class="text-justify descripcion"> En general la aplicación tiene un diseño basado en la metáfora Material Design, dado que en la mayoría de sus Activities se puede evidenciar el uso de sombras y de interactividad con el usuario. Además, prueba de esto se encuentra en los archivos XML en los cuales se utilizan clases de Andriod como List View o Text View, que son elementos de Material Design que ya han sido adoptados por Android. Sumado a esto algunos elementos están importados directamente desde Material. Los siguientes componentes muestran el uso de esta metáfora en el diseño de la App.</p>
             </div>
             <div class="col-md-3">
               <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/MaterialDesign.png" alt="Logo Material Design">
@@ -78,7 +78,7 @@
           <br/><br/>
 
           <h2 class="text-center" id="Elementos"> Elementos Material Design </h2>
-
+          <br>
           <div class= "row">
             <div class = "col-md-3">
               <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/AppBar.jpeg" alt="Imagen App Bar" height="150" width="100%">
@@ -99,16 +99,30 @@
             <div class = "col-md-6 text-center">
               <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Gif%20Video%20Botones.gif" alt="Video Botones">
             </div>
-
           </div>
-
+          <br>
+          <div class= "row">
+            <div class = "col-md-6 text-center">
+              <img src="" alt="Imagen menu navegación">
+            </div>
+            <div class= "col-md-6 textoDescripcion">
+              <p class="text-justify descripcion"> Desde cualquier funcionalidad se puede acceder al menú principal de la aplicación el cual está representado por un Navigation Drawer de Material Design. Este componente cumple con los tres principios definidos por la metáfora. Es identificable, es decir que se identifica claramente como el menú de navegan. Es organizado es decir que el orden de los componentes está claramente jerarquizado como es el caso de la aplicación donde las funcionales se encuentran primero que los podcasts a los que se está suscrito. Por último, es contextual dado que se esconde para acomodarse a la vista de la aplicación. </p>
+            </div>
+          </div>
+          <br>
+          <h2 id="Paleta">Paleta de color</h2>
+            
+          <div class="row">
+            <div class="col-md-6">
+              
+            </div>
+          </div>
         </div>
         <br/><br/>
         <div id="ux">
           <h2 class="text-center" id="Fallas">UX - Fallas en la navegación</h2>
           <br/><br/>
           <div class="row">
-
             <div class="col-md-4 textoDescripcion"  >
               <p class="text-justify descripcion">
                 Una de las principales fallas que encontramos en la navegacion por la aplicación fue el hecho de que si se navega por el Navigation Drawer al momento de efectuar de tratar de regresar al activity anterior no es posible realizar el proceso por lo cual se sale de la aplicación. Esto demuestra que dentro del desarrollo de la aplicación la pila solo maneja un activity a la vez y no le da al usuario una buena experiencia con la oportunidad de retroceder a donde se encontraba anteriormente.
@@ -134,33 +148,56 @@
               </p>
             </div>
           </div>
+          <br>
           <h2 id="Demo">Demo Navegación</h2>
           <p class="text-justify">A continuación encontrara una guia de navegación entre las diferentes funcionalidades </p>
+          <br>
           <div class="row">
-            <div class="col-md-6 tituloDemo" >Añadir Podcast</div>
-            <div class="col-md-6">gifDemo</div>
+            <div class="col-md-6 textoDescripcion" >
+              <h1 class="tituloDemo descripcion text-center">Añadir Podcast</h1>
+            </div>
+            <div class="col-md-6 text-center videoDemo">
+              <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Video%20A%C3%B1adir.gif" atl="Video demo añadir">
+            </div>
           </div>
           <div class="row">
-            <div class="col-md-6 tituloDemo" ></div>
-            <div class="col-md-6">gifDemo</div>
+            <div class="col-md-6 text-center videoDemo">
+              <img src="" alt="Video demo Cola">
+            </div>
+            <div class="col-md-6 textoDescripcion" >
+              <h1 class="tituloDemo descripcion text-center">Cola</h1>
+            </div>
           </div>
+          <br>
           <div class="row">
-            <div class="col-md-6 tituloDemo" ></div>
-            <div class="col-md-6">gifDemo</div>
+            <div class="col-md-6 textoDescripcion" >
+              <h1 class="tituloDemo descripcion text-center">Episodios</h1>
+            </div>
+            <div class="col-md-6 text-center videoDemo">
+              <img src="" alt="Video demo Episodios">
+            </div>
           </div>
+          <br>
           <div class="row">
-            <div class="col-md-6 tituloDemo" ></div>
-            <div class="col-md-6">gifDemo</div>
+            <div class="col-md-6 text-center videoDemo">
+              <img src="" alt="Video demo Suscripciones">
+            </div>
+            <div class="col-md-6 textoDescripcion" >
+              <h1 class="tituloDemo descripcion text-center">Suscripciones</h1>
+            </div>
           </div>
+          <br>
           <div class="row">
-            <div class="col-md-6 tituloDemo" ></div>
-            <div class="col-md-6">gifDemo</div>
+            <div class="col-md-6 textoDescripcion" >
+              <h1 class="tituloDemo descripcion text-center">Descargas</h1>
+            </div>
+            <div class="col-md-6 text-center videoDemo">
+              <img src="" alt="Video demo Descargas">
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
 
