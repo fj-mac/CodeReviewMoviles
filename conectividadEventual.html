@@ -80,12 +80,15 @@
           </div>
           <div class="col-sm-4 col-md-4 textoDescripcion">
             <p class="text-justify descripcion">En la ventana principal podemos encontrar los primeros errores evidentes en cuanto a la conectividad eventual. Luego de instalar la aplicación, podemos observar que, al abrir esta sin una conexión estable de internet wifi o datos móviles (simulados activando el modo avión del dispositivo), la pestaña de descubrir (ventana inicial que se abre en el dispositivo cuando se abre por primera vez) no puede cargar los podcasts básicos de muestra de iTunes. Así, se despliega un error que es poco informativo al usuario final y no respeta la falta de conocimiento técnico del usuario. El error antes mencionado como se puede observar en las fotos anteriores es “Unable to resolve host “itunes.apple.com”: No address associated with hostname”. En caso de no existir una conexión estable, el objeto incluido no debería desplegar este error sino un aviso que le informe al usuario el motivo por el cual la información no esta disponible de manera amigable. De esta forma se le puede informar si no dispone de una conexión wifi o una conexión de datos estable. De este modo el usuario que tiene poca experiencia puede revisar si su problema es de cobertura celular, o inclusive que tiene el wifi apagado. </p>
+            <a href="#Error1">Ver Código Primer Error</a>
           </div>
         </div>
         <p class="text-justify descripcion">Inicialmente, podemos observar que el tab de Cola no presenta ningún problema, pues ninguna de sus funciones requiere una conexión estable. En el tab de Episodios vemos que se maneja bien la información, pues al no disponer de ningún podcats almacenado se informa al usuario la ausencia de estos en español y de manera clara. La falta de internet en este caso no afecta la navegabilidad de la pestaña. Las descargas manejan el caso donde no existe ningún podcast disponible, así que no se ve afectado realmente por la conectividad eventual. El historial de reproducciones muestra un logo de “Sin historial” por lo que se informa al usuario el problema o más bien estado actual de la aplicación y no se ve afectado en ningún caso por la falta de conectividad de la aplicación. El tab de suscripciones únicamente nos permite navegar a añadir podcast donde encontramos todos los problemas iniciales que ya hemos mencionado (cuando no se tienen ningún podcast agregado). </p>
         <div class="row">
           <div class="col-sm-6 col-md-6 textoDescripcion">
             <p class="text-justify descripcion">Si se continua sin conectividad, la búsqueda local funciona bien (Buscar Podcast), sin embargo, al añadir una URL en Añadir pódcast por URL y dar en continuar se produce un error: Host Desconocido (Unable to resolve host “XXXX”: No address associated with hostname. No solo se da un manejo bastante inadecuado al mostrar el error completo al usuario (error generado por defecto) sino que además no se muestra en el mismo idioma las diferentes partes del error. Con esto, vemos que la aplicación tiene un diseño muy básico y muy poco enfoque en posibles problemas generados. Al presionar el botón de más en Descubrir encontramos el error java.net.UnknownHostException: Unable to resolve host etc. Nuevamente se hace evidente que se lanza la excepción de la aplicación sin capturarla y manejarla de acuerdo con las posibles interacciones del usuario final. Esto mismo ocurre al presionar Búsqueda avanzada, donde si se selecciona Buscar en Itunes, Explorar en gpodder.net o Buscar en fyyd, se genera también la misma excepción java mencionada anteriormente. Todo lo anterior se presenta en el video adjunto para que se pueda observar de primera mano el mal manejo de esta ventana. </p>
+            <a href="#Error2">Ver Código Primer Error</a>
+            <a href="#Error3">Ver Código Primer Error</a>
           </div>
           <div class="col-sm-3 col-md-3 text-center">
             <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/GIFACE.gif" alt="video mostrando usabilidad" height="450" >
@@ -191,7 +194,6 @@
       <br>
       <p class="text-justify descripcion"> Los 3 errores anteriores se producen cuando se realiza una Búsqueda avanzada ya sea por Itunes, por gpodder.net o por fyyd. En este caso las 3 opciones generar el mismo error, donde en este caso es un “Message with Exception Trace”. Así, se muestra literalmente el mensaje de excepción generado desde el código java “UnknownHostException”. Al tener en cuenta que esto se genera al momento de perder la conexión a internet, solucionar este problema es relativamente sencillo. Una ves se hace clic en búsqueda avanzada se debería verificar si se dispone de una conexión estable a la red de datos o wifi. Así, no se debería permitir que el usuario avance a la actividad de búsqueda, sino que solo debería aparecer un mensaje informativo y claro que le permita al usuario saber que no posee internet. Así, este puede realizar las correcciones necesarias en su dispositivo o en su entorno para poder continuar con el uso adecuado de la aplicación. Al tener una conexión estable estos mensajes no aparecen y se redirige correctamente a los respectivos servicios para realizar la descarga correctamente.  </p>
       <br>
-
       <h2 id="Fase2">Fase 2: </h2>
       <p class="text-justify descripcion">Esta fase se investigo con el fin de encontrar posibles errores previos a una descarga. Así, buscamos encontrar posibles funcionalidades perdidas, o funcionalidades no permitidas luego de restablecer la conexión a datos. Para lograr esto se realizó una suscripción (una de las funciones principales de la aplicación) a un canal de podcasts así, el historial del usuario debía existir, pero no reproducir, pues no se selecciono realizar la descarga del contenido. Con el fin de replicar estas pruebas se debe realizar la suscripción con conexión a datos móviles o wifi disponibles y luego activar el modo avión para simular la perdida total de conexión. Además de las mismas fallas que la fase anterior, algunos de los problemas identificados se presentan a continuación:  </p>
       <br>
@@ -231,6 +233,48 @@
       <br>
       <h2 id="Fase3">Fase 3: </h2>
       <p class="text-justify descripcion">En esta fase únicamente se evidencian los problemas anteriores, pues al tener un podcast descargado las opciones diferentes a realizar son escucharlo sin necesidad de conectividad esto ocurre con normalidad y las fallas en conectividad eventual realmente no afectan de la misma manera que se afectaban las dos fases anteriores. Lógicamente se encuentran los mismos errores antes reportados, pero al reproducir el contenido descargado tanto el audio como el texto y las fotografías funcionan correctamente.  </p>
+      <h1>Código de la aplicación: </h1>
+      <div class="codigoApp">
+        <div id="Error1">
+          <h2>Primer Error</h2>
+          <p class="text-justify descripcion">La actividad de agregarPodcast lanza el fragmento AddFeedFragment donde se contiene la información de la pestaña de añadir podcast. En esta encontramos varios de los errores antes mencionados donde ya se ha explicado como corregirlos. El código especifico con la corrección explicita se evidencia a continuación:</p>
+
+          <p class="text-justify descripcion">En este caso descubrir es un fragmento adicional dentro de esta actividad llamado QuickFeedDiscoveryFragment. En este punto podemos observar que se genera un error cuando no se tiene conexión. En este caso se podría hacer una de dos cosas. La primera seria tener un cache con esta información luego de la primera descarga (información más desarrollada en descripción de almacenamiento). Esta información se podría mostrar al usuario mientras se realiza el fetch correspondiente o se arregla la conexión para “fallar con gracia”. La segunda solución correspondiente con conectividad eventual es da darle información al usuario sobre la falla. Este puede ser un mejor manejo del error puesto que los podcasts usualmente deben estar actualizados si estos son de actualidad, como usualmente hace Itunes en su feed principal. </p>
+          <img src="CodigoError1" alt="">
+          <img src="CodigoError2" alt="">
+          <p class="text-justify descripcion">Como podemos observar en la línea 87 de este fragment, únicamente se publica este error desde dentro de la aplicación, pero esta información no es útil para el usuario. En este caso proponemos la siguiente solución:</p>
+          <img src="CodigoError3" alt="">
+          <p class="text-justify descripcion">Donde NotifyNetworkError corresponde a la información en lenguaje natural del error que notifica al usuario que no dispone de datos o wifi según el idioma de configuración del celular. </p>
+        </div>
+        <div id="Error2">
+          <h2>Segundo Error</h2>
+          <p class="text-justify descripcion">La actividad de agregarPodcast lanza el fragmento AddFeedFragment donde se contiene la información de la pestaña de añadir podcast. Esta genera el error del mensaje antes descrito y un claro ejemplo de falla es en la línea 101 de este fragmento donde el botón de confirmar para un podcast por URL no se verifica que se disponga de una conexión a internet. Este problema es sencillo de solucionar pues solo requiere una verificación a datos. </p>
+          <img src="CodigoError4" alt="">
+          <p class="text-justify descripcion"> </p>
+
+
+        </div>
+        <div id="Error3">
+          <h2>Tercer Error</h2>
+          <p class="text-justify descripcion">En el mismo fragmento antes descrito podemos encontrar también en la línea 73 que cuando se realiza una búsqueda avanzada, no se verifica tampoco la disponibilidad de red.</p>
+          <img src="CodigoError5" alt="">
+          <p class="text-justify descripcion">Para estos dos problemas se debe implementar la misma solución. También funciona para todas las excepciones generadas por falta de conectividad al realizar clic en algún botón o al abrir una actividad que requiera de información disponible únicamente en la red (no almacenado localmente).</p>
+          <p class="text-justify descripcion"> </p>
+          <img src="CodigoError6" alt="">
+          <p class="text-justify descripcion">Ya que la aplicación es multi-idioma, se utiliza la constante NotifyNetworkError para continuar con el manejo que le han dado. En este caso se utilizó un toast para probar, pero la versión de despliegue se debería manejar en el fragmento de error como ya lo han manejado en otros errores o en un snackBar. Cabe acalrar que sale con error pues se deben realizar los imports respectivos. </p>
+          <p class="text-center descripcion"> import android.net.ConectivityManager </p>
+          <p class="text-center descripcion"> import Android.net.NetworkInfo </p>
+
+
+
+        </div>
+
+
+
+
+        <p class="text-justify descripcion">Ya que la aplicación es multi-idioma, se utiliza la constante NotifyNetworkError para continuar con el manejo que le han dado. En este caso se utilizó un toast para probar, pero la versión de despliegue se debería manejar en el fragmento de error como ya lo han manejado en otros errores o en un snackBar. Cabe acalrar que sale con error pues se deben realizar los imports respectivos. </p>
+
+      </div>
     </div>
   </div>
 </div>
