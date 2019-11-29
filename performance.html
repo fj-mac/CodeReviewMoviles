@@ -36,6 +36,9 @@
         <li class="nav-item active">
           <a class="nav-link" href="performance.html">Performance <span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="codeReview.html">Revisión del código </a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -60,9 +63,9 @@
               <li><a href="#Suscripciones">Suscripciones</a></li>
             </ul>
             <li><a href="#Detallado">Detalle Memoria</a></li>
-            <ul>  
+            <ul>
               <li>  <a href="#CasoDescarga"> Descarga</a></li>
-              <ul>  
+              <ul>
                 <li>  <a href="#UsoRedDescarga ">Uso Red</a></li>
                 <li>  <a href="#UsoMemoriaDescarga ">Uso Memoria</a></li>
               </ul>
@@ -78,9 +81,9 @@
               </ul>
               <li><a href="#CasoAbrir">Abrir Descubrir</a></li>
             </ul>
-            
+
           </ul>
-        </div> 
+        </div>
       </div>
       <div class="col-sm-10 col-md-10 info">
         <br/>
@@ -126,11 +129,11 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <img class="imagenProfiling"src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoBusqueda.PNG" alt="Imagen código búsqueda" width="100%"> 
+                    <img class="imagenProfiling"src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoBusqueda.PNG" alt="Imagen código búsqueda" width="100%">
                   </div>
                   <div class="col-md-6">
                     <img class ="imagenProfiling"src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/LibreriasBusqueda.PNG" alt="Imagen librerías búsqueda" width="100%">
-                  </div> 
+                  </div>
                 </div>
               </div>
             </div>
@@ -331,22 +334,22 @@
           </div>
         </div>
         <br>
-        <h3 id="UsoRedDescarga">Conexión red</h3>  
-        <div class="row"> 
-          <div class="col-md-12"> 
+        <h3 id="UsoRedDescarga">Conexión red</h3>
+        <div class="row">
+          <div class="col-md-12">
             <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Profiling%20Red%20Descarga.PNG" alt="Profiling red descarga" width="100%">
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12"> 
+          <div class="col-md-12">
             <p class="text-justify"> En la imagen se pueden identificar 10 picos de conexión a la red donde se realizaron las descargas, esto demuestra que solo se reciben datos en los momentos en que se pide descargar. Además, que a mayor velocidad de descarga es menor el periodo de tiempo en el que se lleva a cabo la descarga como es de esperarse. Con el fin de realizar comparaciones se graficó el punto máximo de red alcanzado y el número de conexiones máximo que se reporta en cada uno del escenario. </p>
           </div>
-        </div>    
+        </div>
         <div class="row">
-          <div class="col-md-6"> 
+          <div class="col-md-6">
             <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Datos%20Red%20Decarga.PNG" alt="Profiling red descarga">
           </div>
-          <div class="col-md-6"> 
+          <div class="col-md-6">
             <p class="text-justify"> Al realizar los grafico se puede evidenciar que la velocidad de descargar oscila entre 1,5 MB/s y 2,5MB/s, lo cual es un nivel de velocidad apropiado para descargar el contenido dado que el tamaño del archivo eran 4MB. Sin embargo, se puede evidenciar un patrón en el número de conexiones que crece a medida que se realizan nuevas descargas, lo cual según la gráfica y el comportamiento da el indicio de que al solicitar una descarga se abre una conexión que no se cierra inmediatamente termina la descarga sino un buen tiempo después y esto puede representar una falla en la seguridad al dejar el canal abierto para recibir más información.</p>
           </div>
         </div>
@@ -354,13 +357,13 @@
         <h3 id="UsoMemoriaDescarga">Uso memoria</h3>
         <br>
         <div class="row">
-          <div class="col-md-12"> 
+          <div class="col-md-12">
             <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Profiling%20Memoria%20Descarga.PNG" alt="Profiling memoria descarga" width ="100%">
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12"> 
-            <p class="text-justify"> En cuanto al uso de la memoria encontramos el siguiente comportamiento. Al igual que en la imagen anterior cada uno de los puntos indica una acción sobre el teléfono, el inicio o finalización de una descarga. El manejo de memoria desde el código Java se evidencia en la parte inferior de la imagen que corresponde al uso de memoria de java ya que este es el espacio de memoria asignado por código java. Podemos observar como la aplicación si maneja el uso de memoria en los espacios donde se activa el garbage collector (Icono de basura), en estos puntos el uso de memoria java alcanzo un máximo de 20MB, se activa el garbage colector y se libera la memoria por lo cual no permite que la memoria en uso sobrepase este nivel. Aunque no libera los recursos inmediatamente si tiene una táctica para restringir el uso de memoria.  </p>    
+          <div class="col-md-12">
+            <p class="text-justify"> En cuanto al uso de la memoria encontramos el siguiente comportamiento. Al igual que en la imagen anterior cada uno de los puntos indica una acción sobre el teléfono, el inicio o finalización de una descarga. El manejo de memoria desde el código Java se evidencia en la parte inferior de la imagen que corresponde al uso de memoria de java ya que este es el espacio de memoria asignado por código java. Podemos observar como la aplicación si maneja el uso de memoria en los espacios donde se activa el garbage collector (Icono de basura), en estos puntos el uso de memoria java alcanzo un máximo de 20MB, se activa el garbage colector y se libera la memoria por lo cual no permite que la memoria en uso sobrepase este nivel. Aunque no libera los recursos inmediatamente si tiene una táctica para restringir el uso de memoria.  </p>
           </div>
         </div>
 
@@ -369,12 +372,12 @@
         <br>
         <div class="row">
           <div class="col-md-4">
-           <img src=" https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Caso%20Reproducir.gif" alt="Demostración prueba reproducción"> 
+           <img src=" https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/Caso%20Reproducir.gif" alt="Demostración prueba reproducción">
          </div>
          <div class="col-md-8 textoDescripcion ">
-          <p class="text-justify descripcion "> 
+          <p class="text-justify descripcion ">
             Para este caso de uso se hicieron pruebas reproduciendo podcast en vivo. Se quiso analizar el comportamiento de la aplicación durante la reproducción, pero se hizo el caso utilizando dos podcasts distintos e intercalando su reproducción para analizar el comportamiento de la red, la memoria y el CPU durante este proceso. Para mejor entendimiento en las imágenes cada reproducción comienza donde se ven los puntos rojos y en el siguiente punto se pausa y se activa el otro podcast.
-          </p>  
+          </p>
         </div>
       </div>
       <br>
@@ -387,9 +390,9 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <p class="text-justify"> 
+          <p class="text-justify">
             En primer lugar, se analizó la memoria. Como se mencionó anteriormente la memoria se maneja desde el código Android en el cual cuando pasa un nivel se activa el garbage collector y libera memoria. Durante la reproducción no hay mayor cambio sobre la memoria, es en el momento en que el que se cambia de podcast que se libera memoria y el componente grafico incrementa su consumo de memoria ya que debe cambiar de actividad para volver a la lista de podcast del canal. Aun así, durante la prueba se puede evidenciar un uso constante de memoria en los momentos de reproducción de los diferentes podcasts.
-          </p>  
+          </p>
         </div>
       </div>
       <br>
@@ -402,9 +405,9 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <p class="text-justify"> 
+          <p class="text-justify">
             En cuanto al uso de la red, se evidencian picos fuertes en el momento en que se solicita la reproducción del contenido y durante la reproducción se descarga el contenido de manera que se minimicen las fallas durante la reproducción, en un punto todo el contenido ha sido descargado con anterioridad. En algunos puntos de la imagen se evidencia que la reproducción continua aun cuando la descarga ha terminado, sin embargo, en estos casos en el número de conexiones parece ser que la conexión del podcast anterior se cierra en el momento en que se crea la nueva conexión, por lo cual el número de conexiones permanece constante a lo largo del tiempo a diferencia del escenario anterior en donde las conexiones tardaban mucho en cerrarse.
-          </p>  
+          </p>
         </div>
       </div>
       <br>
@@ -413,7 +416,7 @@
       <div class="row">
         <div class="col-md-12">
           <p class="text-justify"> Para este caso quisimos observar el manejo que se daba en la rotación de pantalla, pues durante las pruebas funcionales ocurrió que la pantalla se giraba muchas veces de manera accidental. Además, toda la aplicación tiene un diseño que permite realizar la rotación en cualquiera de sus vistas para facilitar. Para realizar este escenario se realizo la rotación de la pantalla en la ventana de suscripciones por 10 veces primero en la orientación horizontal por el lado izquierdo, luego de manera vertical y finalmente de manera horizontal por el lado derecho. Los resultados obtenidos (al realizar un análisis de memoria) se evidencian a continuación:
-          </p>  
+          </p>
         </div>
       </div>
       <br>
@@ -427,8 +430,8 @@
       <div class="row">
         <div class="col-md-12">
           <p class="text-justify">
-            Como se puede observar, la aplicación libera la memoria que se encontraba con la actividad y vuelve a cargar la nueva vista. Esto se puede observar en cada uno de los patrones donde se observa un valle existente en la aplicación. Dadas nuestras preocupaciones anteriores se puede observar que este no es uno de los motivos principales de la posible falla en memoria. Se puede ver que en las ùltimas pruebas los picos no bajaron, pero al continuar las pruebas posteriormente el comportamiento inicial se reestableció. Esto se ve claramente tanto en el uso de memoria java como en la memoria de gráficos 
-          </p>  
+            Como se puede observar, la aplicación libera la memoria que se encontraba con la actividad y vuelve a cargar la nueva vista. Esto se puede observar en cada uno de los patrones donde se observa un valle existente en la aplicación. Dadas nuestras preocupaciones anteriores se puede observar que este no es uno de los motivos principales de la posible falla en memoria. Se puede ver que en las ùltimas pruebas los picos no bajaron, pero al continuar las pruebas posteriormente el comportamiento inicial se reestableció. Esto se ve claramente tanto en el uso de memoria java como en la memoria de gráficos
+          </p>
         </div>
       </div>
       <br>
@@ -442,9 +445,9 @@
       <div class="row">
         <div class="col-md-12">
           <p class="text-justify">
-            Para descartar la posibilidad de que los objetos se estén cargando cada vez que se gira el dispositivo se analizó también el uso de la red realizando este mismo procedimiento. 
+            Para descartar la posibilidad de que los objetos se estén cargando cada vez que se gira el dispositivo se analizó también el uso de la red realizando este mismo procedimiento.
             Como se puede observar, es claro que la carga de los diferentes podcasts únicamente se hace en la carga inicial. Luego, a pesar de realizar las diferentes rotaciones no se requiere recargar nuevamente los objetos desde el servidor respectivo. Por esto se puede afirmar que se le esta dando un manejo adecuado a la carga de nueva información. Así, se puede observar que el problema principal encontrado en los aspectos generales del uso de memoria no se encuentra en este punto de la aplicación.
-          </p>  
+          </p>
         </div>
       </div>
       <br>
@@ -453,7 +456,7 @@
       <div class="row">
         <div class="col-md-12">
           <p class="text-justify">Para este escenario buscamos interceptar el momento exacto donde la aplicación trae información de servidores externos. Así, decidimos entrar a la pestaña de Añadir podcast e interactuar con la pestaña de descubrir. Para este escenario decidimos abrir y cerrar entonces esta función (descubrir) 10 veces seguidas. Primero observamos el uso de red, pues en teoría se debería acceder cada ves que se vuelve a entrar a encontrar un nuevo podcast. Los resultados obtenidos se evidencian a continuación:
-          </p>  
+          </p>
         </div>
       </div>
       <br>
@@ -482,7 +485,7 @@
       <div class="row">
         <div class="col-md-12">
           <p class="text-justify">
-            Cada uno de los puntos superiores corresponden en orden de izquierda a derecha a abrir la pestaña de descubrir y volver a la actividad anterior. Luego se repite este mismo patrón 9 veces más. Con esto podemos observar que la aplicación no le está dando un uso adecuado a la memoria, pues únicamente esperan a que el garbage colector recoja y no optimizan el uso. Esto se ve muy claramente, pues en el único punto en que la memoria baja de manera significativa es cuando pasa el garbage en el segundo 14. Esto es un claro ejemplo de un Memory Leak, pues, aunque cargan nuevamente los mismos objetos utilizando red como se mostró anteriormente, no están utilizando eficientemente los datos descargados cuando se vuelve a abrir la aplicación que sería la primera opción de solución o no están limpiando la memoria ocupada cuando salen de la función de descubrir. 
+            Cada uno de los puntos superiores corresponden en orden de izquierda a derecha a abrir la pestaña de descubrir y volver a la actividad anterior. Luego se repite este mismo patrón 9 veces más. Con esto podemos observar que la aplicación no le está dando un uso adecuado a la memoria, pues únicamente esperan a que el garbage colector recoja y no optimizan el uso. Esto se ve muy claramente, pues en el único punto en que la memoria baja de manera significativa es cuando pasa el garbage en el segundo 14. Esto es un claro ejemplo de un Memory Leak, pues, aunque cargan nuevamente los mismos objetos utilizando red como se mostró anteriormente, no están utilizando eficientemente los datos descargados cuando se vuelve a abrir la aplicación que sería la primera opción de solución o no están limpiando la memoria ocupada cuando salen de la función de descubrir.
           </p>
         </div>
       </div>

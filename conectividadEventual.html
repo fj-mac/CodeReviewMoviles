@@ -36,10 +36,13 @@
         <li class="nav-item">
           <a class="nav-link" href="performance.html">Performance</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="codeReview.html">Revisión del código </a>
+        </li>
       </ul>
     </div>
   </nav>
-  <div class="container-fluid"> 
+  <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2 col-md-2">
         <div class="affix divConectividad" id="sidebar-wrapper">
@@ -61,7 +64,7 @@
               <li><a href="#Fase3">Fase 3</a></li>
             </ul>
           </ul>
-        </div> 
+        </div>
       </div>
       <div class="col-sm-10 col-md-10 info">
         <br/>
@@ -115,7 +118,7 @@
       <h2 class="text-center" id="Detallado">Reporte Especifico con detalle técnico:</h2>
       <p class="text-justify descripcion">A lo largo de la investigación de las 3 fases se pudieron identificar varios problemas de conectividad eventual como fue mencionado. A continuación, se presentará uno a uno los errores con su tipo de falla y la forma como se debería dar un manejo adecuado para arreglar la falla. Primero se presentarán las fallas encontradas en la fase inicial donde no se perdía la conexión justo después de instalar la aplicación. Luego la segunda fase donde se realizaba una suscripción y por ultimo la fase donde se descarga un podcast y se observa el comportamiento general de la aplicación.</p>
       <br>
-      
+
       <h2 id="Fase1">Fase 1: </h2>
       <p class="text-justify descripcion">Esta fase se realizó con el fin de identificar el “Data Fetching Stategie” utilizada en la aplicación. Claramente se puede observar que la aplicación utiliza un mecanismo Pull, pues la información solo se recibe cuando el usuario solicita descargar o visualizar un podcast nuevo. Esto es verdad para toda la información disponible excepto para la sección de Descubrir, donde se utiliza “Launch-Time”, pues es necesario mostrar al usuario la información de posibles podcast sugeridos sin que este solicite más información. De esta forma se atrae al usuario a buscar posible información que puede llegar a ser de su interés. Dada la naturaleza de la aplicación y la lógica de negocio que la rige, únicamente se utilizan estos dos tipos de “Data Fetching”. </p>
       <br>
