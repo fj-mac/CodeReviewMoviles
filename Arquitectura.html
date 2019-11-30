@@ -59,6 +59,7 @@
           <li><a href="#Seguridad">Seguridad</a></li>
           <li><a href="#Cache">Cache</a></li>
           <li><a href="#memoria">Almacenamiento</a></li>
+          <li><a href="#MultiThreading">Threads</a></li>
         </ul>
       </div>
     </div>
@@ -219,21 +220,22 @@
             <p class="text-justify">
               Clase core/de.danoeh.antennapod.core/DBTasks.java línea 61. 
             </p>
-            <img src="" alt="Imagen Thread DBTasks">
+            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ThreadDataBase.PNG" alt="Imagen Thread DBTasks">
             <p class="text-justify">
-              En este fragmento de código se puede evidenciar como se crea un hilo que se encargara de ejecutar las tareas sobre la base de datos, esto para tener un servicio paralelo al MainThread de manera que estas tareas se realicen en segundo plano, lo cual es una buena estrategia para mejorar el rendimiento y la experiencia del usuario.
+              En este fragmento de código se puede evidenciar como se crea un hilo que se encargara de ejecutar las tareas sobre la base de datos, esto para tener un servicio paralelo al MainThread de manera que estas tareas se realicen en segundo plano, lo cual es una buena estrategia para mejorar el rendimiento y la experiencia del usuario. Cabe resaltar que este fragmento de código pertenece a una librería creada por ellos, por lo cual puede estar diseñada especialmente para esta aplicación.
             </p>
           </li>
           <li>
             <p class="text-justify">
               Clase app/java/de.danoeh.antennapod/asynctask/OpmlFeedQueuer
             </p>
-            <img src="" alt="Imagen Clase OpmlFeedQueuer">
+            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ThreadAsyncTask.PNG" alt="Imagen Clase OpmlFeedQueuer">
             <p class="text-justify">
               Esta clase como se puede observar en la imagen extiende de AsyncTask, esta clase es la encargada de manejar la cola de descargas. Se evidencia el uso necesario de multithreading dado que las descargas se deben realizar en segundo plano para que no afecten la experiencia del usuario. Además, consideramos que es una buena estrategia elegir AsyncTask como el Thread que realice esta actividad dado que este tipo de Thread realiza constantes actualizaciones al UI y esto les permite ir mostrando el avance de la descarga. 
             </p>
           </li>
         </ul>
+        <p class="text-justify">Aparte de estos casos se identificó que la mayoria de procesos se llevan a cabo en el Thread principal dado que son acciones que requieren cambios en la interfaz como navegar entre las diferentes actividades o sobre la información que se tiene representada en la interfaz del usuario</p>
       </div>
 
 

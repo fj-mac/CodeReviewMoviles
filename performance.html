@@ -363,7 +363,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <p class="text-justify"> En cuanto al uso de la memoria encontramos el siguiente comportamiento. Al igual que en la imagen anterior cada uno de los puntos indica una acción sobre el teléfono, el inicio o finalización de una descarga. El manejo de memoria desde el código Java se evidencia en la parte inferior de la imagen que corresponde al uso de memoria de java ya que este es el espacio de memoria asignado por código java. Podemos observar como la aplicación si maneja el uso de memoria en los espacios donde se activa el garbage collector (Icono de basura), en estos puntos el uso de memoria java alcanzo un máximo de 20MB, se activa el garbage colector y se libera la memoria por lo cual no permite que la memoria en uso sobrepase este nivel. Aunque no libera los recursos inmediatamente si tiene una táctica para restringir el uso de memoria.  </p>
+            <p class="text-justify"> En cuanto al uso de la memoria encontramos el siguiente comportamiento. Al igual que en la imagen anterior cada uno de los puntos indica una acción sobre el teléfono, el inicio o finalización de una descarga. El manejo de memoria desde el código Java se evidencia en la parte inferior de la imagen que corresponde al uso de memoria de java ya que este es el espacio de memoria asignado por código java. Se evidencia que el manejo de memoria no es correcto dado que la memoria no se libera por la aplicación sino por el Garbage Collector, y este como se evidencia en la imagen se esta activando seguido durante la prueba.  </p>
           </div>
         </div>
 
@@ -391,7 +391,7 @@
       <div class="row">
         <div class="col-md-12">
           <p class="text-justify">
-            En primer lugar, se analizó la memoria. Como se mencionó anteriormente la memoria se maneja desde el código Android en el cual cuando pasa un nivel se activa el garbage collector y libera memoria. Durante la reproducción no hay mayor cambio sobre la memoria, es en el momento en que el que se cambia de podcast que se libera memoria y el componente grafico incrementa su consumo de memoria ya que debe cambiar de actividad para volver a la lista de podcast del canal. Aun así, durante la prueba se puede evidenciar un uso constante de memoria en los momentos de reproducción de los diferentes podcasts.
+            En primer lugar, se analizó la memoria. Como se mencionó anteriormente el uso de la memoria no se maneja correctamente y es el Garbage Collector el que se encarga de liberar la memoria constantemente Durante la reproducción no hay mayor cambio sobre la memoria, es en el momento en que el que se cambia de podcast que se libera memoria y el componente grafico incrementa su consumo de memoria ya que debe cambiar de actividad para volver a la lista de podcast del canal. Aun así, durante la prueba se puede evidenciar un uso constante de memoria en los momentos de reproducción de los diferentes podcasts.
           </p>
         </div>
       </div>
@@ -489,7 +489,10 @@
           </p>
         </div>
       </div>
-
+      <br>
+      <h3>Conclusión</h3>
+      <p class="text-justify">Luego de realizar el análisis por casos de uso se pudo identificar dos grandes problemas en el rendimiento de la aplicación. En primer lugar, en el caso de descargar un podcast se evidencio que, aunque las conexiones no se cierran inmediatamente, cuando se realiza una nueva descarga, se abre una nueva conexión lo cual va generando que el número de conexiones crezca en el corto plazo y demore mucho en disminuir. Por otro lado, aunque encontramos que tienen estructura de cache en el código, parece estar mal utilizada dado que en los análisis de profiling se muestra que la memoria en muchos casos la libera el Garbage Collector constantemente por lo cual se recomienda que se debería revisar el uso de la memoria en casos donde no es necesario cargar los recursos cada vez que se realiza la acción. 
+      </p>
     </div>
   </div>
 </div>
