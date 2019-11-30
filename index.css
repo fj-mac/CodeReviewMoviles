@@ -60,14 +60,9 @@ p{
   position: fixed;
 }
 
-ul .sidebar-nav{
-    list-style:none;
-    white-space: nowrap;
-    margin-bottom: -20rem;
-}
-
-.sidebar-brand{
-  font-family: 'Archivo Narrow', sans-serif;
+.sidebar-nav ul {
+  list-style:none;
+  white-space: nowrap;
   
 }
 
@@ -79,6 +74,10 @@ ul .sidebar-nav{
   list-style-type: none;
   max-height: calc(100vh - 6rem);
   overflow-y: auto;
+  list-style:none;
+  white-space: nowrap;
+  margin-bottom: -20rem;
+  font-family: 'Archivo Narrow', sans-serif;
 }
 
 .sidebar-nav li {
