@@ -209,6 +209,32 @@
 
 
       </div>
+      <div id="MultiThreading">
+        <h1>MultiThreading</h1>
+        <p class="text-justify">
+          En esta aplicación encontramos que es necesario hacer uso de Threads, dado que se ofrecen servicios de descarga y reproducción que podrían bloquear la interacción del usuario. Luego de realizar un análisis sobre el código de la aplicación encontramos que el uso de Threads se da en el momento en que se realizan las descargas y para las tareas que requieren intervención en la base de datos. Ejemplos de esto son:
+        </p>
+        <ul>
+          <li>
+            <p class="text-justify">
+              Clase core/de.danoeh.antennapod.core/DBTasks.java línea 61. 
+            </p>
+            <img src="" alt="Imagen Thread DBTasks">
+            <p class="text-justify">
+              En este fragmento de código se puede evidenciar como se crea un hilo que se encargara de ejecutar las tareas sobre la base de datos, esto para tener un servicio paralelo al MainThread de manera que estas tareas se realicen en segundo plano, lo cual es una buena estrategia para mejorar el rendimiento y la experiencia del usuario.
+            </p>
+          </li>
+          <li>
+            <p class="text-justify">
+              Clase app/java/de.danoeh.antennapod/asynctask/OpmlFeedQueuer
+            </p>
+            <img src="" alt="Imagen Clase OpmlFeedQueuer">
+            <p class="text-justify">
+              Esta clase como se puede observar en la imagen extiende de AsyncTask, esta clase es la encargada de manejar la cola de descargas. Se evidencia el uso necesario de multithreading dado que las descargas se deben realizar en segundo plano para que no afecten la experiencia del usuario. Además, consideramos que es una buena estrategia elegir AsyncTask como el Thread que realice esta actividad dado que este tipo de Thread realiza constantes actualizaciones al UI y esto les permite ir mostrando el avance de la descarga. 
+            </p>
+          </li>
+        </ul>
+      </div>
 
 
 
