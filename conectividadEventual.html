@@ -299,8 +299,8 @@
       <p class="text-justify descripcion">Podemos observar que en la clase DownloadLogAdapter en la línea 62 se menciona por primera vez la línea que contiene el error. Luego, en la línea 94 simplemente se agrega la información correspondiente a la razón. Al observar de donde venia el mensaje pudimos rastrear este problema hasta el fragmento DownloadLogFragment desde la línea 78. En este punto se registra en el Suscriptor este método para recibir las notificaciones. Así, el publicador no debería entonces enviar el mensaje genérico, pues no proporciona información suficiente valida para el usuario.  </p>
       <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError9.png" alt="Error mostrando codigo">
       <p class="text-justify descripcion">En este punto se propone modificar la publicación que realiza el publicador para que el suscriptor únicamente deba publicar el mensaje y sea el primero el encargado de recibir, interpretar y transformar la información para que así sea comprensible para el usuario final. En este caso debería poder determinar cual es el tipo de fallo (falta de internet o error en el servidor) y publicar esta información de manera oportuna. </p>
-
     </div>
+    <p class="text-justify descripcion">Luego del análisis realizado, se publicaron los resultados como un único issue incluyendo la descripción del problema, las líneas de código especificas y finalmente la explicación de como arreglarlo. No se envió un pull request pues no consideramos pertinente realizar cambios sin tener conocimiento preciso de la forma como se maneja el diccionario para facilitar el uso de multi-idioma de la aplicación para el usuario regular, pues la gran mayoría de los problemas de conectividad eventual contienen interacción con el usuario.  </p>
   </div>
 </div>
 </div>
