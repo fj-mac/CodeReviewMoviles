@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AntennaPod Diseño</title>
+  <title>AntennaPod CodeReview</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="index.css"/>
@@ -13,6 +13,9 @@
   <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script>
+    window.addEventListener("hashchange", function() { scrollBy(0, -90) });
+  </script>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark ">
     <a class="navbar-brand" href="./index.html">Sobre AntennaPod</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,17 +44,103 @@
       </ul>
     </div>
   </nav>
-  <div class="container">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 col-sm-2">
+        <div class="affix"id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              <li class="sidebar-brand">Code Review </li>
+              <li href="Bugs">Bugs</li>
+              <ul>
+                <li><a href="#Bloqueantes">Bloqueante</a></li>
+                <li><a href="#Mayor">Mayor</a></li>
+                <li><a href="#Minor">Minor</a></li>
+              </ul>
+            </ul>
+          </div>
+      </div>
+      <div class="col-md-10 col-sm-10">
+        <h1 class="text-center">Análisis estático código</h1>  
+        <br>
+        <p class="text-justify">Realizamos un análisis de código estático de manera que pudiéramos identificar errores que pudieran tener impacto sobre el rendimiento de la aplicación. En general obtuvimos los siguientes resultados.</p>
+        <br>
+        <h2 id="Bugs">Bugs</h2>
 
+        <img src="" alt="Imagen SonarQube Bugs">
+
+        <p>Los cuales fueron clasificados de la siguiente forma</p>
+
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/ClasificacionBugs.PNG" alt="Clasificación bugs">
+
+        <h3 id="Bloqueantes">Bloqueantes</h3>
+        <p class="text-justify">De los que se consideran bloqueantes, el problema reside en que se abre un FileWirter o un BuffedReader y en caso de que algún método lance excepción se debería cerrar la conexión igual. Este error se presenta en las siguientes clases</p>
+        <ul> 
+          <li>
+            <p class="text-justify">Clase: ImportExportActivity Línea 200</p>
+            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/EjExcepcion.PNG" alt="Imagen ImportExportActivity">
+          </li>
+          <li>
+            <p class="text-justify">Clase: AboutLicensesFragment  Línea 98</p>
+            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/EjExcepcion2.PNG" alt ="Imagen AboutLicensesFragment">
+          </li>
+        </ul>
+        
+        <h3 id="Mayor">Mayor</h3>
+
+        <p class="text-justify">De los bugs considerados como mayors encontramos que se trata de que en dos clases no se manejan correctamente las excepciones dado que existe un “ítem” que podría lanzar un nullPointerException y esta no se maneja correctamente con un try-catch o una anotación de que no será null. </p>
+        <img src="" alt="Imagen Null Pointer">
+
+        <br><br>
+
+        <h3 id="Minor">Minor</h3>
+
+        <p class="text-justify">En cuanto a los bugs de clasificacion minor daremos algunos ejemplos que serian faciles de corregir y aunque no representan un error actual, podrian mejorar para evitar futuros erroers en la aplicación.</p>       
+
+        <ul>
+          <li>
+            <p class="text-justify">Encontramos un bug que según la regla de sonarqube puede estar retornando un valor diferente al esperado. En la clase QueueFragment.java en la línea de código 664</p>
+            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/EjLong.PNG" alt="Imagen QueueFragment">
+            <p class="text-justify">Esta la resta de dos números enteros, sin embargo, esta se almacena en una variable de tipo Long. Cuando se realiza una resta entre enteros la respuesta es un entero, sin embargo, se puede asignar a una variable Long, pero en algunos casos dada la diferencia de tipos de variables se puede recibir un valor incorrecto. </p>
+          </li>
+          <li>
+            <p class="text-justify">Por otro lado, gran parte de los bugs se refieren al uso de variables de tipo volátil. Este tipo de variable no son guardadas en el caché del procesador sino en memoria RAM. Estas variables son utilizadas para el uso en diferentes thread sin embargo, no es la mejor practica dado que no son variables atomicas, es decir que si un thread la esta modificando, otro podría leer informacion desactualizada de el, por lo cual no es una buena practica. Ejemplos de estas se encuentran en los siguientes códigos.</p>
+            <ul>
+              <li>
+                <p class="text-justify">Clase OnlineFeedView.java línea 92.</p>
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/EjVolatile1.PNG" alt="Imagen OnlineFeedView">
+              </li>
+              <li>
+                <p class="text-justify">Clase gpodnet/PodcastListFragment.java Línea 106.</p>
+                <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/EjVolatile2.PNG" alt="Imagen PodcastListFragment">
+                <p class="text-justify">
+                  Por ejemplo, en este último, es importante la atomicidad de la variable dado que si se lanza una excepción esta cambiaria de valor y si otro thread lo lee en el intermedio podría tomar un valor en null que ya no es null, pero que no se garantiza leer el valor correcto.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p class="text-justify">En la clase NavListAdapter.java en la línea 313 encontramos que se recibe una variable por parámetro sin embargo nunca se utiliza el valor que contiene cuando llega y se sobrescribe, corriendo el riesgo de perder información valiosa</p>
+            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/EjConvertView.PNG" alt="Imagen variable NavListAdapter">
+          </li>
+        </ul> 
+
+        <p class="text-justify"></p>
+
+      </div>
+    </div>
   </div>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+  <footer>
+    <br>
+    <p class="pieDePagina">Hecho por: Laura Maya & Francisco José MacAllister</p>
+  </footer>
 </body>
-<footer>
-  <br>
-  <p class="pieDePagina">Hecho por: Laura Maya & Francisco José MacAllister</p>
-</footer>
+
+
 </html>
