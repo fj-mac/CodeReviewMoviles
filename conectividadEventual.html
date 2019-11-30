@@ -63,7 +63,15 @@
               <li><a href="#Fase2">Fase 2</a></li>
               <li><a href="#Fase3">Fase 3</a></li>
             </ul>
+            <li><a href="#CodigoApp"> Código de Aplicación</a></li>
+          <ul>
+            <li><a href="#Error1">Error 1</a></li>
+            <li><a href="#Error2">Error 2</a></li>
+            <li><a href="#Error3">Error 3</a></li>
+            <li><a href="#Error4">Error 4</a></li>
           </ul>
+          </ul>
+
         </div>
       </div>
       <div class="col-sm-10 col-md-10 info">
@@ -88,207 +96,213 @@
           <div class="col-sm-6 col-md-6 textoDescripcion">
             <p class="text-justify descripcion">Si se continua sin conectividad, la búsqueda local funciona bien (Buscar Podcast), sin embargo, al añadir una URL en Añadir pódcast por URL y dar en continuar se produce un error: Host Desconocido (Unable to resolve host “XXXX”: No address associated with hostname. No solo se da un manejo bastante inadecuado al mostrar el error completo al usuario (error generado por defecto) sino que además no se muestra en el mismo idioma las diferentes partes del error. Con esto, vemos que la aplicación tiene un diseño muy básico y muy poco enfoque en posibles problemas generados. Al presionar el botón de más en Descubrir encontramos el error java.net.UnknownHostException: Unable to resolve host etc. Nuevamente se hace evidente que se lanza la excepción de la aplicación sin capturarla y manejarla de acuerdo con las posibles interacciones del usuario final. Esto mismo ocurre al presionar Búsqueda avanzada, donde si se selecciona Buscar en Itunes, Explorar en gpodder.net o Buscar en fyyd, se genera también la misma excepción java mencionada anteriormente. Todo lo anterior se presenta en el video adjunto para que se pueda observar de primera mano el mal manejo de esta ventana. </p>
             <a href="#Error2">Ver Código Segundo Error</a>
-            <a href="#Error3">Ver Código Tercer Error</a>
-          </div>
-          <div class="col-sm-3 col-md-3 text-center">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/GIFACE.gif" alt="video mostrando usabilidad" height="450" >
-          </div>
-          <div class="col-sm-3 col-md-3 text-center">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/GIFBCE.gif" alt="video mostrando usabilidad" height="450" >
-          </div>
-        </div>
-        <br/>
-        <h2 id="Suscripcion">Fase de pruebas con Podcast (Suscripción):</h2>
-        <div class="row">
-          <div class="col-sm-6 col-md-6 text-center">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/gifVideo2conectividad.gif" alt="video mostrando usabilidad" height="450" >
-          </div>
-          <div class="col-sm-6 col-md-6 textoDescripcion">
-            <p class="text-justify descripcion">Al realizar una suscripción podemos observar que tanto en la pestaña de Episodios como suscripciones aparece ya disponible el podcast (o álbum de podcast) al que nos hemos suscrito. Al presionar descargar en cualquiera de las dos pestañas, el celular reconoce que no tiene conexión a wifi; sin embargo, se asume de inmediato que el usuario si dispone de datos móviles. Así, procede a preguntar al usuario si le permite realizar la descarga por medio de datos móviles. Al aceptar esto, sale un letrero que evidencia que comenzó la descarga (Mensaje mostrado en un Toast cuando se debió utilizar un SnackBar), pero como tampoco se dispone de este tipo de conexión se informa por medio de una notificación nativa que la descarga ha fallado. Aun cuando se informa de esta manera (Manera incorrecta de hacerlo), no se le explica al usuario el porque de la falla en la descarga. Es decir, nunca se avisa al usuario que no dispone de una conexión a wifi o a internet por medio de datos móviles. Esto se evidencia en el video adjunto. Las demás ventanas presentan un comportamiento igual al mencionado en la fase inicial, pues realizar una suscripción no afecta de manera directa el contenido o la respuesta de alguna de estas. </p>
-            <a href="#Error4">Ver Código Cuarto Error</a>
-          </div>
-        </div>
-        <br/>
-        <h2 id="Descargado">Fase de pruebas con Podcast (Descargado):</h2>
-        <div class="row">
-          <div class="col-sm-6 col-md-6 textoDescripcion">
-            <p class="text-justify descripcion">Al realizar la descarga de un podcast y luego entrar nuevamente a modo avión, se puede observar en los tabs de añadir podcast, historial de reproducciones y suscripciones los patrones de ejecución que se describieron en la fase inicial se repiten. En este caso, al observar la pestaña de episodios, se puede observar que se muestra un álbum con la información de los diferentes podcasts y solo se muestra disponible para la reproducción el que específicamente fue descargado. Al realizar click en los demás se evidencia el mismo problema que ocurría en la fase dos, donde el dispositivo reconocía que no se encontraba descargado e intentaba realizar la descarga a pesar de no tener una conexión estable a internet. Adicionalmente el fallo lo notifica por medio de push notifications. La otra opción a elegir redes móviles para realizar la descarga es agregar a la cola para poder realizar la descarga mas adelante. En este caso esta función no requiere intervención en cuanto a conectividad eventual, pues al quedar en cola el dispositivo puede reanudar o realizar la descarga cuando se recupere la conexión exitosamente. </p>
-          </div>
-          <div class="col-sm-6 col-md-6 text-center">
-            <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/GIF3CE.gif" alt="video mostrando usabilidad" height="450" >
-          </div>
-        </div>
-      </br>
-      <h2 class="text-center" id="Detallado">Reporte Especifico con detalle técnico:</h2>
-      <p class="text-justify descripcion">A lo largo de la investigación de las 3 fases se pudieron identificar varios problemas de conectividad eventual como fue mencionado. A continuación, se presentará uno a uno los errores con su tipo de falla y la forma como se debería dar un manejo adecuado para arreglar la falla. Primero se presentarán las fallas encontradas en la fase inicial donde no se perdía la conexión justo después de instalar la aplicación. Luego la segunda fase donde se realizaba una suscripción y por ultimo la fase donde se descarga un podcast y se observa el comportamiento general de la aplicación.</p>
-      <br>
-
-      <h2 id="Fase1">Fase 1: </h2>
-      <p class="text-justify descripcion">Esta fase se realizó con el fin de identificar el “Data Fetching Stategie” utilizada en la aplicación. Claramente se puede observar que la aplicación utiliza un mecanismo Pull, pues la información solo se recibe cuando el usuario solicita descargar o visualizar un podcast nuevo. Esto es verdad para toda la información disponible excepto para la sección de Descubrir, donde se utiliza “Launch-Time”, pues es necesario mostrar al usuario la información de posibles podcast sugeridos sin que este solicite más información. De esta forma se atrae al usuario a buscar posible información que puede llegar a ser de su interés. Dada la naturaleza de la aplicación y la lógica de negocio que la rige, únicamente se utilizan estos dos tipos de “Data Fetching”. </p>
-      <br>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 textoDescripcion">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE1.jpeg" alt="primer error en la aplicacion" height="200">
-        </div>
-        <div class="col-sm-6 col-md-6 text-center">
-          <p class="text-justify descripcion"> Este es un claro ejemplo de un mensaje no informativo. Mas específicamente, se puede observar un mensaje genérico. Así, aunque se captura la excepción generada directo por la aplicación, el mensaje de error no logra informar adecuadamente el problema al usuario final. En este se informa un error que además de ser en inglés, podría dar al usuario la idea de que el problema se encuentra en el destino y no en la falta de conectividad del celular. Este mensaje se puede observar en otras funciones de la aplicación como se mostrará mas adelante. </p>
-          <a href="#Error1">Ver Código Primer Error</a>
-        </div>
-      </div>
-      <br>
-      <p class="text-justify descripcion"> En este caso se debería verificar si no existe conexión previamente en lugar de ir directo a realizar la búsqueda normal. Una ves se logra identificar la falta de conexión, en lugar de mostrar al usuario el mensaje anterior se debería informar que no dispone de una conexión estable a internet.</p>
-      <br>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 textoDescripcion">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE2.jpeg" alt="primer error en la aplicacion" height="200">
-        </div>
-        <div class="col-sm-6 col-md-6 text-center">
-          <p class="text-justify descripcion"> Este mensaje es muy parecido al anterior con la diferencia que no es capturado. Así, se muestra literalmente la excepción completa generada por el código. Así, este error es definido como “Message with Exception Trace”. Esto se evidencia al observar el tipo de error generado “UnknownHostException”. Un usuario con poco conocimiento técnico no podrá saber a qué se refiere dicho mensaje, por lo que podría pensar nuevamente que se debe a un error de servidor como parece a dar a entender el mensaje. </p>
-          <a href="#Error2">Ver Código Segundo Error</a>
-        </div>
-      </div>
-      <br>
-      <p class="text-justify descripcion"> En este caso se debería realizar una verificación en la pestaña de descubrir justo cuando el usuario realiza el clic para acceder a la función. Así, en caso de que no se posea una conexión estable a internet, no se debería avanzar a la actividad siguiente, sino que se debería informar al usuario que actualmente no dispone de una conexión estable a la red (sea datos móviles o sea wifi). De esta forma el usuario podrá identificar el problema en su celular o su entorno y solucionarlo rápidamente para continuar utilizando el celular. </p>
-      <br>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 textoDescripcion">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE3.jpeg" alt="primer error en la aplicacion" height="200">
-        </div>
-        <div class="col-sm-6 col-md-6 text-center">
-          <p class="text-justify descripcion">El primero error consiste en confirmar el envío para añadir un podcast por URL. Al realizar un envío vacío (sea con o sin internet) se evidencia el error anterior. Nuevamente se evidencia claramente un “Message with Exception Trace”. Así, no captura apropiadamente el error y el usuario final no logra entender cual es el problema con la solicitud que ha realizado, pues no se explica con detalle porque sucedió el error. En especial porque lo que entiende el usuario es que se esperaba algo en el índice 7, lo cual no tiene ninguna relevancia al usuario.  </p>
+          </br>
           <a href="#Error3">Ver Código Tercer Error</a>
         </div>
-      </div>
-      <br>
-      <p class="text-justify descripcion"> Este problema se debe solucionar realizando una verificación previa al realizar clic en confirmar. En caso de que el campo de entrada del usuario se encuentre vacío, se debería informar a este que debe llenar una URL antes de realizar el envío. Así, no se debería permitir que este avance a la siguiente actividad, y mas bien informar al mensaje correcto al usuario para que este pueda realizar las correcciones pertinentes (ingresar un URL valido).</p>
-      <br>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 textoDescripcion">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE4.jpeg" alt="primer error en la aplicacion" height="200">
+        <div class="col-sm-3 col-md-3 text-center">
+          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/GIFACE.gif" alt="video mostrando usabilidad" height="450" >
         </div>
+        <div class="col-sm-3 col-md-3 text-center">
+          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/GIFBCE.gif" alt="video mostrando usabilidad" height="450" >
+        </div>
+      </div>
+      <br/>
+      <h2 id="Suscripcion">Fase de pruebas con Podcast (Suscripción):</h2>
+      <div class="row">
         <div class="col-sm-6 col-md-6 text-center">
-          <p class="text-justify descripcion">Este error se produce cuando se tiene conexión y en el URL se ingresa una dirección que no tiene un Podcast. Así, se utiliza la url www.google.com, donde claramente no existe un podcast disponible directo. EL mensaje que se puede observar en un mensaje genérico mal manejado. En este se evidencia que en efecto se captura la excepción de la aplicación y se explica el tipo de excepción (inclusive en español), pero este mensaje no le informa al usuario cual es el error realmente y a que se debe este error. </p>
-          <a href="#Error3">Ver Código Tercer Error</a>
+          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/gifVideo2conectividad.gif" alt="video mostrando usabilidad" height="450" >
         </div>
-      </div>
-      <br>
-      <p class="text-justify descripcion"> Este problema se debe solucionar utilizando el catch y capturando la excepción correctamente. En este mensaje resultante se debería informar al usuario que al parecer la URL que ingreso no tiene ningún podcast o álbum de podcast disponible. También se le debe informar que revise la URL ingresada y lo intente nuevamente para poder continuar exitosamente. De esta forma el usuario podrá revisar fácilmente la url y ingresar una correcta para poder continuar utilizando la aplicación.  </p>
-      <br>
-      <div class="row">
         <div class="col-sm-6 col-md-6 textoDescripcion">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE5.jpeg" alt="primer error en la aplicacion" height="200">
-        </div>
-        <div class="col-sm-6 col-md-6 text-center">
-          <p class="text-justify descripcion">El error anterior se produce también cuando se realiza un envío con la petición de añadir un podcast por URL. En este se agrega también la URL www.google.com pero en este caso no se dispone una conexión estable a internet. En este caso nuevamente se evidencia el problema del mensaje genérico, pues, aunque se captura la excepción y se muestra un mensaje al usuario, no se incluye un mensaje real de cual es el problema. EL mensaje dado da a entender nuevamente que ocurre un problema mas con el lado del servidor que del lado del cliente. </p>
-          <a href="#Error3">Ver Código Tercer Error</a>
-        </div>
-      </div>
-      <br>
-      <p class="text-justify descripcion"> En este caso, el problema se debe solucionar no permitiendo que el usuario continúe (confirme luego de ingresar la URL). En lugar de avanzar a la siguiente actividad, se debería revisar si se dispone de una conexión estable a internet y en caso de que no exista, se avise al usuario que revise su conexión a internet pues no hay una red estable para realizar la petición solicitada.  </p>
-      <br>
-      <div class="row">
-        <div class="col-sm-4 col-md-4 text-center">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE6.jpeg" alt="primer error en la aplicacion" height="160">
-        </div>
-        <div class="col-sm-4 col-md-4 text-center">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE7.jpeg" alt="primer error en la aplicacion" height="160">
-        </div>
-        <div class="col-sm-4 col-md-4 text-center">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE8.jpeg" alt="primer error en la aplicacion" height="160">
-        </div>
-      </div>
-      <br>
-      <p class="text-justify descripcion"> Los 3 errores anteriores se producen cuando se realiza una Búsqueda avanzada ya sea por Itunes, por gpodder.net o por fyyd. En este caso las 3 opciones generar el mismo error, donde en este caso es un “Message with Exception Trace”. Así, se muestra literalmente el mensaje de excepción generado desde el código java “UnknownHostException”. Al tener en cuenta que esto se genera al momento de perder la conexión a internet, solucionar este problema es relativamente sencillo. Una ves se hace clic en búsqueda avanzada se debería verificar si se dispone de una conexión estable a la red de datos o wifi. Así, no se debería permitir que el usuario avance a la actividad de búsqueda, sino que solo debería aparecer un mensaje informativo y claro que le permita al usuario saber que no posee internet. Así, este puede realizar las correcciones necesarias en su dispositivo o en su entorno para poder continuar con el uso adecuado de la aplicación. Al tener una conexión estable estos mensajes no aparecen y se redirige correctamente a los respectivos servicios para realizar la descarga correctamente.  </p>
-      <a href="#Error2">Ver Código Segundo Error</a>
-      <br>
-      <h2 id="Fase2">Fase 2: </h2>
-      <p class="text-justify descripcion">Esta fase se investigo con el fin de encontrar posibles errores previos a una descarga. Así, buscamos encontrar posibles funcionalidades perdidas, o funcionalidades no permitidas luego de restablecer la conexión a datos. Para lograr esto se realizó una suscripción (una de las funciones principales de la aplicación) a un canal de podcasts así, el historial del usuario debía existir, pero no reproducir, pues no se selecciono realizar la descarga del contenido. Con el fin de replicar estas pruebas se debe realizar la suscripción con conexión a datos móviles o wifi disponibles y luego activar el modo avión para simular la perdida total de conexión. Además de las mismas fallas que la fase anterior, algunos de los problemas identificados se presentan a continuación:  </p>
-      <br>
-
-      <div class="row">
-        <div class="col-sm-6 col-md-6 textoDescripcion">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE9.jpeg" alt="primer error en la aplicacion" height="200">
-        </div>
-        <div class="col-sm-6 col-md-6 text-center">
-          <p class="text-justify descripcion"> Al reproducir el contenido con conexión y luego presentar una pérdida de conexión simplemente se detiene la reproducción, pero no se avisa nada al usuario sobre el motivo de la parada de reproducción espontanea. De alguna forma este error puede ser clasificado como una funcionalidad perdida en la categoría de contenido perdido, pues el usuario nunca es notificado sobre la perdida de conectividad y los botones de reproducción dejan de funcionar con naturalidad. Igualmente se evidencia el problema claro de imagen vacía, pues, aunque inicialmente se había cargado una lista de 3 imágenes, al intentar ver la segunda y tercera sin conexión únicamente se muestra el espacio vacío. </p>
-        </div>
-      </div>
-      <br>
-      <p class="text-justify descripcion"> El primero problema mencionado debe ser solucionado utilizando un método que reconozca el momento en que ocurra una falla en la conectividad y el contenido en reproducción no se encuentre disponible. En este caso se debe notificar al usuario para que reestablezca su conexión o permitirle volver para reproducir otro contenido que si se encuentre descargado actualmente. El segundo error mencionado debe ser solucionado utilizando un cache temporal que guarde la información del objeto (1 podcast con toda la información que ello implica como imágenes, artista y colección). Así, aunque exista una falla en la conectividad igualmente el usuario puede navegar la información de la aplicación por lo menos para registrar cual es el podcast que estaba escuchando y así poder reproducirlo más tarde.  </p>
-      <br>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 textoDescripcion">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE10.jpeg" alt="primer error en la aplicacion" height="200">
-        </div>
-        <div class="col-sm-6 col-md-6 text-center">
-          <p class="text-justify descripcion"> Este error se origina al intentar realizar una descarga de un podcast que se encuentra dentro de las suscripciones. En este intento se despliega un permiso para utilizar redes móviles, pues se detecta que no se tiene conexión al Wifi previamente. Al autorizar el uso de redes móviles, no se verifica que con esta si se tenga conexión al wifi disponible, por lo que se informa al usuario que la descarga ha comenzado y luego se anuncia la notificación de fallo en la descarga como se evidencia en la foto anterior.  </p>
-        </div>
-      </div>
-      <br>
-      <p class="text-justify descripcion"> Para arreglar el problema anterior de debería realizar que existe una conexión estable a datos luego de que el usuario acepte utilizar redes móviles. Así, si no existe conexión disponible se debe suspender la descarga y no avisar al usuario que se encuentra realizando una descarga en ese momento. Así, se esperaría que el usuario revisara su conexión y luego se pudiera reintentar la descarga por realizar. </p>
-      <br>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 textoDescripcion">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE11.jpeg" alt="primer error en la aplicacion" height="170">
-        </div>
-        <div class="col-sm-6 col-md-6 text-center">
-          <p class="text-justify descripcion"> Este error se puede observar cuando se va a la pestaña de descargas luego de intentar realizar una descarga de la aplicación. Claramente se puede ver que cuando se selecciona la pestaña de Registro en Descargas se muestran los errores encontrados en los intentos realizados. En este caso, podemos ver que el mensaje que se agrega al layout es muy genérico. Así, aunque se captura la excepción correctamente, no se guarda el mansaje apropiado para evidenciar que la descarga se detuvo por perdida de conectividad en el dispositivo del usuario.  </p>
+          <p class="text-justify descripcion">Al realizar una suscripción podemos observar que tanto en la pestaña de Episodios como suscripciones aparece ya disponible el podcast (o álbum de podcast) al que nos hemos suscrito. Al presionar descargar en cualquiera de las dos pestañas, el celular reconoce que no tiene conexión a wifi; sin embargo, se asume de inmediato que el usuario si dispone de datos móviles. Así, procede a preguntar al usuario si le permite realizar la descarga por medio de datos móviles. Al aceptar esto, sale un letrero que evidencia que comenzó la descarga (Mensaje mostrado en un Toast cuando se debió utilizar un SnackBar), pero como tampoco se dispone de este tipo de conexión se informa por medio de una notificación nativa que la descarga ha fallado. Aun cuando se informa de esta manera (Manera incorrecta de hacerlo), no se le explica al usuario el porque de la falla en la descarga. Es decir, nunca se avisa al usuario que no dispone de una conexión a wifi o a internet por medio de datos móviles. Esto se evidencia en el video adjunto. Las demás ventanas presentan un comportamiento igual al mencionado en la fase inicial, pues realizar una suscripción no afecta de manera directa el contenido o la respuesta de alguna de estas. </p>
           <a href="#Error4">Ver Código Cuarto Error</a>
         </div>
       </div>
-      <br>
-      <p class="text-justify descripcion"> Para solucionar esta falla se debe capturar la excepción generada correctamente y en lugar de especificar un mensaje genérico agregar el motivo de la falla. En este caso se podría explicar que el motivo se debió a falta de conectividad cuando el usuario se encontraba realizando la descarga. Adicionalmente se debería implementar un reintento de descarga para que el usuario una ves sea notificado pueda volver a realizar la descarga del Podcast.</p>
-      <br>
-      <h2 id="Fase3">Fase 3: </h2>
-      <p class="text-justify descripcion">En esta fase únicamente se evidencian los problemas anteriores, pues al tener un podcast descargado las opciones diferentes a realizar son escucharlo sin necesidad de conectividad esto ocurre con normalidad y las fallas en conectividad eventual realmente no afectan de la misma manera que se afectaban las dos fases anteriores. Lógicamente se encuentran los mismos errores antes reportados, pero al reproducir el contenido descargado tanto el audio como el texto y las fotografías funcionan correctamente.  </p>
-      <h1>Código de la aplicación: </h1>
-      <p class="text-justify descripcion">A continuación, se presenta el lugar exacto donde ocurren las fallas anteriores presentadas. Con este código podemos observar la raíz del problema, así como la solución propuesta antes descrita implementada sobre un entorno real. </p>
-      <h2>Fase 1</h2>
-      <div class="codigoApp">
-        <div id="Error1">
-          <h2>Primer Error</h2>
-          <p class="text-justify descripcion">La actividad de agregarPodcast lanza el fragmento AddFeedFragment donde se contiene la información de la pestaña de añadir podcast. En esta encontramos varios de los errores antes mencionados donde ya se ha explicado como corregirlos. El código especifico con la corrección explicita se evidencia a continuación:</p>
-
-          <p class="text-justify descripcion">En este caso descubrir es un fragmento adicional dentro de esta actividad llamado QuickFeedDiscoveryFragment. En este punto podemos observar que se genera un error cuando no se tiene conexión. En este caso se podría hacer una de dos cosas. La primera seria tener un cache con esta información luego de la primera descarga (información más desarrollada en descripción de almacenamiento). Esta información se podría mostrar al usuario mientras se realiza el fetch correspondiente o se arregla la conexión para “fallar con gracia”. La segunda solución correspondiente con conectividad eventual es da darle información al usuario sobre la falla. Este puede ser un mejor manejo del error puesto que los podcasts usualmente deben estar actualizados si estos son de actualidad, como usualmente hace Itunes en su feed principal. </p>
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError1.png" alt="Error mostrando codigo">
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError2.png" alt="Error mostrando codigo">
-          <p class="text-justify descripcion">Como podemos observar en la línea 87 de este fragmento, únicamente se publica este error desde dentro de la aplicación, pero esta información no es útil para el usuario. En este caso proponemos la siguiente solución:</p>
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError3.png" alt="error mnostrando codigo">
-          <p class="text-justify descripcion">Donde NotifyNetworkError corresponde a la información en lenguaje natural del error que notifica al usuario que no dispone de datos o wifi según el idioma de configuración del celular. </p>
+      <br/>
+      <h2 id="Descargado">Fase de pruebas con Podcast (Descargado):</h2>
+      <div class="row">
+        <div class="col-sm-6 col-md-6 textoDescripcion">
+          <p class="text-justify descripcion">Al realizar la descarga de un podcast y luego entrar nuevamente a modo avión, se puede observar en los tabs de añadir podcast, historial de reproducciones y suscripciones los patrones de ejecución que se describieron en la fase inicial se repiten. En este caso, al observar la pestaña de episodios, se puede observar que se muestra un álbum con la información de los diferentes podcasts y solo se muestra disponible para la reproducción el que específicamente fue descargado. Al realizar click en los demás se evidencia el mismo problema que ocurría en la fase dos, donde el dispositivo reconocía que no se encontraba descargado e intentaba realizar la descarga a pesar de no tener una conexión estable a internet. Adicionalmente el fallo lo notifica por medio de push notifications. La otra opción a elegir redes móviles para realizar la descarga es agregar a la cola para poder realizar la descarga mas adelante. En este caso esta función no requiere intervención en cuanto a conectividad eventual, pues al quedar en cola el dispositivo puede reanudar o realizar la descarga cuando se recupere la conexión exitosamente. </p>
         </div>
-        <div id="Error2">
-          <h2>Segundo Error</h2>
-          <p class="text-justify descripcion">La actividad de agregarPodcast lanza el fragmento AddFeedFragment donde se contiene la información de la pestaña de añadir podcast. Esta genera el error del mensaje antes descrito y un claro ejemplo de falla es en la línea 101 de este fragmento donde el botón de confirmar para un podcast por URL no se verifica que se disponga de una conexión a internet. Este problema es sencillo de solucionar pues solo requiere una verificación a datos. </p>
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError4.png" alt="Error mostrando codigo">
-          <p class="text-justify descripcion"> </p>
-
-
+        <div class="col-sm-6 col-md-6 text-center">
+          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/GIF3CE.gif" alt="video mostrando usabilidad" height="450" >
         </div>
-        <div id="Error3">
-          <h2>Tercer Error</h2>
-          <p class="text-justify descripcion">En el mismo fragmento antes descrito podemos encontrar también en la línea 73 que cuando se realiza una búsqueda avanzada, no se verifica tampoco la disponibilidad de red.</p>
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError5.png" alt="Error mostrando codigo">
-          <p class="text-justify descripcion">Para estos dos problemas se debe implementar la misma solución. También funciona para todas las excepciones generadas por falta de conectividad al realizar clic en algún botón o al abrir una actividad que requiera de información disponible únicamente en la red (no almacenado localmente).</p>
-          <p class="text-justify descripcion"> </p>
-          <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError6.png" alt="Error mostrando codigo">
-          <p class="text-justify descripcion">Ya que la aplicación es multi-idioma, se utiliza la constante NotifyNetworkError para continuar con el manejo que le han dado. En este caso se utilizó un toast para probar, pero la versión de despliegue se debería manejar en el fragmento de error como ya lo han manejado en otros errores o en un snackBar. Cabe acalrar que sale con error pues se deben realizar los imports respectivos. </p>
-          <p class="text-center descripcion"> import android.net.ConectivityManager </p>
-          <p class="text-center descripcion"> import Android.net.NetworkInfo </p>
-        </div>
-        <p class="text-justify descripcion">En general, con estas dos correcciones se pueden solucionar otros pequeños detalles que son causados por el mismo manejo que se le da al lanzar el intent en el segundo caso o al mostrar información en el primer caso. </p>
       </div>
-      <h2>Fase 2</h2>
-      <div id ="Error4">
-        <p class="text-justify descripcion">Al analizar la fase dos se encontró principalmente el problema de la falta de especificidad en lenguaje natural en los errores. Así, se rastreó el origen de este mensaje para dar con el punto de falla como se evidencia a continuación. </p>
-        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError7.png" alt="Error mostrando codigo">
-        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError8.png" alt="Error mostrando codigo">
-        <p class="text-justify descripcion">Podemos observar que en la clase DownloadLogAdapter en la línea 62 se menciona por primera vez la línea que contiene el error. Luego, en la línea 94 simplemente se agrega la información correspondiente a la razón. Al observar de donde venia el mensaje pudimos rastrear este problema hasta el fragmento DownloadLogFragment desde la línea 78. En este punto se registra en el Suscriptor este método para recibir las notificaciones. Así, el publicador no debería entonces enviar el mensaje genérico, pues no proporciona información suficiente valida para el usuario.  </p>
-        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError9.png" alt="Error mostrando codigo">
-         <p class="text-justify descripcion"></p>
+    </br>
+    <h2 class="text-center" id="Detallado">Reporte Especifico con detalle técnico:</h2>
+    <p class="text-justify descripcion">A lo largo de la investigación de las 3 fases se pudieron identificar varios problemas de conectividad eventual como fue mencionado. A continuación, se presentará uno a uno los errores con su tipo de falla y la forma como se debería dar un manejo adecuado para arreglar la falla. Primero se presentarán las fallas encontradas en la fase inicial donde no se perdía la conexión justo después de instalar la aplicación. Luego la segunda fase donde se realizaba una suscripción y por ultimo la fase donde se descarga un podcast y se observa el comportamiento general de la aplicación.</p>
+    <br>
 
+    <h2 id="Fase1">Fase 1: </h2>
+    <p class="text-justify descripcion">Esta fase se realizó con el fin de identificar el “Data Fetching Stategie” utilizada en la aplicación. Claramente se puede observar que la aplicación utiliza un mecanismo Pull, pues la información solo se recibe cuando el usuario solicita descargar o visualizar un podcast nuevo. Esto es verdad para toda la información disponible excepto para la sección de Descubrir, donde se utiliza “Launch-Time”, pues es necesario mostrar al usuario la información de posibles podcast sugeridos sin que este solicite más información. De esta forma se atrae al usuario a buscar posible información que puede llegar a ser de su interés. Dada la naturaleza de la aplicación y la lógica de negocio que la rige, únicamente se utilizan estos dos tipos de “Data Fetching”. </p>
+    <br>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 textoDescripcion">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE1.jpeg" alt="primer error en la aplicacion" height="200">
+      </div>
+      <div class="col-sm-6 col-md-6 text-center">
+        <p class="text-justify descripcion"> Este es un claro ejemplo de un mensaje no informativo. Mas específicamente, se puede observar un mensaje genérico. Así, aunque se captura la excepción generada directo por la aplicación, el mensaje de error no logra informar adecuadamente el problema al usuario final. En este se informa un error que además de ser en inglés, podría dar al usuario la idea de que el problema se encuentra en el destino y no en la falta de conectividad del celular. Este mensaje se puede observar en otras funciones de la aplicación como se mostrará mas adelante. </p>
+        <a href="#Error1">Ver Código Primer Error</a>
       </div>
     </div>
+    <br>
+    <p class="text-justify descripcion"> En este caso se debería verificar si no existe conexión previamente en lugar de ir directo a realizar la búsqueda normal. Una ves se logra identificar la falta de conexión, en lugar de mostrar al usuario el mensaje anterior se debería informar que no dispone de una conexión estable a internet.</p>
+    <br>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 textoDescripcion">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE2.jpeg" alt="primer error en la aplicacion" height="200">
+      </div>
+      <div class="col-sm-6 col-md-6 text-center">
+        <p class="text-justify descripcion"> Este mensaje es muy parecido al anterior con la diferencia que no es capturado. Así, se muestra literalmente la excepción completa generada por el código. Así, este error es definido como “Message with Exception Trace”. Esto se evidencia al observar el tipo de error generado “UnknownHostException”. Un usuario con poco conocimiento técnico no podrá saber a qué se refiere dicho mensaje, por lo que podría pensar nuevamente que se debe a un error de servidor como parece a dar a entender el mensaje. </p>
+        <a href="#Error2">Ver Código Segundo Error</a>
+      </div>
+    </div>
+    <br>
+    <p class="text-justify descripcion"> En este caso se debería realizar una verificación en la pestaña de descubrir justo cuando el usuario realiza el clic para acceder a la función. Así, en caso de que no se posea una conexión estable a internet, no se debería avanzar a la actividad siguiente, sino que se debería informar al usuario que actualmente no dispone de una conexión estable a la red (sea datos móviles o sea wifi). De esta forma el usuario podrá identificar el problema en su celular o su entorno y solucionarlo rápidamente para continuar utilizando el celular. </p>
+    <br>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 textoDescripcion">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE3.jpeg" alt="primer error en la aplicacion" height="200">
+      </div>
+      <div class="col-sm-6 col-md-6 text-center">
+        <p class="text-justify descripcion">El primero error consiste en confirmar el envío para añadir un podcast por URL. Al realizar un envío vacío (sea con o sin internet) se evidencia el error anterior. Nuevamente se evidencia claramente un “Message with Exception Trace”. Así, no captura apropiadamente el error y el usuario final no logra entender cual es el problema con la solicitud que ha realizado, pues no se explica con detalle porque sucedió el error. En especial porque lo que entiende el usuario es que se esperaba algo en el índice 7, lo cual no tiene ninguna relevancia al usuario.  </p>
+        <a href="#Error3">Ver Código Tercer Error</a>
+      </div>
+    </div>
+    <br>
+    <p class="text-justify descripcion"> Este problema se debe solucionar realizando una verificación previa al realizar clic en confirmar. En caso de que el campo de entrada del usuario se encuentre vacío, se debería informar a este que debe llenar una URL antes de realizar el envío. Así, no se debería permitir que este avance a la siguiente actividad, y mas bien informar al mensaje correcto al usuario para que este pueda realizar las correcciones pertinentes (ingresar un URL valido).</p>
+    <br>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 textoDescripcion">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE4.jpeg" alt="primer error en la aplicacion" height="200">
+      </div>
+      <div class="col-sm-6 col-md-6 text-center">
+        <p class="text-justify descripcion">Este error se produce cuando se tiene conexión y en el URL se ingresa una dirección que no tiene un Podcast. Así, se utiliza la url www.google.com, donde claramente no existe un podcast disponible directo. EL mensaje que se puede observar en un mensaje genérico mal manejado. En este se evidencia que en efecto se captura la excepción de la aplicación y se explica el tipo de excepción (inclusive en español), pero este mensaje no le informa al usuario cual es el error realmente y a que se debe este error. </p>
+        <a href="#Error3">Ver Código Tercer Error</a>
+      </div>
+    </div>
+    <br>
+    <p class="text-justify descripcion"> Este problema se debe solucionar utilizando el catch y capturando la excepción correctamente. En este mensaje resultante se debería informar al usuario que al parecer la URL que ingreso no tiene ningún podcast o álbum de podcast disponible. También se le debe informar que revise la URL ingresada y lo intente nuevamente para poder continuar exitosamente. De esta forma el usuario podrá revisar fácilmente la url y ingresar una correcta para poder continuar utilizando la aplicación.  </p>
+    <br>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 textoDescripcion">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE5.jpeg" alt="primer error en la aplicacion" height="200">
+      </div>
+      <div class="col-sm-6 col-md-6 text-center">
+        <p class="text-justify descripcion">El error anterior se produce también cuando se realiza un envío con la petición de añadir un podcast por URL. En este se agrega también la URL www.google.com pero en este caso no se dispone una conexión estable a internet. En este caso nuevamente se evidencia el problema del mensaje genérico, pues, aunque se captura la excepción y se muestra un mensaje al usuario, no se incluye un mensaje real de cual es el problema. EL mensaje dado da a entender nuevamente que ocurre un problema mas con el lado del servidor que del lado del cliente. </p>
+        <a href="#Error3">Ver Código Tercer Error</a>
+      </div>
+    </div>
+    <br>
+    <p class="text-justify descripcion"> En este caso, el problema se debe solucionar no permitiendo que el usuario continúe (confirme luego de ingresar la URL). En lugar de avanzar a la siguiente actividad, se debería revisar si se dispone de una conexión estable a internet y en caso de que no exista, se avise al usuario que revise su conexión a internet pues no hay una red estable para realizar la petición solicitada.  </p>
+    <br>
+    <div class="row">
+      <div class="col-sm-4 col-md-4 text-center">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE6.jpeg" alt="primer error en la aplicacion" height="160">
+      </div>
+      <div class="col-sm-4 col-md-4 text-center">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE7.jpeg" alt="primer error en la aplicacion" height="160">
+      </div>
+      <div class="col-sm-4 col-md-4 text-center">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE8.jpeg" alt="primer error en la aplicacion" height="160">
+      </div>
+    </div>
+    <br>
+    <p class="text-justify descripcion"> Los 3 errores anteriores se producen cuando se realiza una Búsqueda avanzada ya sea por Itunes, por gpodder.net o por fyyd. En este caso las 3 opciones generar el mismo error, donde en este caso es un “Message with Exception Trace”. Así, se muestra literalmente el mensaje de excepción generado desde el código java “UnknownHostException”. Al tener en cuenta que esto se genera al momento de perder la conexión a internet, solucionar este problema es relativamente sencillo. Una ves se hace clic en búsqueda avanzada se debería verificar si se dispone de una conexión estable a la red de datos o wifi. Así, no se debería permitir que el usuario avance a la actividad de búsqueda, sino que solo debería aparecer un mensaje informativo y claro que le permita al usuario saber que no posee internet. Así, este puede realizar las correcciones necesarias en su dispositivo o en su entorno para poder continuar con el uso adecuado de la aplicación. Al tener una conexión estable estos mensajes no aparecen y se redirige correctamente a los respectivos servicios para realizar la descarga correctamente.  </p>
+    <a href="#Error2">Ver Código Segundo Error</a>
+    <br>
+    <h2 id="Fase2">Fase 2: </h2>
+    <p class="text-justify descripcion">Esta fase se investigo con el fin de encontrar posibles errores previos a una descarga. Así, buscamos encontrar posibles funcionalidades perdidas, o funcionalidades no permitidas luego de restablecer la conexión a datos. Para lograr esto se realizó una suscripción (una de las funciones principales de la aplicación) a un canal de podcasts así, el historial del usuario debía existir, pero no reproducir, pues no se selecciono realizar la descarga del contenido. Con el fin de replicar estas pruebas se debe realizar la suscripción con conexión a datos móviles o wifi disponibles y luego activar el modo avión para simular la perdida total de conexión. Además de las mismas fallas que la fase anterior, algunos de los problemas identificados se presentan a continuación:  </p>
+    <br>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-6 textoDescripcion">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE9.jpeg" alt="primer error en la aplicacion" height="200">
+      </div>
+      <div class="col-sm-6 col-md-6 text-center">
+        <p class="text-justify descripcion"> Al reproducir el contenido con conexión y luego presentar una pérdida de conexión simplemente se detiene la reproducción, pero no se avisa nada al usuario sobre el motivo de la parada de reproducción espontanea. De alguna forma este error puede ser clasificado como una funcionalidad perdida en la categoría de contenido perdido, pues el usuario nunca es notificado sobre la perdida de conectividad y los botones de reproducción dejan de funcionar con naturalidad. Igualmente se evidencia el problema claro de imagen vacía, pues, aunque inicialmente se había cargado una lista de 3 imágenes, al intentar ver la segunda y tercera sin conexión únicamente se muestra el espacio vacío. </p>
+      </div>
+    </div>
+    <br>
+    <p class="text-justify descripcion"> El primero problema mencionado debe ser solucionado utilizando un método que reconozca el momento en que ocurra una falla en la conectividad y el contenido en reproducción no se encuentre disponible. En este caso se debe notificar al usuario para que reestablezca su conexión o permitirle volver para reproducir otro contenido que si se encuentre descargado actualmente. El segundo error mencionado debe ser solucionado utilizando un cache temporal que guarde la información del objeto (1 podcast con toda la información que ello implica como imágenes, artista y colección). Así, aunque exista una falla en la conectividad igualmente el usuario puede navegar la información de la aplicación por lo menos para registrar cual es el podcast que estaba escuchando y así poder reproducirlo más tarde.  </p>
+    <br>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 textoDescripcion">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE10.jpeg" alt="primer error en la aplicacion" height="200">
+      </div>
+      <div class="col-sm-6 col-md-6 text-center">
+        <p class="text-justify descripcion"> Este error se origina al intentar realizar una descarga de un podcast que se encuentra dentro de las suscripciones. En este intento se despliega un permiso para utilizar redes móviles, pues se detecta que no se tiene conexión al Wifi previamente. Al autorizar el uso de redes móviles, no se verifica que con esta si se tenga conexión al wifi disponible, por lo que se informa al usuario que la descarga ha comenzado y luego se anuncia la notificación de fallo en la descarga como se evidencia en la foto anterior.  </p>
+      </div>
+    </div>
+    <br>
+    <p class="text-justify descripcion"> Para arreglar el problema anterior de debería realizar que existe una conexión estable a datos luego de que el usuario acepte utilizar redes móviles. Así, si no existe conexión disponible se debe suspender la descarga y no avisar al usuario que se encuentra realizando una descarga en ese momento. Así, se esperaría que el usuario revisara su conexión y luego se pudiera reintentar la descarga por realizar. </p>
+    <br>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 textoDescripcion">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/errorCE11.jpeg" alt="primer error en la aplicacion" height="170">
+      </div>
+      <div class="col-sm-6 col-md-6 text-center">
+        <p class="text-justify descripcion"> Este error se puede observar cuando se va a la pestaña de descargas luego de intentar realizar una descarga de la aplicación. Claramente se puede ver que cuando se selecciona la pestaña de Registro en Descargas se muestran los errores encontrados en los intentos realizados. En este caso, podemos ver que el mensaje que se agrega al layout es muy genérico. Así, aunque se captura la excepción correctamente, no se guarda el mansaje apropiado para evidenciar que la descarga se detuvo por perdida de conectividad en el dispositivo del usuario.  </p>
+        <a href="#Error4">Ver Código Cuarto Error</a>
+      </div>
+    </div>
+    <br>
+    <p class="text-justify descripcion"> Para solucionar esta falla se debe capturar la excepción generada correctamente y en lugar de especificar un mensaje genérico agregar el motivo de la falla. En este caso se podría explicar que el motivo se debió a falta de conectividad cuando el usuario se encontraba realizando la descarga. Adicionalmente se debería implementar un reintento de descarga para que el usuario una ves sea notificado pueda volver a realizar la descarga del Podcast.</p>
+    <br>
+    <h2 id="Fase3">Fase 3: </h2>
+    <p class="text-justify descripcion">En esta fase únicamente se evidencian los problemas anteriores, pues al tener un podcast descargado las opciones diferentes a realizar son escucharlo sin necesidad de conectividad esto ocurre con normalidad y las fallas en conectividad eventual realmente no afectan de la misma manera que se afectaban las dos fases anteriores. Lógicamente se encuentran los mismos errores antes reportados, pero al reproducir el contenido descargado tanto el audio como el texto y las fotografías funcionan correctamente.  </p>
+    <br>
+    <div id="CodigoApp">
+      <h1>Código de la aplicación: </h1>
+    </div>
+    <p class="text-justify descripcion">A continuación, se presenta el lugar exacto donde ocurren las fallas anteriores presentadas. Con este código podemos observar la raíz del problema, así como la solución propuesta antes descrita implementada sobre un entorno real. </p>
+    <h2>Fase 1</h2>
+    <div class="codigoApp">
+      <div id="Error1">
+        <h2>Primer Error</h2>
+        <p class="text-justify descripcion">La actividad de agregarPodcast lanza el fragmento AddFeedFragment donde se contiene la información de la pestaña de añadir podcast. En esta encontramos varios de los errores antes mencionados donde ya se ha explicado como corregirlos. El código especifico con la corrección explicita se evidencia a continuación:</p>
+
+        <p class="text-justify descripcion">En este caso descubrir es un fragmento adicional dentro de esta actividad llamado QuickFeedDiscoveryFragment. En este punto podemos observar que se genera un error cuando no se tiene conexión. En este caso se podría hacer una de dos cosas. La primera seria tener un cache con esta información luego de la primera descarga (información más desarrollada en descripción de almacenamiento). Esta información se podría mostrar al usuario mientras se realiza el fetch correspondiente o se arregla la conexión para “fallar con gracia”. La segunda solución correspondiente con conectividad eventual es da darle información al usuario sobre la falla. Este puede ser un mejor manejo del error puesto que los podcasts usualmente deben estar actualizados si estos son de actualidad, como usualmente hace Itunes en su feed principal. </p>
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError1.png" alt="Error mostrando codigo">
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError2.png" alt="Error mostrando codigo">
+        <p class="text-justify descripcion">Como podemos observar en la línea 87 de este fragmento, únicamente se publica este error desde dentro de la aplicación, pero esta información no es útil para el usuario. En este caso proponemos la siguiente solución:</p>
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError3.png" alt="error mnostrando codigo">
+        <p class="text-justify descripcion">Donde NotifyNetworkError corresponde a la información en lenguaje natural del error que notifica al usuario que no dispone de datos o wifi según el idioma de configuración del celular. </p>
+      </div>
+      <div id="Error2">
+        <h2>Segundo Error</h2>
+        <p class="text-justify descripcion">La actividad de agregarPodcast lanza el fragmento AddFeedFragment donde se contiene la información de la pestaña de añadir podcast. Esta genera el error del mensaje antes descrito y un claro ejemplo de falla es en la línea 101 de este fragmento donde el botón de confirmar para un podcast por URL no se verifica que se disponga de una conexión a internet. Este problema es sencillo de solucionar pues solo requiere una verificación a datos. </p>
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError4.png" alt="Error mostrando codigo">
+        <p class="text-justify descripcion"> </p>
+
+
+      </div>
+      <div id="Error3">
+        <h2>Tercer Error</h2>
+        <p class="text-justify descripcion">En el mismo fragmento antes descrito podemos encontrar también en la línea 73 que cuando se realiza una búsqueda avanzada, no se verifica tampoco la disponibilidad de red.</p>
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError5.png" alt="Error mostrando codigo">
+        <p class="text-justify descripcion">Para estos dos problemas se debe implementar la misma solución. También funciona para todas las excepciones generadas por falta de conectividad al realizar clic en algún botón o al abrir una actividad que requiera de información disponible únicamente en la red (no almacenado localmente).</p>
+        <p class="text-justify descripcion"> </p>
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError6.png" alt="Error mostrando codigo">
+        <p class="text-justify descripcion">Ya que la aplicación es multi-idioma, se utiliza la constante NotifyNetworkError para continuar con el manejo que le han dado. En este caso se utilizó un toast para probar, pero la versión de despliegue se debería manejar en el fragmento de error como ya lo han manejado en otros errores o en un snackBar. Cabe acalrar que sale con error pues se deben realizar los imports respectivos. </p>
+        <p class="text-center descripcion"> import android.net.ConectivityManager </p>
+        <p class="text-center descripcion"> import Android.net.NetworkInfo </p>
+      </div>
+      <p class="text-justify descripcion">En general, con estas dos correcciones se pueden solucionar otros pequeños detalles que son causados por el mismo manejo que se le da al lanzar el intent en el segundo caso o al mostrar información en el primer caso. </p>
+    </div>
+    <h2>Fase 2</h2>
+
+    <div id ="Error4">
+      <h2>Error 4</h2>
+      <p class="text-justify descripcion">Al analizar la fase dos se encontró principalmente el problema de la falta de especificidad en lenguaje natural en los errores. Así, se rastreó el origen de este mensaje para dar con el punto de falla como se evidencia a continuación. </p>
+      <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError7.png" alt="Error mostrando codigo">
+      <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError8.png" alt="Error mostrando codigo">
+      <p class="text-justify descripcion">Podemos observar que en la clase DownloadLogAdapter en la línea 62 se menciona por primera vez la línea que contiene el error. Luego, en la línea 94 simplemente se agrega la información correspondiente a la razón. Al observar de donde venia el mensaje pudimos rastrear este problema hasta el fragmento DownloadLogFragment desde la línea 78. En este punto se registra en el Suscriptor este método para recibir las notificaciones. Así, el publicador no debería entonces enviar el mensaje genérico, pues no proporciona información suficiente valida para el usuario.  </p>
+      <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/CodigoError9.png" alt="Error mostrando codigo">
+      <p class="text-justify descripcion">En este punto se propone modificar la publicación que realiza el publicador para que el suscriptor únicamente deba publicar el mensaje y sea el primero el encargado de recibir, interpretar y transformar la información para que así sea comprensible para el usuario final. En este caso debería poder determinar cual es el tipo de fallo (falta de internet o error en el servidor) y publicar esta información de manera oportuna. </p>
+
+    </div>
   </div>
+</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
