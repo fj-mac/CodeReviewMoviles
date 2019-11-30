@@ -58,7 +58,7 @@
           </ul>
           <li><a href="#Seguridad">Seguridad</a></li>
           <li><a href="#Cache">Cache</a></li>
-          <li><a href="#Memoria">Almacenamiento</a></li>
+          <li><a href="#memoria">Almacenamiento</a></li>
         </ul>
       </div>
     </div>
@@ -196,7 +196,7 @@
       <p class="text-justify descripción">Este código explica en gran medida una parte muy importante de la aplicación, donde no necesariamente se da un buen manejo a la memoria, pues esta no se libera, pero tampoco se permite que crezca de manera indefinida. Así, en casos de prueba el trashColector no se ve forzado a realizar la recolección de memoria, pero si se ve como esta se mantiene en el tope marcado como parámetro. </p>
 
 
-      <div class="Memoria">
+      <div id="memoria">
         <h1>Almacenamiento</h1>
         <p class="text-justify descripción">Luego de un análisis de código, se evidencia que la aplicación no realiza almacenamiento externo en un servicio remoto, pues en general este tipo de servicios tienen un costo cuando se supera un limite y con la demanda de AntennaPod este límite se alcanzaría rápidamente. Así, como la aplicación es libre y gratuita no hay nadie quien pueda mantener estos servicios.</p>
         <p class="text-justify descripción">Al realizar un análisis interno de la aplicación y luego de un uso promedio, se puede observar que evidentemente se utiliza el almacenamiento interno del dispositivo en 3 casos principales. El primero es cuando se almacenan las preferencias del usuario, el segundo es donde se almacenan los podcasts o librerías de podcasts por medio de la suscripción y finalmente donde se almacenan los Podcasts descargados por la aplicación.  </p>
