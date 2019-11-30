@@ -58,6 +58,7 @@
           </ul>
           <li><a href="#Seguridad">Seguridad</a></li>
           <li><a href="#Cache">Cache</a></li>
+          <li><a href="#Memoria">Almacenamiento</a></li>
         </ul>
       </div>
     </div>
@@ -193,6 +194,21 @@
       <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/cache3.png" alt="Codigo mostrando el manejo de cache">
 
       <p class="text-justify descripción">Este código explica en gran medida una parte muy importante de la aplicación, donde no necesariamente se da un buen manejo a la memoria, pues esta no se libera, pero tampoco se permite que crezca de manera indefinida. Así, en casos de prueba el trashColector no se ve forzado a realizar la recolección de memoria, pero si se ve como esta se mantiene en el tope marcado como parámetro. </p>
+
+
+      <div class="Memoria">
+        <h1>Almacenamiento</h1>
+        <p class="text-justify descripción">Luego de un análisis de código, se evidencia que la aplicación no realiza almacenamiento externo en un servicio remoto, pues en general este tipo de servicios tienen un costo cuando se supera un limite y con la demanda de AntennaPod este límite se alcanzaría rápidamente. Así, como la aplicación es libre y gratuita no hay nadie quien pueda mantener estos servicios.</p>
+        <p class="text-justify descripción">Al realizar un análisis interno de la aplicación y luego de un uso promedio, se puede observar que evidentemente se utiliza el almacenamiento interno del dispositivo en 3 casos principales. El primero es cuando se almacenan las preferencias del usuario, el segundo es donde se almacenan los podcasts o librerías de podcasts por medio de la suscripción y finalmente donde se almacenan los Podcasts descargados por la aplicación.  </p>
+        <p class="text-justify descripción">Inicialmente, podemos ver que en la clase PodDBAdapter se utiliza SQLite para realizar todas las operaciones de almacenamiento. Esto se evidencia en las líneas 299, donde se declara la base de datos volátil, 326 donde se abre la nueva base de datos, 740 donde se insertan los favoritos a la base de datos creada para un usuario que no dispone de esta, 792 donde se inserta un ítem con conflicto en la cola, 1448 donde se verifican casos de corrupción dentro de la base de datos, etc. Como estos caso se utilizan varios métodos dependientes de la base de datos, pues en esta se guarda información de los Feeds, Los logs de la descarga, La cola, Los capítulos simples, los favoritos, las lecturas, las colecciones de podcasts, etc. </p>
+        <p class="text-justify descripción">En el código a continuación se presenta el caso donde se ajustan los favoritos según el pedido de cada usuario. Como se puede observar se utiliza la DB declarara que corresponde a SQLite:</p>
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/memoria1.png" alt="Imagen con codigo de evidencia de uno de SQLite">
+
+        <p class="text-justify descripción">En el código a continuación de muestra el método OnCreate de la clase PodDBAdapter, donde se evidencia la creación de las diferentes tablas y los índices apropiados para dichas tablas:</p>
+        <img src="https://raw.githubusercontent.com/fj-mac/CodeReviewMoviles/master/Fotos/memoria2.png" alt="Imagen con codigo de evidencia de uno de SQLite">
+
+
+      </div>
 
 
 
